@@ -1,0 +1,7 @@
+__author__ = 'sidya'
+
+
+class Camera:
+    def __init__(self):
+        pass
+

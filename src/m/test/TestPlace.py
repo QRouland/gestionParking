@@ -1,5 +1,5 @@
 __author__ = 'sidya'
 
 
-class Camera:
+class TestPlace :
     pass
