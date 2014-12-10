@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>522</width>
+    <height>412</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>561</width>
+      <height>441</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Activite</string>
+     </attribute>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>10</y>
+        <width>61</width>
+        <height>15</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Activité :</string>
+      </property>
+     </widget>
+     <widget class="QListView" name="log">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>40</y>
+        <width>421</width>
+        <height>241</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Parkings</string>
+     </attribute>
+     <widget class="QWidget" name="formLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>80</y>
+        <width>311</width>
+        <height>151</height>
+       </rect>
+      </property>
+      <layout class="QFormLayout" name="formLayout_3">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_13">
+         <property name="text">
+          <string>Nom :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_14">
+         <property name="text">
+          <string>Niveau :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="lineEdit_11"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="lineEdit_12"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_15">
+         <property name="text">
+          <string>Place / niveau :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="lineEdit_13"/>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_16">
+         <property name="text">
+          <string>Place disponible :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="lineEdit_14"/>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_17">
+         <property name="text">
+          <string>Place Reserve Super Abo : </string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="lineEdit_15"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>270</y>
+        <width>101</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Creer/Modifier</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>40</y>
+        <width>321</width>
+        <height>27</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>290</x>
+        <y>270</y>
+        <width>81</width>
+        <height>27</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Supprimer</string>
+      </property>
+     </widget>
+     <zorder>label_2</zorder>
+     <zorder>lineEdit</zorder>
+     <zorder>label_6</zorder>
+     <zorder>label_5</zorder>
+     <zorder>lineEdit_3</zorder>
+     <zorder>label_4</zorder>
+     <zorder>lineEdit_4</zorder>
+     <zorder>lineEdit_5</zorder>
+     <zorder>label_3</zorder>
+     <zorder>lineEdit_2</zorder>
+     <zorder>formLayoutWidget</zorder>
+     <zorder>pushButton_2</zorder>
+     <zorder>comboBox</zorder>
+     <zorder>pushButton</zorder>
+    </widget>
+    <widget class="QWidget" name="tab_5">
+     <attribute name="title">
+      <string>Membres</string>
+     </attribute>
+     <widget class="QTableView" name="tableView">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>40</y>
+        <width>431</width>
+        <height>201</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>522</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuBorne">
+    <property name="title">
+     <string>Fichier</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionCharger"/>
+    <addaction name="actionSauvegarder"/>
+   </widget>
+   <widget class="QMenu" name="menuBornes">
+    <property name="title">
+     <string>Quitter</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuA_propos">
+    <property name="title">
+     <string>A propos</string>
+    </property>
+   </widget>
+   <addaction name="menuBorne"/>
+   <addaction name="menuBornes"/>
+   <addaction name="menuA_propos"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionCharger">
+   <property name="text">
+    <string>Charger</string>
+   </property>
+  </action>
+  <action name="actionSauvegarder">
+   <property name="text">
+    <string>Sauvegarder</string>
+   </property>
+  </action>
+  <action name="actionAfficher">
+   <property name="text">
+    <string>Afficher</string>
+   </property>
+  </action>
+  <action name="actionNouveau">
+   <property name="text">
+    <string>Nouveau</string>
+   </property>
+  </action>
+  <action name="actionRechercher">
+   <property name="text">
+    <string>Rechercher</string>
+   </property>
+  </action>
+  <action name="actionListe">
+   <property name="text">
+    <string>Liste</string>
+   </property>
+  </action>
+  <action name="actionAjouter">
+   <property name="text">
+    <string>Ajouter</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
