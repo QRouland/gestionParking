@@ -8,11 +8,7 @@ __author__ = 'sidya'
 
 class Acces:
     def __init__(self):
-        self.__borne = Borne()
-        self.__panneau = Panneau()
         self.__parkings = {}
-        self.__camera = Camera()
-        self.__teleporteur = Teleporteur()
         self.__clients = {}
 
     def actionnerCamera(self, client):

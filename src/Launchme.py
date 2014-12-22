@@ -1,6 +1,8 @@
-from src.c.Acces import Acces
+from src.c.Main import Main
 
 __author__ = 'sidya'
 
 if __name__ == "__main__":
-    acces = Acces()
+    #lancement du controleur principal
+    main = Main()
+
