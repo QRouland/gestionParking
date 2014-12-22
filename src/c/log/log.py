@@ -6,11 +6,11 @@ class bcolors:
     """
     Define constant color value for different level
     """
-    DEBUG = '\033[94m'
-    INFO = '\033[95m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
+    DEBUG = '\033[94m '
+    INFO = ' \033[95m '
+    WARNING = ' \033[93m '
+    FAIL = ' \033[91m '
+    ENDC = ' \033[0m '
 
 class lvl:
     """
@@ -21,6 +21,7 @@ class lvl:
     INFO = 20
     WARNING = 30
     FAIL = 40
+    CRITICAL = 50
 
 class SingleLevelFilter(logging.Filter):
     """Filter for one level"""
@@ -50,7 +51,6 @@ class Log(object):
         error.log -> error
         Write all message on terminal too
         """
-        logging.addLevelName(lvl.SUCCESS, "SUCCESS")
         self.logger = logging.getLogger()
         self.logger.setLevel(logging.DEBUG)
         formatter = logging.Formatter('%(asctime)-15s :: %(levelname)s :: %(message)s')
@@ -72,20 +72,20 @@ class Log(object):
         self.logger.addHandler(steam_handler)
 
 
-def printL(self,pMsg,pLvl):
-    """
-    Add color and write in log with an define level
-    pMsg : message to write in log
-    pLvl : level of log message
-    """
-    if pLvl == lvl.DEBUG :
-        pMsg = bcolors.DEBUG + str(pMsg) + bcolors.ENDC
-    elif pLvl == lvl.INFO :
-        pMsg = bcolors.INFO + str(pMsg) + bcolors.ENDC
-    elif pLvl == lvl.SUCCESS :
-        pMsg = bcolors.SUCCESS + str(pMsg) + bcolors.ENDC
-    elif pLvl == lvl.WARNING :
-        pMsg = bcolors.WARNING + str(pMsg) + bcolors.ENDC
-    elif pLvl == lvl.FAIL :
-        pMsg = bcolors.FAIL + str(pMsg) + bcolors.ENDC
-    self.logger.log(pLvl,pMsg)
+    def printL(self,pMsg,pLvl):
+        """
+        Add color and write in log with an define level
+        pMsg : message to write in log
+        pLvl : level of log message
+        """
+        if pLvl == lvl.DEBUG :
+            pMsg = bcolors.DEBUG + str(pMsg) + bcolors.ENDC
+        elif pLvl == lvl.INFO :
+            pMsg = bcolors.INFO + str(pMsg) + bcolors.ENDC
+        elif pLvl == lvl.SUCCESS :
+            pMsg = bcolors.SUCCESS + str(pMsg) + bcolors.ENDC
+        elif pLvl == lvl.WARNING :
+            pMsg = bcolors.WARNING + str(pMsg) + bcolors.ENDC
+        elif pLvl == lvl.FAIL :
+            pMsg = bcolors.FAIL + str(pMsg) + bcolors.ENDC
+        self.logger.log(pLvl,pMsg)
