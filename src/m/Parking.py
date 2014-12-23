@@ -18,7 +18,19 @@ class Parking:
             for t in typePlacesParNiv.liste:
                 for i in range(0, t.nb):
                     l.append(Place(i + 1, n, t.longueur, t.hauteur))
-            self.__Places[n ] = l
+            self.__Places[n] = l
+
+    @property
+    def nom(self):
+        return self.__nom
+
+    @property
+    def nbPlacesParNiveau(self):
+        return self.__nbPlacesParNiveau
+
+    @property
+    def nbNiveau(self):
+        return self.__nbNiveaux
 
     def recherchePlace(self, voiture):
         place = None
@@ -40,6 +52,7 @@ class Parking:
                 i += 1
         return i
 
+    @property
     def nbPlacesLibresParking(self):
         nbP = 0
         for i in range(0,self.__nbNiveaux) :

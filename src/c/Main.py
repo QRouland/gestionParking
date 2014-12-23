@@ -4,7 +4,7 @@ from PyQt4 import QtGui
 
 from src.v.MainWindow import Ui_MainWindow
 from src.c.log.log import Log
-
+from src.m.Parking import Parking, ListeTypePlace
 
 __author__ = 'sidya'
 
@@ -14,9 +14,16 @@ class Main:
         # Init des logs
         self.log = Log()
 
+        l = ListeTypePlace()
+        l.add(10, 11, 5)
+        l.add(7, 12, 5)
+        p = Parking(5, l,"lol")
+
         #Liste Clients et Parking
-        self.__clients = {}
-        self.__Parkings = {}
+        self.__clients = []
+        self.__parkings = [p]
+
+
 
         app = QtGui.QApplication(sys.argv)
         self.view = QtGui.QMainWindow()
@@ -25,7 +32,7 @@ class Main:
 
         #Chargement activité
         self.loadLastActivity()
-        self.ui.addListeParkings(10)
+        self.majListeParking()
 
         self.view.show()
         sys.exit(app.exec_())
@@ -46,3 +53,6 @@ class Main:
         liste = self.activite.readlines()
         for l in [l[:-1] for l in liste[-11:-1]]:
             self.ui.addItemActivite(l)
+
+    def majListeParking(self):
+        self.ui.majListeParkings(self.__parkings)
