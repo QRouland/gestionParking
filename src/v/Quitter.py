@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'main.ui'
 #
-# Created: Tue Dec 23 18:26:40 2014
+# Created: Wed Dec 10 16:47:28 2014
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -26,7 +26,7 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(553, 479)
+        MainWindow.resize(522, 412)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.tabWidget = QtGui.QTabWidget(self.centralwidget)
@@ -37,9 +37,9 @@ class Ui_MainWindow(object):
         self.label = QtGui.QLabel(self.tab)
         self.label.setGeometry(QtCore.QRect(40, 10, 61, 15))
         self.label.setObjectName(_fromUtf8("label"))
-        self.listWidget = QtGui.QListWidget(self.tab)
-        self.listWidget.setGeometry(QtCore.QRect(60, 50, 431, 261))
-        self.listWidget.setObjectName(_fromUtf8("listWidget"))
+        self.log = QtGui.QListView(self.tab)
+        self.log.setGeometry(QtCore.QRect(30, 40, 421, 241))
+        self.log.setObjectName(_fromUtf8("log"))
         self.tabWidget.addTab(self.tab, _fromUtf8(""))
         self.tab_2 = QtGui.QWidget()
         self.tab_2.setObjectName(_fromUtf8("tab_2"))
@@ -91,18 +91,18 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.tab_2, _fromUtf8(""))
         self.tab_5 = QtGui.QWidget()
         self.tab_5.setObjectName(_fromUtf8("tab_5"))
-        self.tableWidget = QtGui.QTableWidget(self.tab_5)
-        self.tableWidget.setGeometry(QtCore.QRect(60, 20, 431, 351))
-        self.tableWidget.setObjectName(_fromUtf8("tableWidget"))
-        self.tableWidget.setColumnCount(0)
-        self.tableWidget.setRowCount(0)
+        self.tableView = QtGui.QTableView(self.tab_5)
+        self.tableView.setGeometry(QtCore.QRect(50, 40, 431, 201))
+        self.tableView.setObjectName(_fromUtf8("tableView"))
         self.tabWidget.addTab(self.tab_5, _fromUtf8(""))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 553, 25))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 522, 25))
         self.menubar.setObjectName(_fromUtf8("menubar"))
-        self.menuFichier = QtGui.QMenu(self.menubar)
-        self.menuFichier.setObjectName(_fromUtf8("menuFichier"))
+        self.menuBorne = QtGui.QMenu(self.menubar)
+        self.menuBorne.setObjectName(_fromUtf8("menuBorne"))
+        self.menuBornes = QtGui.QMenu(self.menubar)
+        self.menuBornes.setObjectName(_fromUtf8("menuBornes"))
         self.menuA_propos = QtGui.QMenu(self.menubar)
         self.menuA_propos.setObjectName(_fromUtf8("menuA_propos"))
         MainWindow.setMenuBar(self.menubar)
@@ -123,21 +123,22 @@ class Ui_MainWindow(object):
         self.actionListe.setObjectName(_fromUtf8("actionListe"))
         self.actionAjouter = QtGui.QAction(MainWindow)
         self.actionAjouter.setObjectName(_fromUtf8("actionAjouter"))
-        self.actionQuitter = QtGui.QAction(MainWindow)
-        self.actionQuitter.setObjectName(_fromUtf8("actionQuitter"))
-        self.menuFichier.addAction(self.actionCharger)
-        self.menuFichier.addAction(self.actionSauvegarder)
-        self.menuFichier.addSeparator()
-        self.menuFichier.addAction(self.actionQuitter)
-        self.menubar.addAction(self.menuFichier.menuAction())
+        self.menuBorne.addSeparator()
+        self.menuBorne.addAction(self.actionCharger)
+        self.menuBorne.addAction(self.actionSauvegarder)
+        self.menubar.addAction(self.menuBorne.menuAction())
+        self.menubar.addAction(self.menuBornes.menuAction())
         self.menubar.addAction(self.menuA_propos.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+
+
+
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(_translate("MainWindow", "Administration", None))
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
         self.label.setText(_translate("MainWindow", "Activité :", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Activite", None))
         self.label_13.setText(_translate("MainWindow", "Nom :", None))
@@ -149,7 +150,8 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "Supprimer", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Parkings", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), _translate("MainWindow", "Membres", None))
-        self.menuFichier.setTitle(_translate("MainWindow", "Fichier", None))
+        self.menuBorne.setTitle(_translate("MainWindow", "Fichier", None))
+        self.menuBornes.setTitle(_translate("MainWindow", "Quitter", None))
         self.menuA_propos.setTitle(_translate("MainWindow", "A propos", None))
         self.actionCharger.setText(_translate("MainWindow", "Charger", None))
         self.actionSauvegarder.setText(_translate("MainWindow", "Sauvegarder", None))
@@ -158,15 +160,4 @@ class Ui_MainWindow(object):
         self.actionRechercher.setText(_translate("MainWindow", "Rechercher", None))
         self.actionListe.setText(_translate("MainWindow", "Liste", None))
         self.actionAjouter.setText(_translate("MainWindow", "Ajouter", None))
-        self.actionQuitter.setText(_translate("MainWindow", "Quitter", None))
 
-
-
-
-
-    ################################NOT GENERATED####################################################
-    def addItemActivite(self, line) :
-        self.log.addItem(line)
-
-    def addListeParkings(self, parkings) :
-        self.comboBox.addItem("lol")

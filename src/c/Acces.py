@@ -8,14 +8,16 @@ __author__ = 'sidya'
 
 class Acces:
     def __init__(self):
-        self.__parkings = {}
-        self.__clients = {}
+        self.__parking = Parking()
+        self.__camera = Camera()
+        self.__borne = Borne()
+        self.__panneau = Panneau()
 
-    def actionnerCamera(self, client):
-        pass
+    def actionnerCamera(self):
+        return self.__camera.donnerVoiture()
 
-    def actionnerPanneau(self):
-        pass
+    def majPanneau(self):
+        self.__panneau.afficherNbPlaceDisponible()
 
-    def lancerProcedureImmatr(self, voiture):
-        pass
+    def lancerProcedureEntree(self,client):
+        self.__borne.afficher("Inserer votre carte ou valider")

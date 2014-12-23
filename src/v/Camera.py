@@ -2,6 +2,9 @@ __author__ = 'sidya'
 
 
 class Camera:
-    def __init__(self):
-        pass
+    def detecterVoiture(self):
+        return True
 
+    def donnerVoiture(self):
+        v = Voiture() # need classe voiture \o/
+        return v

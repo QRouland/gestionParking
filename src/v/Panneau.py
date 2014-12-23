@@ -1,8 +1,6 @@
 __author__ = 'sidya'
 
-class Panneau:
-    def __init__(self):
-        pass
 
+class Panneau:
     def afficherNbPlaceDisponible(self, parking):
-        pass
+        print(parking.nbPlacesLibresParking())

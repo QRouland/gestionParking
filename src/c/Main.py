@@ -1,15 +1,22 @@
-from PyQt4 import QtGui
 import sys
+
+from PyQt4 import QtGui
+
 from src.v.MainWindow import Ui_MainWindow
 from src.c.log.log import Log
+
 
 __author__ = 'sidya'
 
 
 class Main:
     def __init__(self):
-        #Init des logs
+        # Init des logs
         self.log = Log()
+
+        #Liste Clients et Parking
+        self.__clients = {}
+        self.__Parkings = {}
 
         app = QtGui.QApplication(sys.argv)
         self.view = QtGui.QMainWindow()
@@ -18,20 +25,20 @@ class Main:
 
         #Chargement activité
         self.loadLastActivity()
-
+        self.ui.addListeParkings(10)
 
         self.view.show()
         sys.exit(app.exec_())
 
 
-    def activity(self,msg,lvl):
-        self.log.printL(msg,10)
+    def activity(self, msg, lvl):
+        self.log.printL(msg, lvl)
         self.ui.addItemActivite(self.activite.readlines()[-1])
 
     def loadLastActivity(self):
         try:
             self.activite = open("log/activity.log", "r")
-        except IOError :
+        except IOError:
             self.activite = open("log/activity.log", "w")
             self.activite.close()
             self.activite = open("log/activity.log", "r")
