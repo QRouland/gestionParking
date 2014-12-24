@@ -1,0 +1,5 @@
+from src.m.placement import Placement
+class testPlacement:
+    def test_init(self):
+        newPlacement = Placement()
+        

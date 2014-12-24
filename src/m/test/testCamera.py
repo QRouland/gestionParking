@@ -4,8 +4,6 @@ __author__ = 'sidya'
 
 import nose
 class testCamera :
-    def run(self):
-        pass
 
     def testTailleMax(self):
         c = Camera()
