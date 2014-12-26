@@ -1,4 +1,4 @@
-from src.v import Panneau, Borne, Camera
+from src.v import Ui_Panneau, Ui_Borne, Camera
 from src.c import Teleporteur
 from src.m import Parking, Place
 
@@ -10,8 +10,8 @@ class Acces:
     def __init__(self):
         self.__parking = Parking()
         self.__camera = Camera()
-        self.__borne = Borne()
-        self.__panneau = Panneau()
+        self.__borne = Ui_Borne()
+        self.__panneau = Ui_Panneau()
 
     def actionnerCamera(self):
         return self.__camera.donnerVoiture()
@@ -21,3 +21,4 @@ class Acces:
 
     def lancerProcedureEntree(self,client):
         self.__borne.afficher("Inserer votre carte ou valider")
+

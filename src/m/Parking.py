@@ -8,6 +8,7 @@ class Parking:
         Definie un parking
     """
     def __init__(self, nbNiv, typePlacesParNiv,nom):
+        self.typePlacesParNiv = typePlacesParNiv
         self.__nom = nom
         self.__nbPlacesParNiveau = typePlacesParNiv.nbPlaceTotal
         self.__prix = 10
