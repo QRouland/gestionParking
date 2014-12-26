@@ -36,7 +36,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="nomParking">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -159,7 +159,7 @@
   <zorder>btn_Voiture</zorder>
   <zorder>lcdNumber</zorder>
   <zorder>layoutWidget</zorder>
-  <zorder>label_4</zorder>
+  <zorder>nomParking</zorder>
  </widget>
  <resources/>
  <connections/>

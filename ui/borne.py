@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'borne.ui'
 #
-# Created: Fri Dec 26 17:32:17 2014
+# Created: Fri Dec 26 17:48:52 2014
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -33,9 +33,9 @@ class Ui_Form(object):
         self.lcdNumber = QtGui.QLCDNumber(Form)
         self.lcdNumber.setGeometry(QtCore.QRect(20, 80, 351, 31))
         self.lcdNumber.setObjectName(_fromUtf8("lcdNumber"))
-        self.label_4 = QtGui.QLabel(Form)
-        self.label_4.setGeometry(QtCore.QRect(170, 10, 151, 20))
-        self.label_4.setObjectName(_fromUtf8("label_4"))
+        self.nomParking = QtGui.QLabel(Form)
+        self.nomParking.setGeometry(QtCore.QRect(170, 10, 151, 20))
+        self.nomParking.setObjectName(_fromUtf8("nomParking"))
         self.layoutWidget = QtGui.QWidget(Form)
         self.layoutWidget.setGeometry(QtCore.QRect(60, 300, 272, 85))
         self.layoutWidget.setObjectName(_fromUtf8("layoutWidget"))
@@ -97,7 +97,7 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         Form.setWindowTitle(_translate("Form", "Borne", None))
         self.btn_Voiture.setText(_translate("Form", "Detection Arrivee Voiture", None))
-        self.label_4.setText(_translate("Form", "NomParking", None))
+        self.nomParking.setText(_translate("Form", "NomParking", None))
         self.label.setText(_translate("Form", "Carte Membre ID ", None))
         self.btn_validerID.setText(_translate("Form", "Valider", None))
         self.label_2.setText(_translate("Form", "Non membre", None))

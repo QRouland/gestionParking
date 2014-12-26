@@ -93,6 +93,8 @@ class ListeTypePlace:
         return self.l
 
 
+
+
 class Placement:
     def __init__(self,debut,fin):
         self.debut = debut
