@@ -19,10 +19,11 @@ class service:
     def enregistrerService(self):
         try:
             connection = connectionBDD()
-            #obtenir id service
+            #obtenir id service (fonction max de sqlite ne marche pas bien...elle ne prend en compte que le premier chiffre. Ex: max(56,9)= 9... )
             connection.cur.execute("SELECT count(service.idSercice) FROM service;")
             indiceidSer= connection.cur.execute("SELECT count(service.idService) FROM service;")
             idService = int(''.join(map(str,indiceidSer))) +1
+            #entrée dans la base de donnée
             connection.cur.execute("INSERT INTO service (idService,dateService,dateDemande,rapport,idClient,idVoiturier,idService, idClient, idVoiturier) VALUES (?,?,?,?,?,?,?,?,?);",(idService, self.dateService, self.dateDemande, self.rapport) )
         except Exception, e:
             print str(e)
