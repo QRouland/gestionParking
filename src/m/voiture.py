@@ -1,4 +1,4 @@
-__author__ = 'nadiel'
+
 
 class Voiture():
     def __init__(self):

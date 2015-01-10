@@ -1,8 +1,8 @@
 import time
 import calendar
 import datetime
-from src.m.connectionBDD import connectionBDD
-class service:
+from src.m.connexionBDD import connexionBDD
+class Service:
     def __init__(self, jourService, moisService, anneeService, jourDemande, moisDemande, anneeDemande, rapport):
         try:
             dateService = datetime.date(anneeService, moisService,  jourService)
@@ -16,9 +16,9 @@ class service:
         except:
             print  ("la date de service n\'est pas correcte")
         self.rapport = rapport
-    def enregistrerService(self):
-        try:
-            connection = connectionBDD()
+    def enregistrerService(self, idClient, categorie, etat):
+      try:
+            connection = connexionBDD()
             #1.obtenir id service (fonction max de sqlite ne marche pas bien...elle ne prend en compte que le premier chiffre. Ex: max(56,9)= 9... )
             connection.cur.execute("SELECT count(service.idSercice) FROM service;")
             #entrée dans la base de donnée
@@ -29,12 +29,12 @@ class service:
             jour= calendar.weekday(self.dateService._day, self.dateService._month, self.dateService._year)
             indiceVoiturier= connection.cur.execute("SELECT voiturier.idVoiturier FROM voiturier WHERE voiturier.joursDisponible = ?; ", (jour) )
             idVoiturier = int(''.join(map(str,indiceVoiturier )))
-            connection.cur.execute("INSERT INTO service (idService,dateService,dateDemande,rapport,idClient,idVoiturier,idService, idVoiturier) VALUES (?,?,?,?,?,?,?,?,?);",(idService, self.dateService, self.dateDemande, self.rapport, idClient, idVoiturier, idService) )
+            connection.cur.execute("INSERT INTO service (idService,dateService,dateDemande,rapport,idClient,idVoiturier,idService, idVoiturier, categorie, etat) VALUES (?,?,?,?,?,?,?,?,?,?);",(idService, self.dateService, self.dateDemande, self.rapport, idClient, idVoiturier, idService, categorie, etat) )
             connection.seDeconnecter()
+            return idService
         except Exception, e:
             print str(e)
             pass
-
 
 
 
