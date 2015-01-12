@@ -4,20 +4,12 @@ class Contrat:
         self.dateDebut = dateDebut
         self.dateFin = dateFin
     def enregistrerContrat(self):
-
             connection = connexionBDD()
-            #1.obtenir id service (fonction max de sqlite ne marche pas bien...elle ne prend en compte que le premier chiffre. Ex: max(56,9)= 9... )
-            connection.cur.execute("SELECT count(service.idSercice) FROM service;")
-            #entrée dans la base de donnée
-            #2. obtenir l'idClient: définir une variable globale lors de l'execution du "jeu"
-            #3.Obtenir l'idVoiturier: en recherchant celui qui est disponible le jour en question
-
-            connection.cur.execute("INSERT INTO contrat (idContrat,dateDebut,dateFin, estEncours) VALUES (NULL,?,?,?);",( self.dateDebut, self.dateFin,1) )
+            connection.cur.execute("INSERT INTO contrat (idContrat,dateDebut,dateFin, estEncours) VALUES (NULL,?,?,1);",( self.dateDebut, self.dateFin,1) )
             connection.seDeconnecter()
-    def rompreContrat(self):
-
-
+    def rompreContrat(self, idCLient):
          connection = connexionBDD()
-         connection.cur.execute("SELECT count(service.idSercice) FROM service;")
-         connection.cur.execute("INSERT INTO contrat (idContrat,dateDebut,dateFin, estEncours) VALUES (NULL,?,?,?);",( self.dateDebut, self.dateFin,1) )
+         indContrat  =connection.cur.execute("SELECT Contrat.idContrat FROM contrat where idClient =? AND dateDebut = ? AND dateFin=? ;"(idCLient, self.dateDebut, self.dateFin))
+         idContrat= int(''.join(map(str,indContrat)))
+         connection.cur.execute("Update contrat where idContrat=? set estEnCours =0;",( idContrat) )
          connection.seDeconnecter()

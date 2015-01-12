@@ -17,8 +17,29 @@ class Place:
     def longueur(self):
         return self.longueur
     @property
+<<<<<<< Updated upstream
+    def nbPlaceTotal(self):
+        i = 0
+        for t in self.l:
+            i += t.nb
+        return i
+
+    @property
+    def liste(self):
+        return self.l
+
+
+
+
+class Placement:
+    def __init__(self,debut,fin):
+        self.debut = debut
+        self.fin = fin
+
+=======
     def estLibre(self):
         return self.estLibre
+>>>>>>> Stashed changes
     @property
     def hauteur(self):
         return self.hauteur
