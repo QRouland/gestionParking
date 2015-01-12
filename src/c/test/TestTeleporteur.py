@@ -1,5 +1,5 @@
 __author__ = 'sidya'
 
 
-class TestTeleporteur :
+class TestTeleporteur:
     pass

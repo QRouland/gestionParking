@@ -68,10 +68,10 @@
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>100</y>
-     <width>301</width>
-     <height>121</height>
+     <x>30</x>
+     <y>130</y>
+     <width>311</width>
+     <height>91</height>
     </rect>
    </property>
    <column>
@@ -93,7 +93,7 @@
   <widget class="QPushButton" name="btn_addRow">
    <property name="geometry">
     <rect>
-     <x>330</x>
+     <x>350</x>
      <y>120</y>
      <width>41</width>
      <height>27</height>
@@ -103,23 +103,10 @@
     <string>+</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>70</y>
-     <width>135</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Places par niveau :</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="btn_rmRow">
    <property name="geometry">
     <rect>
-     <x>330</x>
+     <x>350</x>
      <y>160</y>
      <width>41</width>
      <height>27</height>
@@ -129,7 +116,7 @@
     <string>-</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>52</x>
@@ -148,13 +135,6 @@
         </property>
        </widget>
       </item>
-      <item>
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Nombre de niveaux :</string>
-        </property>
-       </widget>
-      </item>
      </layout>
     </item>
     <item>
@@ -162,14 +142,19 @@
       <item>
        <widget class="QLineEdit" name="lineEdit_nom"/>
       </item>
-      <item>
-       <widget class="QLineEdit" name="lineEdit_nbNiv"/>
-      </item>
      </layout>
     </item>
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>lineEdit_nom</tabstop>
+  <tabstop>tableWidget</tabstop>
+  <tabstop>btn_addRow</tabstop>
+  <tabstop>btn_rmRow</tabstop>
+  <tabstop>btn_annuler</tabstop>
+  <tabstop>btn_valider</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

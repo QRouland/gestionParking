@@ -1,12 +1,14 @@
 from src.v import Ui_Panneau, Ui_Borne, Camera
-from src.c import Teleporteur
-from src.m import Parking, Place
+from src.m import Parking
 
 
 __author__ = 'sidya'
 
 
 class Acces:
+    """
+    Controleur Acces
+    """
     def __init__(self):
         self.__parking = Parking()
         self.__camera = Camera()
@@ -19,6 +21,6 @@ class Acces:
     def majPanneau(self):
         self.__panneau.afficherNbPlaceDisponible()
 
-    def lancerProcedureEntree(self,client):
+    def lancerProcedureEntree(self, client):
         self.__borne.afficher("Inserer votre carte ou valider")
 

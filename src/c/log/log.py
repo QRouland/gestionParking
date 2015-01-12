@@ -2,6 +2,8 @@ __author__ = 'sidya'
 
 import logging
 from logging.handlers import RotatingFileHandler
+
+
 class bcolors:
     """
     Define constant color value for different level
@@ -11,6 +13,7 @@ class bcolors:
     WARNING = ' \033[93m '
     FAIL = ' \033[91m '
     ENDC = ' \033[0m '
+
 
 class lvl:
     """
@@ -23,8 +26,10 @@ class lvl:
     FAIL = 40
     CRITICAL = 50
 
+
 class SingleLevelFilter(logging.Filter):
     """Filter for one level"""
+
     def __init__(self, passlevel, reject):
         """
         Constructor
@@ -33,17 +38,20 @@ class SingleLevelFilter(logging.Filter):
         """
         self.passlevel = passlevel
         self.reject = reject
+
     def filter(self, record):
         if self.reject:
             return (record.levelno != self.passlevel)
         else:
             return (record.levelno == self.passlevel)
 
+
 class Log(object):
     """
     Log Manager
     """
-    def __init__(self) :
+
+    def __init__(self):
         """
         Define 3 differents log :
         activity.log -> all activity
@@ -72,18 +80,18 @@ class Log(object):
         self.logger.addHandler(steam_handler)
 
 
-    def printL(self,pMsg,pLvl):
+    def printL(self, pMsg, pLvl):
         """
         Add color and write in log with an define level
         pMsg : message to write in log
         pLvl : level of log message
         """
-        if pLvl == lvl.DEBUG :
+        if pLvl == lvl.DEBUG:
             pMsg = bcolors.DEBUG + str(pMsg) + bcolors.ENDC
-        elif pLvl == lvl.INFO :
+        elif pLvl == lvl.INFO:
             pMsg = bcolors.INFO + str(pMsg) + bcolors.ENDC
-        elif pLvl == lvl.WARNING :
+        elif pLvl == lvl.WARNING:
             pMsg = bcolors.WARNING + str(pMsg) + bcolors.ENDC
-        elif pLvl == lvl.FAIL :
+        elif pLvl == lvl.FAIL:
             pMsg = bcolors.FAIL + str(pMsg) + bcolors.ENDC
-        self.logger.log(pLvl,pMsg)
+        self.logger.log(pLvl, pMsg)

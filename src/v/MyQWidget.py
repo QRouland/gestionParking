@@ -10,12 +10,12 @@ class MyQWidget(QtGui.QWidget):
 
     def closeEvent(self, event):
         result = QtGui.QMessageBox.question(self,
-				  "Confirmer Fermeture...",
-				  "Etes vous sur de vouloir abandonner ?\n"
-                  "(Toute modification non enregistrée seras perdu)",
-				  QtGui.QMessageBox.Yes| QtGui.QMessageBox.No)
+                                            "Confirmer Fermeture...",
+                                            "Etes vous sur de vouloir abandonner ?\n"
+                                            "(Toute modification non enregistrée seras perdu)",
+                                            QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
         event.ignore()
 
         if result == QtGui.QMessageBox.Yes:
-         event.accept()
-        self.__main.showWindow()
+            event.accept()
+            self.__main.showWindow()

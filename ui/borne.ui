@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>Borne</class>
+ <widget class="QWidget" name="Borne">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>412</height>
+    <width>669</width>
+    <height>579</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,7 @@
   <widget class="QPushButton" name="btn_Voiture">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>140</x>
      <y>40</y>
      <width>211</width>
      <height>27</height>
@@ -26,20 +26,10 @@
     <string>Detection Arrivee Voiture</string>
    </property>
   </widget>
-  <widget class="QLCDNumber" name="lcdNumber">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>80</y>
-     <width>351</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="nomParking">
    <property name="geometry">
     <rect>
-     <x>170</x>
+     <x>300</x>
      <y>10</y>
      <width>151</width>
      <height>20</height>
@@ -49,117 +39,284 @@
     <string>NomParking</string>
    </property>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QGroupBox" name="box_id">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>300</y>
-     <width>272</width>
-     <height>85</height>
+     <x>20</x>
+     <y>150</y>
+     <width>331</width>
+     <height>171</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Carte Membre ID </string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="lineEdit_id"/>
-      </item>
-      <item>
-       <widget class="QPushButton" name="btn_validerID">
-        <property name="text">
-         <string>Valider</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <item>
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Non membre</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="btn_validerNonMembre">
-        <property name="text">
-         <string>Valider</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="btn_cb">
-        <property name="text">
-         <string>PayerAvecCarte</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-   </layout>
+   <property name="title">
+    <string>Identification</string>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>60</y>
+      <width>272</width>
+      <height>85</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Carte Membre ID </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_id"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btn_validerID">
+         <property name="text">
+          <string>Valider</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="labIdClient">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>31</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Non identifier</string>
+    </property>
+   </widget>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QGroupBox" name="box_abo">
    <property name="geometry">
     <rect>
-     <x>70</x>
-     <y>130</y>
-     <width>261</width>
-     <height>91</height>
+     <x>20</x>
+     <y>350</y>
+     <width>331</width>
+     <height>201</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
-    <item>
-     <layout class="QVBoxLayout" name="verticalLayout_5">
-      <item>
-       <widget class="QPushButton" name="btn_precedent">
-        <property name="text">
-         <string>&lt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="btn_annuler">
-        <property name="text">
-         <string>Annuler</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QVBoxLayout" name="verticalLayout_4">
-      <item>
-       <widget class="QPushButton" name="btn_suivant">
-        <property name="text">
-         <string>&gt;</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="btn_valider">
-        <property name="text">
-         <string>Valider</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </item>
-   </layout>
+   <property name="title">
+    <string>S'abonner</string>
+   </property>
+   <widget class="QWidget" name="formLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>-1</x>
+      <y>40</y>
+      <width>291</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="nomLabel">
+       <property name="text">
+        <string>Nom</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="nomLineEdit"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="prenomLabel">
+       <property name="text">
+        <string>Prenom</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="numeroCarteLabel">
+       <property name="text">
+        <string>Numero carte</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="numeroCarteLineEdit"/>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="prenomLineEdit"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QCheckBox" name="checkBox">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>140</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PackGarantie</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_valider_abo">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>160</y>
+      <width>87</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Valider</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_desabo">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>160</y>
+      <width>87</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Désabonner</string>
+    </property>
+   </widget>
+   <zorder>formLayoutWidget</zorder>
+   <zorder>checkBox</zorder>
+   <zorder>btn_valider_abo</zorder>
+   <zorder>btn_desabo</zorder>
+   <zorder>prenomLineEdit</zorder>
   </widget>
-  <zorder>layoutWidget</zorder>
+  <widget class="QGroupBox" name="box_recup">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>350</y>
+     <width>271</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Récuperer</string>
+   </property>
+   <widget class="QWidget" name="formLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>40</y>
+      <width>261</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="numeroTicketLabel">
+       <property name="text">
+        <string>Numero Ticket :</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="numeroTicketLineEdit"/>
+     </item>
+     <item row="1" column="1">
+      <widget class="QPushButton" name="btn_recuperer">
+       <property name="text">
+        <string>Récupérer Véhicule</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="label_aff">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>90</y>
+     <width>641</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;TextLabel&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="box_garer">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>150</y>
+     <width>231</width>
+     <height>131</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Se garer</string>
+   </property>
+   <widget class="QPushButton" name="btn_garer">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>60</y>
+      <width>131</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Garer Véhicule</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="btn_annuler">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>40</y>
+     <width>87</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Annuler</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_quitter">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>540</y>
+     <width>87</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Quitter</string>
+   </property>
+  </widget>
   <zorder>btn_Voiture</zorder>
-  <zorder>lcdNumber</zorder>
-  <zorder>layoutWidget</zorder>
   <zorder>nomParking</zorder>
+  <zorder></zorder>
+  <zorder>box_id</zorder>
+  <zorder>box_abo</zorder>
+  <zorder>box_recup</zorder>
+  <zorder>label_aff</zorder>
+  <zorder>box_garer</zorder>
+  <zorder>btn_annuler</zorder>
+  <zorder>btn_quitter</zorder>
  </widget>
  <resources/>
  <connections/>

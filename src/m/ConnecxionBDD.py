@@ -1,6 +1,3 @@
-import sqlite3
-from src.c.Main import Main
-import sqlite3
 __author__ = 'sidya'
 
 class connexionBDD :
@@ -26,10 +23,3 @@ class connexionBDD :
 
     def lastId(self):
         return self.__cur.lastrowid
-
-conn = connexionBDD
-
-if __name__ == "__main__":
-    # lancement du controleur principal
-    main = Main()
-

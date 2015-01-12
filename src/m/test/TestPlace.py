@@ -1,5 +1,5 @@
 __author__ = 'sidya'
 
 
-class TestPlace :
+class TestPlace:
     pass

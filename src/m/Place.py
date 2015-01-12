@@ -1,105 +1,82 @@
-import sys
 import datetime
+import random
+import string
 
 __author__ = 'sidya'
 
 
 class Place:
     """
-        Representation d'une place dans un parking
+    Representation d'une place
     """
-    def __init__(self, numero, niveau, longueur, hauteur):
+    def __init__(self, numero, niveau, longueur,hauteur):
+        """
+        Creer une place.
+        Les dimensions doivent etre données en cm (longueur, hauteur)
+        :param numero: int
+        :param niveau: int
+        :param longueur: int
+        :param hauteur: int
+        :return:
+        """
         self.__numero = numero
         self.__niveau = niveau
         self.__longueur = longueur
         self.__hauteur = hauteur
         self.__estLibre = True
-        self.__estReserver = False
+        self.__estSuperAbo = False
         self.__Placement = None
+
     @property
     def estLibre(self):
         return self.__estLibre
 
     @property
     def estReserver(self):
-        return self.__estReserver
+        return self.__estSuperAbo
 
     def dimValide(self, h, l):
+        """
+        Retourn si un element de hauteur (cm) h et de longueur(cm) l passe dans la place
+        :param h: int
+        :param l: int
+        :return: bool
+        """
         return h < self.__hauteur and l < self.__longueur
 
-    def reserver(self):
-        if (self.__estReserver == True) :
+    def superAbo(self):
+        """
+        Renvoit si la place est une place superAbo
+        :return: bool
+        """
+        if (self.__estSuperAbo == True):
             raise Exception("Place déjà reservé")
-        self.__estReserver = True
+        self.__estSuperAbo = True
 
-    def nonReserver(self) :
-        if (self.__estReserver == False):
-            raise Exception("Impossible de mettre une place en non si elle n'est pas reservé de base")
-        self.__estReserver = False
 
-    def prendre(self, Placement):
-        if (self.__Libre == True) :
+    def prendre(self):
+        """
+        Rend la place indisponible
+        :param Placement:
+        :return:
+        """
+        if (self.__estLibre == False):
             raise Exception("Place déjà prise")
         self.__estLibre = False
-        self.__Placement = Placement
 
-    def liberer(self) :
-        if (self.__estLibre == False):
+    def liberer(self):
+        """
+        Libere une place non dispo
+        :return:
+        """
+        if (self.__estLibre == True):
             raise Exception("Impossible de liberer une place vide")
         self.__estLibre = True
 
 
-class TypePlace:
-    """
-        Classe qui permet de définir un type de place
-    """
-    def __init__(self, h, l, nb):
-        self.__hauteur = h
-        self.__longueur = l
-        self.__nb = nb
-
-    @property
-    def hauteur(self):
-        return self.__hauteur
-
-    @property
-    def longueur(self):
-        return self.__longueur
-
-    @property
-    def nb(self):
-        return self.__nb
-
-
-class ListeTypePlace:
-    """
-        Classe qui permet de définir une liste de type de place par niveau pour la création d'un parking
-    """
-    def __init__(self):
-        self.l = []
-
-    def add(self, h, l, nb):
-        self.l.append(TypePlace(h, l, nb))
-
-    @property
-    def nbPlaceTotal(self):
-        i = 0
-        for t in self.l:
-            i += t.nb
-        return i
-
-    @property
-    def liste(self):
-        return self.l
 
 
 
 
-class Placement:
-    def __init__(self,debut,fin):
-        self.debut = debut
-        self.fin = fin
 
-    @property
-    def estEnCours(self):
-        return datetime.datetime < self.fin
+

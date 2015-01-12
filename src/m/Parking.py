@@ -1,76 +1,64 @@
+
+from src.m.Place import Place
+
 __author__ = 'sidya'
-
-from src.m.Place import Place, ListeTypePlace
-
 
 class Parking:
     """
         Definie un parking
     """
-    def __init__(self, nbNiv, typePlacesParNiv,nom):
-        self.typePlacesParNiv = typePlacesParNiv
+    def __init__(self, typePlaces, nom):
+        """
+        Creer objet parking
+        :param typePlaces: ListeTypePlace
+        :param nom: str
+        :return:
+        """
+        self.__typePlaces = typePlaces
         self.__nom = nom
-        self.__nbPlacesParNiveau = typePlacesParNiv.nbPlaceTotal
         self.__prix = 10
-        self.__nbNiveaux = nbNiv
         self.__Places = {}
-        for n in range(0, nbNiv):
-            l = []
-            for t in typePlacesParNiv.liste:
-                for i in range(0, t.nb):
-                    l.append(Place(i + 1, n, t.longueur, t.hauteur))
-            self.__Places[n] = l
+        l = []
+        for t in typePlaces.liste:
+            for i in range(0, t.nb):
+                l.append(Place(i + 1, 1, t.longueur, t.hauteur))
+        self.__Places = l
+
 
     @property
     def nom(self):
         return self.__nom
 
     @property
-    def nbPlacesParNiveau(self):
-        return self.__nbPlacesParNiveau
+    def nbPlaces(self):
+        return self.__typePlaces.nbPlaceTotal
+
 
     @property
-    def nbNiveau(self):
-        return self.__nbNiveaux
-
-    def recherchePlace(self, voiture):
-        place = None
-        for i in range(0, self.__nbNiveaux):
-            if place != None:
-                break
-            l = [p for p in self.__Places[i].estLibre]
-            for p in l:
-                if p.dimValide(voiture.hauteur, voiture.longueur):
-                    pass
-                    place = p
-                    break
-        return place
-
-    def nbPlacesLibresNiveau(self, niveau):
+    def nbPlacesLibresParking(self):
         i = 0
-        for p in self.__Places[niveau]:
+        for p in self.__Places:
             if p.estLibre:
                 i += 1
         return i
 
-    @property
-    def nbPlacesLibresParking(self):
-        nbP = 0
-        for i in range(0,self.__nbNiveaux) :
-            nbP += self.nbPlacesLibresNiveau(i)
-        return nbP
+    def recherchePlace(self, voiture):
+        """
+        Permet de rechercher une place valide pour une voiture
+        :param voiture: Voiture
+        :return: Place
+        """
+        place = None
+        for p in self.__Places:
+            if p.estLibre and p.dimValide(voiture.hauteur, voiture.longueur) :
+                pass
+                place = p
+                break
+        return place
+
 
     def addAbonnement(self, Abonnement):
         pass
 
     def __str__(self):
         return "Parking :  niveau : " + str(self.__nbNiveaux)
-
-
-if __name__ == "__main__":
-    l = ListeTypePlace()
-    l.add(10, 11, 5)
-    l.add(7, 12, 5)
-    p = Parking(5, l)
-    print(p)
-    print(p.nbPlacesLibresNiveau(1))
