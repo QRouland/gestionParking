@@ -1,8 +1,8 @@
 import sys
 
 from PyQt4 import QtGui
-from src.c.Borne import Borne
 
+from src.c.Borne import Borne
 from src.c.DetailsPlaces import DetailsPlaces
 from src.c.log.log import Log
 from src.c.log.log import lvl
@@ -29,7 +29,7 @@ class Main:
         self.__ui.setupUi(self.__view)
 
 
-        #connect
+        # connect
         self.__ui.comboBox.currentIndexChanged['QString'].connect(self.selectParking)
         self.__ui.btn_creer.clicked.connect(self.creerParking)
         self.__ui.btn_supprimer.clicked.connect(self.rmParking)

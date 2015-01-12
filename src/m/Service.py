@@ -24,7 +24,7 @@ class Service:
             connection = connexionBDD()
             # 1.obtenir id service (fonction max de sqlite ne marche pas bien...elle ne prend en compte que le premier chiffre. Ex: max(56,9)= 9... )
             connection.cur.execute("SELECT count(service.idSercice) FROM service;")
-            #entrée dans la base de donnée
+            # entrée dans la base de donnée
             indiceidSer = connection.cur.execute("SELECT count(service.idService) FROM service;")
             idService = int(''.join(map(str, indiceidSer))) + 1
             #2. obtenir l'idClient: définir une variable globale lors de l'execution du "jeu"

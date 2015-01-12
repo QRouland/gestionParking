@@ -1,5 +1,3 @@
-
-
 class Voiture():
     def __init__(self, longueur, hauteur, imma):
         self._hauteur = hauteur
@@ -23,6 +21,6 @@ class Voiture():
     def estDansParking(self):
         return self._estDansParking == True
 
-    #def addPlacement(self, placement):
+        # def addPlacement(self, placement):
 
 

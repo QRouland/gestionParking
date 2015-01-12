@@ -4,17 +4,20 @@ import string
 
 __author__ = 'sidya'
 
+
 class Placement:
     placements = []
-    def __init__(self,voiture, place):
+
+    def __init__(self, voiture, place):
         """
         Creer un placement
         :param voiture: Voiture
         :param place: Place
         :return:
         """
-        while True :
-            id =''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in range(random.randint(1,10)))
+        while True:
+            id = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in
+                         range(random.randint(1, 10)))
             if Placement.get(id) is None:
                 break
         self.__id = id

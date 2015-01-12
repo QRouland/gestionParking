@@ -1,11 +1,14 @@
+from PyQt4 import QtGui
+
 from src.c.Teleporteur import Teleporteur
 from src.m.Placement import Placement
 from src.m.Client import Client
 from src.m.TypeAbonnement import TypeAbonnement
 from src.v.Camera import Camera
-from PyQt4 import QtGui
 from src.v.MyQWidget import MyQWidget
 from src.v.Ui_Borne import Ui_Borne
+
+
 __author__ = 'sidya'
 
 
@@ -13,6 +16,7 @@ class Borne:
     """
     Controleur de la vue de la borne permettant l'accès au parking
     """
+
     def __init__(self, main, parking):
         self.__parking = parking
         self.__main = main
@@ -32,13 +36,12 @@ class Borne:
         self.__ui.btn_recuperer.clicked.connect(self.recuperer)
 
 
-        #Validator
+        # Validator
 
 
         self.__ui.nomParking = parking.nom
         self.nonVoiture()
         self.showWindow()
-
 
 
     def nonVoiture(self):
@@ -71,11 +74,11 @@ class Borne:
         :return:
         """
         self.__c = Client.get(self.__ui.lineEdit_id.text())
-        if self.__c != None :
-            self.__ui.label_aff.setText("Bonjour " + str(self.__c.nom)+ " " + str(self.__c.prenom))
-            #self.__ui.labIdClient.setText(str(self.__c))
+        if self.__c != None:
+            self.__ui.label_aff.setText("Bonjour " + str(self.__c.nom) + " " + str(self.__c.prenom))
+            # self.__ui.labIdClient.setText(str(self.__c))
             self.__ui.box_id.setDisabled(True)
-        else :
+        else:
             self.__ui.label_aff.setText("Echec identification")
             self.__ui.labIdClient.setText("Non identifier")
 
@@ -84,19 +87,19 @@ class Borne:
         Gestion validation formaulaire d'abonnement
         :return:
         """
-        if self.__c != None :
+        if self.__c != None:
             self.__c.maj(self.__ui.nomLineEdit,
-                                  self.__ui.prenomLineEdit,
-                                  "",
-                                  TypeAbonnement.SUPER_ABONNE)
+                         self.__ui.prenomLineEdit,
+                         "",
+                         TypeAbonnement.SUPER_ABONNE)
             self.__ui.label_aff.setText("Mise a jour de votre abonnement effectué")
         else:
-            if self.__ui.checkBox.isEnabled() :
+            if self.__ui.checkBox.isEnabled():
                 self.__c = Client(self.__ui.nomLineEdit,
                                   self.__ui.prenomLineEdit,
                                   "",
                                   TypeAbonnement.SUPER_ABONNE)
-            else :
+            else:
                 self.__c = Client(self.__ui.nomLineEdit,
                                   self.__ui.prenomLineEdit,
                                   "",
@@ -111,11 +114,11 @@ class Borne:
         :return:
         """
         if self.__c is None:
-            id = Teleporteur.teleporterVoiture(self.v_actuel,self.__parking.recherchePlace(self.v_actuel))
+            id = Teleporteur.teleporterVoiture(self.v_actuel, self.__parking.recherchePlace(self.v_actuel))
             self.__ui.label_aff.setText("Votre num ticket est : " + id)
         else:
-            if self.__c.abonnement != TypeAbonnement.SUPER_ABONNE :
-                Teleporteur.teleporterVoiture(self.v_actuel,self.__parking.recherchePlace(self.v_actuel))
+            if self.__c.abonnement != TypeAbonnement.SUPER_ABONNE:
+                Teleporteur.teleporterVoiture(self.v_actuel, self.__parking.recherchePlace(self.v_actuel))
             else:
                 Teleporteur.teleporterVoirureSuperAbonne(self.v_actuel)
 
@@ -131,7 +134,6 @@ class Borne:
         else:
             Teleporteur.teleporterVersSortie(p)
             self.__ui.label_aff.setText("Bonne journée")
-
 
 
     def showWindow(self):

@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'borne.ui'
 #
 # Created: Mon Jan 12 14:40:36 2015
-#      by: PyQt4 UI code generator 4.11.3
+# by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -17,11 +17,13 @@ except AttributeError:
 
 try:
     _encoding = QtGui.QApplication.UnicodeUTF8
+
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig, _encoding)
 except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
+
 
 class Ui_Borne(object):
     def setupUi(self, Borne):
@@ -151,7 +153,8 @@ class Ui_Borne(object):
         self.box_recup.setTitle(_translate("Borne", "Récuperer", None))
         self.numeroTicketLabel.setText(_translate("Borne", "Numero Ticket :", None))
         self.btn_recuperer.setText(_translate("Borne", "Récupérer Véhicule", None))
-        self.label_aff.setText(_translate("Borne", "<html><head/><body><p align=\"center\">TextLabel</p></body></html>", None))
+        self.label_aff.setText(
+            _translate("Borne", "<html><head/><body><p align=\"center\">TextLabel</p></body></html>", None))
         self.box_garer.setTitle(_translate("Borne", "Se garer", None))
         self.btn_garer.setText(_translate("Borne", "Garer Véhicule", None))
         self.btn_annuler.setText(_translate("Borne", "Annuler", None))

@@ -13,6 +13,7 @@ class CreaParking:
     """
     Controleur de cretion de parking
     """
+
     def __init__(self, main):
         self._main = main
         self._main.activity("Debut Creation Parking", self._main.lvl.INFO)
@@ -27,7 +28,7 @@ class CreaParking:
         self._ui.btn_valider.clicked.connect(self.valider)
         self._ui.btn_annuler.clicked.connect(self.annuler)
 
-        #Validator
+        # Validator
         #self._ui.lineEdit_nbNiv.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp('[0-9]*')))
 
         self._ui.tableWidget.insertRow(self._ui.tableWidget.rowCount())
@@ -74,7 +75,7 @@ class CreaParking:
         Gestion validation de formulaire de creation de parking.
         :return:
         """
-        #try:
+        # try:
         l = ListeTypePlace()
         for i in range(0, self._ui.tableWidget.rowCount()):
             l.add(int(self._ui.tableWidget.item(i, 0).text()), int(self._ui.tableWidget.item(i, 1).text()),

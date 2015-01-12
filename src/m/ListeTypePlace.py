@@ -2,6 +2,7 @@ from src.m.TypePlace import TypePlace
 
 __author__ = 'sidya'
 
+
 class ListeTypePlace:
     """
         Classe qui permet de définir une liste de type de place par niveau pour la création d'un parking

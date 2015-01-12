@@ -1,12 +1,13 @@
 __author__ = 'sidya'
 
-class connexionBDD :
+
+class connexionBDD:
     def __init__(self):
         try:
             self.__conn = sqlite3.connect("BD.sql3")
             self.__cur = self.__conn.cursor()
-        except Exception as e :
-            pass # later
+        except Exception as e:
+            pass  # later
 
     def seDeconnecter(self):
         self.__cur.close()
@@ -16,8 +17,8 @@ class connexionBDD :
         try:
             r = self.__cur.execute(req)
             self.__conn.commit()
-        except Exception as e :
-            pass # later
+        except Exception as e:
+            pass  # later
         return r
 
 

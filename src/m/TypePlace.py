@@ -1,9 +1,11 @@
 __author__ = 'sidya'
 
+
 class TypePlace:
     """
         Classe qui permet de définir un type de place
     """
+
     def __init__(self, h, l, nb):
         self.__hauteur = h
         self.__longueur = l

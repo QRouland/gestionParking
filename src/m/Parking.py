@@ -1,12 +1,13 @@
-
 from src.m.Place import Place
 
 __author__ = 'sidya'
+
 
 class Parking:
     """
         Definie un parking
     """
+
     def __init__(self, typePlaces, nom):
         """
         Creer objet parking
@@ -50,7 +51,7 @@ class Parking:
         """
         place = None
         for p in self.__Places:
-            if p.estLibre and p.dimValide(voiture.getHauteur, voiture.getLongueur) :
+            if p.estLibre and p.dimValide(voiture.getHauteur, voiture.getLongueur):
                 pass
                 place = p
                 break

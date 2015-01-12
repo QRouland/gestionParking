@@ -1,7 +1,3 @@
-import datetime
-import random
-import string
-
 __author__ = 'sidya'
 
 
@@ -9,7 +5,8 @@ class Place:
     """
     Representation d'une place
     """
-    def __init__(self, numero, niveau, longueur,hauteur):
+
+    def __init__(self, numero, niveau, longueur, hauteur):
         """
         Creer une place.
         Les dimensions doivent etre données en cm (longueur, hauteur)
