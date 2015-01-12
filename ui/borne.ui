@@ -11,9 +11,9 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Borne</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="btn_Voiture">
    <property name="geometry">
     <rect>
      <x>90</x>
@@ -36,7 +36,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="nomParking">
    <property name="geometry">
     <rect>
      <x>170</x>
@@ -49,7 +49,7 @@
     <string>NomParking</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -69,10 +69,10 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit"/>
+       <widget class="QLineEdit" name="lineEdit_id"/>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="btn_validerID">
         <property name="text">
          <string>Valider</string>
         </property>
@@ -90,14 +90,14 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="btn_validerNonMembre">
         <property name="text">
          <string>Valider</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_4">
+       <widget class="QPushButton" name="btn_cb">
         <property name="text">
          <string>PayerAvecCarte</string>
         </property>
@@ -107,7 +107,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>70</x>
@@ -120,14 +120,14 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_5">
       <item>
-       <widget class="QPushButton" name="pushButton_7">
+       <widget class="QPushButton" name="btn_precedent">
         <property name="text">
          <string>&lt;</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_10">
+       <widget class="QPushButton" name="btn_annuler">
         <property name="text">
          <string>Annuler</string>
         </property>
@@ -138,14 +138,14 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_4">
       <item>
-       <widget class="QPushButton" name="pushButton_8">
+       <widget class="QPushButton" name="btn_suivant">
         <property name="text">
          <string>&gt;</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_9">
+       <widget class="QPushButton" name="btn_valider">
         <property name="text">
          <string>Valider</string>
         </property>
@@ -155,23 +155,11 @@
     </item>
    </layout>
   </widget>
-  <zorder>pushButton</zorder>
-  <zorder>label</zorder>
-  <zorder>lineEdit</zorder>
-  <zorder>pushButton_2</zorder>
-  <zorder>pushButton_3</zorder>
-  <zorder>label_2</zorder>
+  <zorder>layoutWidget</zorder>
+  <zorder>btn_Voiture</zorder>
   <zorder>lcdNumber</zorder>
-  <zorder></zorder>
-  <zorder>label_2</zorder>
-  <zorder>pushButton_3</zorder>
-  <zorder>pushButton_4</zorder>
-  <zorder></zorder>
-  <zorder>pushButton_7</zorder>
-  <zorder>pushButton_8</zorder>
-  <zorder>pushButton_9</zorder>
-  <zorder>pushButton_10</zorder>
-  <zorder>label_4</zorder>
+  <zorder>layoutWidget</zorder>
+  <zorder>nomParking</zorder>
  </widget>
  <resources/>
  <connections/>

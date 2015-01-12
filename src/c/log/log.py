@@ -82,8 +82,6 @@ class Log(object):
             pMsg = bcolors.DEBUG + str(pMsg) + bcolors.ENDC
         elif pLvl == lvl.INFO :
             pMsg = bcolors.INFO + str(pMsg) + bcolors.ENDC
-        elif pLvl == lvl.SUCCESS :
-            pMsg = bcolors.SUCCESS + str(pMsg) + bcolors.ENDC
         elif pLvl == lvl.WARNING :
             pMsg = bcolors.WARNING + str(pMsg) + bcolors.ENDC
         elif pLvl == lvl.FAIL :

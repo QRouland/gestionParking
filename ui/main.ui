@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -81,54 +81,54 @@
         <item row="2" column="0">
          <widget class="QLabel" name="label_15">
           <property name="text">
-           <string>Place / niveau :</string>
+           <string>Places / niveau :</string>
           </property>
          </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="label_16">
           <property name="text">
-           <string>Place disponible :</string>
+           <string>Places disponible :</string>
           </property>
          </widget>
         </item>
         <item row="4" column="0">
          <widget class="QLabel" name="label_17">
           <property name="text">
-           <string>Place Reserve Super Abo : </string>
+           <string>Places Reserve Super Abo : </string>
           </property>
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLabel" name="label_2">
+         <widget class="QLabel" name="nom">
           <property name="text">
            <string>TextLabel</string>
           </property>
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QLabel" name="label_3">
+         <widget class="QLabel" name="niveau">
           <property name="text">
            <string>TextLabel</string>
           </property>
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QLabel" name="label_4">
+         <widget class="QLabel" name="placesParNiveau">
           <property name="text">
            <string>TextLabel</string>
           </property>
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QLabel" name="label_5">
+         <widget class="QLabel" name="placesDispo">
           <property name="text">
            <string>TextLabel</string>
           </property>
          </widget>
         </item>
         <item row="4" column="1">
-         <widget class="QLabel" name="label_6">
+         <widget class="QLabel" name="placesSuperAbo">
           <property name="text">
            <string>TextLabel</string>
           </property>
@@ -139,14 +139,14 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QPushButton" name="pushButton_4">
+         <widget class="QPushButton" name="btn_details">
           <property name="text">
            <string>Details Places</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_3">
+         <widget class="QPushButton" name="btn_borne">
           <property name="text">
            <string>Borne</string>
           </property>
@@ -155,21 +155,21 @@
        </layout>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_5">
+       <widget class="QPushButton" name="btn_creer">
         <property name="text">
          <string>Créer</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="btn_modifier">
         <property name="text">
          <string>Modifier</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="btn_supprimer">
         <property name="text">
          <string>Supprimer</string>
         </property>
@@ -190,6 +190,11 @@
         <height>351</height>
        </rect>
       </property>
+      <column>
+       <property name="text">
+        <string>Nouvelle colonne</string>
+       </property>
+      </column>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_3">
