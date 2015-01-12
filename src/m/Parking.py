@@ -50,7 +50,7 @@ class Parking:
         """
         place = None
         for p in self.__Places:
-            if p.estLibre and p.dimValide(voiture.hauteur, voiture.longueur) :
+            if p.estLibre and p.dimValide(voiture.getHauteur, voiture.getLongueur) :
                 pass
                 place = p
                 break

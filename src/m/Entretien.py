@@ -1,4 +1,4 @@
-from src.m.service import Service
+from src.m.Service import Service
 from src.m.connexionBDD import connexionBDD
 class Entretien(Service):
       def __init__(self, jourService, moisService, anneeService, jourDemande, moisDemande, anneeDemande, rapport, categorie, idClient):

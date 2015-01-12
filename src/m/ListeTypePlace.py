@@ -1,3 +1,5 @@
+from src.m.TypePlace import TypePlace
+
 __author__ = 'sidya'
 
 class ListeTypePlace:

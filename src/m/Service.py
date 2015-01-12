@@ -16,6 +16,7 @@ class Service:
         except:
             print  ("la date de service n\'est pas correcte")
         self.rapport = rapport
+
     def enregistrerService(self, idClient, categorie, etat):
       try:
             connection = connexionBDD()

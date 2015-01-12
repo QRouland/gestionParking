@@ -1,6 +1,6 @@
 from src.c.Teleporteur import Teleporteur
+from src.m.Placement import Placement
 from src.m.Client import Client
-from src.m.Place import Placement
 from src.m.TypeAbonnement import TypeAbonnement
 from src.v.Camera import Camera
 from PyQt4 import QtGui
@@ -63,7 +63,6 @@ class Borne:
         self.__ui.box_id.setDisabled(False)
         self.__ui.box_recup.setDisabled(True)
         self.__ui.label_aff.setText("Bienvenue !")
-
 
 
     def identification(self):

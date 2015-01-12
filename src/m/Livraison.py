@@ -1,8 +1,8 @@
-from src.m.service import Service
+from src.m.Service import Service
 from src.m.connexionBDD import connexionBDD
 import calendar
 class Livraison(Service):
-      def __init__(self, jourService, moisService, anneeService, jourDemande, moisDemande, anneeDemande, rapport, categorie, idClient):
+    def __init__(self, jourService, moisService, anneeService, jourDemande, moisDemande, anneeDemande, rapport, categorie, idClient):
         super(Service, self).__init__(self, jourService, moisService, anneeService, jourDemande, moisDemande, anneeDemande, rapport, categorie)
         self.categorie = 3
         self.etat = 0
@@ -14,7 +14,8 @@ class Livraison(Service):
         idVoiturier = int(''.join(map(str,indiceVoiturier )))
         connexion.cur.execute("UPDATE service SET idVoiturier= ? WHERE idService = ?", (idVoiturier, self.idService))
         connexion.seDeconnecter()
-     def effectuerLivraison(self):
+
+    def effectuerLivraison(self):
         self.etat = 1
         connexion  = connexionBDD()
         connexion.cur.execute("UPDATE service SET etat= 1 WHERE idService = ?", (self.idService))

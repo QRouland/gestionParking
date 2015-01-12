@@ -1,7 +1,7 @@
 from PyQt4 import QtGui
 
 from src.m.Parking import Parking
-from src.m.Place import ListeTypePlace
+from src.m.ListeTypePlace import ListeTypePlace
 from src.v.MyQWidget import MyQWidget
 from src.v.Ui_CreaParking import Ui_CreaParking
 
@@ -74,20 +74,20 @@ class CreaParking:
         Gestion validation de formulaire de creation de parking.
         :return:
         """
-        try:
-            l = ListeTypePlace()
-            for i in range(0, self._ui.tableWidget.rowCount()):
-                l.add(int(self._ui.tableWidget.item(i, 0).text()), int(self._ui.tableWidget.item(i, 1).text()),
-                      int(self._ui.tableWidget.item(i, 2).text()))
-            self._main.addParking(Parking(
-                l,
-                self._ui.lineEdit_nom.text()))
-            self._main.activity("Ajout Parking : detail", self._main.lvl.INFO)
-            self._w.hide()
-            self._main.showWindow()
-        except Exception as e:
-            self._main.activity("Erreur lors de la creations du Parking \n" + str(e), self._main.lvl.FAIL)
-            self.error()
+        #try:
+        l = ListeTypePlace()
+        for i in range(0, self._ui.tableWidget.rowCount()):
+            l.add(int(self._ui.tableWidget.item(i, 0).text()), int(self._ui.tableWidget.item(i, 1).text()),
+                  int(self._ui.tableWidget.item(i, 2).text()))
+        self._main.addParking(Parking(
+            l,
+            self._ui.lineEdit_nom.text()))
+        self._main.activity("Ajout Parking : detail", self._main.lvl.INFO)
+        self._w.hide()
+        self._main.showWindow()
+        #except Exception as e:
+        #    self._main.activity("Erreur lors de la creations du Parking \n" + str(e), self._main.lvl.FAIL)
+        #    self.error()
 
     def showWindow(self):
         """

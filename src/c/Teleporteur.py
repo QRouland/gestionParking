@@ -1,4 +1,4 @@
-from src.m.Place import Placement
+from src.m.Placement import Placement
 
 __author__ = 'sidya'
 
@@ -6,7 +6,7 @@ __author__ = 'sidya'
 class Teleporteur:
     @classmethod
     def teleporterVoiture(self, voiture, place):
-        p =Placement(voiture, place)
+        p = Placement(voiture, place)
         return p.id
 
     @classmethod

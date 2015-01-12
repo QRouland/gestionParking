@@ -1,23 +1,28 @@
-__author__ = 'sidya'
 
-class Voiture:
+
+class Voiture():
     def __init__(self, longueur, hauteur, imma):
-        self.__longueur = longueur
-        self.__hauteur = hauteur
-        self.__imma = imma
-        self.__estDansParking = False
+        self._hauteur = hauteur
+        self._longueur = longueur
+        self._immatriculation = imma
+        self._estDansParking = False
 
     @property
-    def longueur(self):
-        return self.__longueur
+    def getHauteur(self):
+        return self._hauteur
 
     @property
-    def hauteur(self):
-        return self.__hauteur
+    def getLongueur(self):
+        return self._longueur
 
-    def __str__(self):
-        return "Voiture : hauteur " + str(self.__longueur) + ", largeur" + str(self.hauteur) + ", Imma : " + self.__imma +", est dans parking :" + str(self.__estDansParking)
+    @property
+    def getImmatriculation(self):
+        return self._immatriculation
 
+    @property
+    def estDansParking(self):
+        return self._estDansParking == True
 
+    #def addPlacement(self, placement):
 
 
