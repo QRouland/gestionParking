@@ -15,6 +15,8 @@ class Contrat:
             connection.cur.execute("INSERT INTO contrat (idContrat,dateDebut,dateFin, estEncours) VALUES (NULL,?,?,?);",( self.dateDebut, self.dateFin,1) )
             connection.seDeconnecter()
     def rompreContrat(self):
+
+
          connection = connexionBDD()
          connection.cur.execute("SELECT count(service.idSercice) FROM service;")
          connection.cur.execute("INSERT INTO contrat (idContrat,dateDebut,dateFin, estEncours) VALUES (NULL,?,?,?);",( self.dateDebut, self.dateFin,1) )
