@@ -1,18 +1,18 @@
-from src.m.Placement import Placement
+from src.m.Parking import Placement
 
 __author__ = 'sidya'
 
 
 class Teleporteur:
-    @classmethod
-    def teleporterVoiture(self, voiture, place):
-        p = Placement(voiture, place)
+    @staticmethod
+    def teleporterVoiture(voiture, place):
+        p = Placement(None,voiture, place,None,None)
         return p.id
 
-    @classmethod
-    def teleporterVoitureSuperAbonne(self, voiture):
+    @staticmethod
+    def teleporterVoitureSuperAbonne(voiture):
         pass
 
-    @classmethod
-    def teleporterVersSortie(self, placement):
+    @staticmethod
+    def teleporterVersSortie(placement):
         placement.end()

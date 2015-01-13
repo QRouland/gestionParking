@@ -1,9 +1,11 @@
 from PyQt4 import QtGui
+from src.c.SelectService import SelectService
 
 from src.c.Teleporteur import Teleporteur
-from src.m.Placement import Placement
+from src.m.Parking import Placement
 from src.m.Client import Client
-from src.m.TypeAbonnement import TypeAbonnement
+from src.m.Service import Service
+from src.m.Client import TypeAbonnement
 from src.v.Camera import Camera
 from src.v.MyQWidget import MyQWidget
 from src.v.Ui_Borne import Ui_Borne
@@ -39,7 +41,8 @@ class Borne:
         # Validator
 
 
-        self.__ui.nomParking = parking.nom
+        self.__ui.label_aff.setText("Dream park")
+        self.__ui.nomParking.setText(parking.nom)
         self.nonVoiture()
         self.showWindow()
 
@@ -94,13 +97,15 @@ class Borne:
                          TypeAbonnement.SUPER_ABONNE)
             self.__ui.label_aff.setText("Mise a jour de votre abonnement effectué")
         else:
-            if self.__ui.checkBox.isEnabled():
-                self.__c = Client(self.__ui.nomLineEdit,
+            if self.__ui.checkBox.isChecked():
+                self.__c = Client(None,
+                                  self.__ui.nomLineEdit,
                                   self.__ui.prenomLineEdit,
                                   "",
                                   TypeAbonnement.SUPER_ABONNE)
             else:
-                self.__c = Client(self.__ui.nomLineEdit,
+                self.__c = Client(None,
+                                  self.__ui.nomLineEdit,
                                   self.__ui.prenomLineEdit,
                                   "",
                                   TypeAbonnement.ABONNE)
@@ -114,13 +119,26 @@ class Borne:
         :return:
         """
         if self.__c is None:
-            id = Teleporteur.teleporterVoiture(self.v_actuel, self.__parking.recherchePlace(self.v_actuel))
-            self.__ui.label_aff.setText("Votre num ticket est : " + id)
+            p = self.__parking.recherchePlace(self.v_actuel)
+            if p is None :
+                self.__ui.label_aff.setText("Aucun Place disponible")
+            else :
+                id = Teleporteur.teleporterVoiture(self.v_actuel, p)
+                self.__ui.label_aff.setText("Votre num ticket est : " + str(id))
+                self.nonVoiture()
         else:
             if self.__c.abonnement != TypeAbonnement.SUPER_ABONNE:
-                Teleporteur.teleporterVoiture(self.v_actuel, self.__parking.recherchePlace(self.v_actuel))
+                p = self.__parking.recherchePlace(self.v_actuel)
+                if p is None :
+                    self.__ui.label_aff.setText("Aucun Place disponible")
+                else :
+                    id = Teleporteur.teleporterVoiture(self.v_actuel, self.__parking.recherchePlace(self.v_actuel))
+                    self.__w.hide()
+                    self.__child = SelectService(self.__main)
+                    self.__ui.label_aff.setText("Votre num ticket est : " + str(id))
+                    self.nonVoiture()
             else:
-                Teleporteur.teleporterVoirureSuperAbonne(self.v_actuel)
+                Teleporteur.teleporterVoitureSuperAbonne(self.v_actuel)
 
 
     def recuperer(self):
@@ -128,12 +146,13 @@ class Borne:
         Essaie de recuperer une voiture avec le numero de ticket (lineedit)
         :return:
         """
-        p = Placement.get(self.__ui.numeroTicketLineEdit.text())
-        if p is None:
-            self.__ui.label_aff.setText("Mauvais numero de ticket")
-        else:
+        try :
+            p = Placement.get(self.__ui.numeroTicketLineEdit.text())
             Teleporteur.teleporterVersSortie(p)
             self.__ui.label_aff.setText("Bonne journée")
+        except IndexError:
+            self.__ui.label_aff.setText("Mauvais numero de ticket")
+
 
 
     def showWindow(self):

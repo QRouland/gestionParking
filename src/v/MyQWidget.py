@@ -19,3 +19,4 @@ class MyQWidget(QtGui.QWidget):
         if result == QtGui.QMessageBox.Yes:
             event.accept()
             self.__main.showWindow()
+            self.w = QtGui.QWidget

@@ -7,6 +7,7 @@ from src.c.DetailsPlaces import DetailsPlaces
 from src.c.log.log import Log
 from src.c.log.log import lvl
 from src.c.CreaParking import CreaParking
+from src.m.Parking import Parking
 from src.v.MyQMainWindow import MyQMainWindow
 from src.v.Ui_MainWindow import Ui_MainWindow
 
@@ -18,9 +19,6 @@ class Main:
         # Init des logs
         self.lvl = lvl()  # Public : Acces au constante
         self.__log = Log()
-
-        # Parking
-        self.__parkings = []
 
         app = QtGui.QApplication(sys.argv)
 
@@ -68,7 +66,7 @@ class Main:
     def majListeParking(self):
         self.__ui.comboBox.clear()
         self.__ui.comboBox.addItem("Selectionner un parking")
-        for p in self.__parkings:
+        for p in Parking.getAll():
             self.__ui.comboBox.addItem(p.nom)
 
     def selectParking(self):
@@ -77,25 +75,19 @@ class Main:
         self.__ui.placesDispo.clear()
         self.__ui.placesSuperAbo.clear()
         if self.__ui.comboBox.count() > 1:
-            print(self.__ui.comboBox.count())
-            self.__ui.nom.setText(self.__parkings[self.__ui.comboBox.currentIndex() - 1].nom)
-            self.__ui.placesParNiveau.setText(str(self.__parkings[self.__ui.comboBox.currentIndex() - 1].nbPlaces))
+            p = Parking.getAll()
+            self.__ui.nom.setText(p[self.__ui.comboBox.currentIndex() - 1].nom)
+            self.__ui.placesParNiveau.setText(str(p[self.__ui.comboBox.currentIndex() - 1].nbPlaces))
             self.__ui.placesDispo.setText(
-                str(self.__parkings[self.__ui.comboBox.currentIndex() - 1].nbPlacesLibresParking))
-            self.__ui.placesSuperAbo.setText("lol")
+                str(p[self.__ui.comboBox.currentIndex() - 1].nbPlacesLibresParking))
+            self.__ui.placesSuperAbo.setText(str(p[self.__ui.comboBox.currentIndex() - 1].nbSuperAbo))
 
 
     def creerParking(self):
         self.__view.hide()
         self.__widgetCourant = CreaParking(self)
 
-    def addParking(self, parking):
-        self.__parkings.append(parking)
 
-    def modifParking(self):
-        if self.__ui.comboBox.currentIndex() != 0:
-            self.__view.hide()
-            self.__widgetCourant = ModifParking(self, self.__parkings[self.__ui.comboBox.currentIndex() - 1])
 
     def rmParking(self):
         if self.__ui.comboBox.currentIndex() != 0:
@@ -113,12 +105,12 @@ class Main:
     def detailsPlacesParking(self):
         if self.__ui.comboBox.currentIndex() != 0:
             self.__view.hide()
-            self.__widgetCourant = DetailsPlaces(self, self.__parkings[self.__ui.comboBox.currentIndex() - 1])
+            self.__widgetCourant = DetailsPlaces(self, Parking.getAll()[self.__ui.comboBox.currentIndex() - 1])
 
     def afficherBorne(self):
         if self.__ui.comboBox.currentIndex() != 0:
             self.__view.hide()
-            self.__widgetCourant = Borne(self, self.__parkings[self.__ui.comboBox.currentIndex() - 1])
+            self.__widgetCourant = Borne(self, Parking.getAll()[self.__ui.comboBox.currentIndex() - 1])
 
 
     def showWindow(self):

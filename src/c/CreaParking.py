@@ -1,7 +1,6 @@
 from PyQt4 import QtGui
 
-from src.m.Parking import Parking
-from src.m.ListeTypePlace import ListeTypePlace
+from src.m.Parking import Parking, TypePlace
 from src.v.MyQWidget import MyQWidget
 from src.v.Ui_CreaParking import Ui_CreaParking
 
@@ -13,7 +12,6 @@ class CreaParking:
     """
     Controleur de cretion de parking
     """
-
     def __init__(self, main):
         self._main = main
         self._main.activity("Debut Creation Parking", self._main.lvl.INFO)
@@ -76,14 +74,12 @@ class CreaParking:
         :return:
         """
         # try:
-        l = ListeTypePlace()
+        l = []
         for i in range(0, self._ui.tableWidget.rowCount()):
-            l.add(int(self._ui.tableWidget.item(i, 0).text()), int(self._ui.tableWidget.item(i, 1).text()),
-                  int(self._ui.tableWidget.item(i, 2).text()))
-        self._main.addParking(Parking(
-            l,
-            self._ui.lineEdit_nom.text()))
-        self._main.activity("Ajout Parking : detail", self._main.lvl.INFO)
+            l.append(TypePlace(None,int(self._ui.tableWidget.item(i, 0).text()), int(self._ui.tableWidget.item(i, 1).text()),
+                               int(self._ui.tableWidget.item(i, 2).text())))
+        p = Parking(self._ui.lineEdit_nom.text(),l)
+        self._main.activity("Ajout:" + str(p), self._main.lvl.INFO)
         self._w.hide()
         self._main.showWindow()
         #except Exception as e:
