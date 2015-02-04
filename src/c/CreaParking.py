@@ -65,7 +65,7 @@ class CreaParking:
 
         if result == QtGui.QMessageBox.Yes:
             self._main.activity("Annulation Creation Parking", self._main.lvl.INFO)
-            self._w.hide()
+            #self._w.hide()
             self._main.showWindow()
 
     def valider(self):
@@ -76,9 +76,12 @@ class CreaParking:
         # try:
         l = []
         for i in range(0, self._ui.tableWidget.rowCount()):
-            l.append(TypePlace(None,int(self._ui.tableWidget.item(i, 0).text()), int(self._ui.tableWidget.item(i, 1).text()),
-                               int(self._ui.tableWidget.item(i, 2).text())))
-        p = Parking(self._ui.lineEdit_nom.text(),l)
+            l.append(TypePlace(None, int(self._ui.tableWidget.item(i, 0).text()),
+                               int(self._ui.tableWidget.item(i, 1).text()),
+                               int(self._ui.tableWidget.item(i, 2).text()),
+                               float(self._ui.tableWidget.item(i, 3).text()),
+                               int(self._ui.tableWidget.item(i, 4).text())))
+        p = Parking(None, self._ui.lineEdit_nom.text(), l)
         self._main.activity("Ajout:" + str(p), self._main.lvl.INFO)
         self._w.hide()
         self._main.showWindow()

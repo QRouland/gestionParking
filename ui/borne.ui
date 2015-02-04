@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>669</width>
+    <width>809</width>
     <height>579</height>
    </rect>
   </property>
@@ -16,7 +16,7 @@
   <widget class="QPushButton" name="btn_Voiture">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>30</x>
      <y>40</y>
      <width>211</width>
      <height>27</height>
@@ -29,14 +29,14 @@
   <widget class="QLabel" name="nomParking">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>10</x>
      <y>10</y>
-     <width>151</width>
+     <width>791</width>
      <height>20</height>
     </rect>
    </property>
    <property name="text">
-    <string>NomParking</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;NomParking&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QGroupBox" name="box_id">
@@ -90,10 +90,10 @@
    <widget class="QLabel" name="labIdClient">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>30</x>
       <y>31</y>
-      <width>91</width>
-      <height>16</height>
+      <width>261</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="text">
@@ -143,7 +143,7 @@
      <item row="2" column="0">
       <widget class="QLabel" name="numeroCarteLabel">
        <property name="text">
-        <string>Numero carte</string>
+        <string>CB</string>
        </property>
       </widget>
      </item>
@@ -194,19 +194,14 @@
      <string>Désabonner</string>
     </property>
    </widget>
-   <zorder>formLayoutWidget</zorder>
-   <zorder>checkBox</zorder>
-   <zorder>btn_valider_abo</zorder>
-   <zorder>btn_desabo</zorder>
-   <zorder>prenomLineEdit</zorder>
   </widget>
   <widget class="QGroupBox" name="box_recup">
    <property name="geometry">
     <rect>
      <x>380</x>
      <y>350</y>
-     <width>271</width>
-     <height>121</height>
+     <width>401</width>
+     <height>171</height>
     </rect>
    </property>
    <property name="title">
@@ -217,11 +212,14 @@
      <rect>
       <x>0</x>
       <y>40</y>
-      <width>261</width>
-      <height>80</height>
+      <width>341</width>
+      <height>61</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout_2">
+     <property name="fieldGrowthPolicy">
+      <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+     </property>
      <item row="0" column="0">
       <widget class="QLabel" name="numeroTicketLabel">
        <property name="text">
@@ -241,13 +239,26 @@
      </item>
     </layout>
    </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>130</y>
+      <width>101</width>
+      <height>27</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Payer</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QLabel" name="label_aff">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>90</y>
-     <width>641</width>
+     <width>791</width>
      <height>31</height>
     </rect>
    </property>
@@ -258,10 +269,10 @@
   <widget class="QGroupBox" name="box_garer">
    <property name="geometry">
     <rect>
-     <x>390</x>
-     <y>150</y>
-     <width>231</width>
-     <height>131</height>
+     <x>340</x>
+     <y>140</y>
+     <width>471</width>
+     <height>201</height>
     </rect>
    </property>
    <property name="title">
@@ -270,8 +281,8 @@
    <widget class="QPushButton" name="btn_garer">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>60</y>
+      <x>290</x>
+      <y>170</y>
       <width>131</width>
       <height>27</height>
      </rect>
@@ -280,11 +291,91 @@
      <string>Garer Véhicule</string>
     </property>
    </widget>
+   <widget class="QGroupBox" name="box_service">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>521</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Service (Abonnée seulement)</string>
+    </property>
+    <widget class="QDateTimeEdit" name="dateTimeEdit">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>30</y>
+       <width>121</width>
+       <height>23</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>109</width>
+       <height>121</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <item>
+       <widget class="QCheckBox" name="checkBox_Livraison_2">
+        <property name="text">
+         <string>Livraison</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBox_Maintenance_2">
+        <property name="text">
+         <string>Maintenance</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="checkBox_Entretien_2">
+        <property name="text">
+         <string>Entretien</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="formLayoutWidget_3">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>30</y>
+       <width>181</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout_4">
+      <item row="0" column="0">
+       <widget class="QLabel" name="lieuLabel_2">
+        <property name="text">
+         <string>Lieu</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lieuLineEdit_2"/>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <zorder>box_service</zorder>
+   <zorder>btn_garer</zorder>
   </widget>
   <widget class="QPushButton" name="btn_annuler">
    <property name="geometry">
     <rect>
-     <x>390</x>
+     <x>290</x>
      <y>40</y>
      <width>87</width>
      <height>27</height>
@@ -307,17 +398,43 @@
     <string>Quitter</string>
    </property>
   </widget>
-  <zorder>btn_Voiture</zorder>
-  <zorder>nomParking</zorder>
-  <zorder></zorder>
-  <zorder>box_id</zorder>
-  <zorder>box_abo</zorder>
-  <zorder>box_recup</zorder>
-  <zorder>label_aff</zorder>
-  <zorder>box_garer</zorder>
-  <zorder>btn_annuler</zorder>
-  <zorder>btn_quitter</zorder>
+  <widget class="QLCDNumber" name="lcdNumber">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>10</y>
+     <width>171</width>
+     <height>61</height>
+    </rect>
+   </property>
+  </widget>
  </widget>
+ <tabstops>
+  <tabstop>btn_Voiture</tabstop>
+  <tabstop>btn_annuler</tabstop>
+  <tabstop>lineEdit_id</tabstop>
+  <tabstop>btn_validerID</tabstop>
+  <tabstop>nomLineEdit</tabstop>
+  <tabstop>prenomLineEdit</tabstop>
+  <tabstop>numeroCarteLineEdit</tabstop>
+  <tabstop>checkBox</tabstop>
+  <tabstop>btn_desabo</tabstop>
+  <tabstop>btn_valider_abo</tabstop>
+  <tabstop>checkBox_Livraison_2</tabstop>
+  <tabstop>lieuLineEdit_2</tabstop>
+  <tabstop>dateTimeEdit</tabstop>
+  <tabstop>checkBox_Maintenance_2</tabstop>
+  <tabstop>checkBox_Entretien_2</tabstop>
+  <tabstop>btn_garer</tabstop>
+  <tabstop>numeroTicketLineEdit</tabstop>
+  <tabstop>btn_recuperer</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>btn_quitter</tabstop>
+  <tabstop>checkBox_Livraison</tabstop>
+  <tabstop>checkBox_Maintenance</tabstop>
+  <tabstop>checkBox_Entretien</tabstop>
+  <tabstop>lieuLineEdit</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

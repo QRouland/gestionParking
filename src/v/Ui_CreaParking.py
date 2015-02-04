@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'creationParking.ui'
 #
-# Created: Mon Jan  5 16:57:56 2015
-# by: PyQt4 UI code generator 4.11.3
+# Created: Sat Jan 17 15:11:03 2015
+#      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -17,20 +17,18 @@ except AttributeError:
 
 try:
     _encoding = QtGui.QApplication.UnicodeUTF8
-
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig, _encoding)
 except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-
 class Ui_CreaParking(object):
     def setupUi(self, CreaParking):
         CreaParking.setObjectName(_fromUtf8("CreaParking"))
-        CreaParking.resize(400, 300)
+        CreaParking.resize(622, 300)
         self.layoutWidget = QtGui.QWidget(CreaParking)
-        self.layoutWidget.setGeometry(QtCore.QRect(90, 270, 201, 29))
+        self.layoutWidget.setGeometry(QtCore.QRect(230, 260, 201, 29))
         self.layoutWidget.setObjectName(_fromUtf8("layoutWidget"))
         self.horizontalLayout_2 = QtGui.QHBoxLayout(self.layoutWidget)
         self.horizontalLayout_2.setMargin(0)
@@ -42,7 +40,7 @@ class Ui_CreaParking(object):
         self.btn_valider.setObjectName(_fromUtf8("btn_valider"))
         self.horizontalLayout_2.addWidget(self.btn_valider)
         self.layoutWidget1 = QtGui.QWidget(CreaParking)
-        self.layoutWidget1.setGeometry(QtCore.QRect(60, 230, 275, 25))
+        self.layoutWidget1.setGeometry(QtCore.QRect(200, 230, 275, 25))
         self.layoutWidget1.setObjectName(_fromUtf8("layoutWidget1"))
         self.horizontalLayout_3 = QtGui.QHBoxLayout(self.layoutWidget1)
         self.horizontalLayout_3.setMargin(0)
@@ -54,9 +52,9 @@ class Ui_CreaParking(object):
         self.nbPlacesTotal.setObjectName(_fromUtf8("nbPlacesTotal"))
         self.horizontalLayout_3.addWidget(self.nbPlacesTotal)
         self.tableWidget = QtGui.QTableWidget(CreaParking)
-        self.tableWidget.setGeometry(QtCore.QRect(10, 90, 321, 121))
+        self.tableWidget.setGeometry(QtCore.QRect(30, 100, 521, 121))
         self.tableWidget.setObjectName(_fromUtf8("tableWidget"))
-        self.tableWidget.setColumnCount(3)
+        self.tableWidget.setColumnCount(5)
         self.tableWidget.setRowCount(0)
         item = QtGui.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, item)
@@ -64,14 +62,18 @@ class Ui_CreaParking(object):
         self.tableWidget.setHorizontalHeaderItem(1, item)
         item = QtGui.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(2, item)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(3, item)
+        item = QtGui.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(4, item)
         self.btn_addRow = QtGui.QPushButton(CreaParking)
-        self.btn_addRow.setGeometry(QtCore.QRect(350, 120, 41, 27))
+        self.btn_addRow.setGeometry(QtCore.QRect(570, 120, 41, 27))
         self.btn_addRow.setObjectName(_fromUtf8("btn_addRow"))
         self.btn_rmRow = QtGui.QPushButton(CreaParking)
-        self.btn_rmRow.setGeometry(QtCore.QRect(350, 160, 41, 27))
+        self.btn_rmRow.setGeometry(QtCore.QRect(570, 170, 41, 27))
         self.btn_rmRow.setObjectName(_fromUtf8("btn_rmRow"))
         self.layoutWidget2 = QtGui.QWidget(CreaParking)
-        self.layoutWidget2.setGeometry(QtCore.QRect(52, 12, 291, 56))
+        self.layoutWidget2.setGeometry(QtCore.QRect(180, 20, 291, 56))
         self.layoutWidget2.setObjectName(_fromUtf8("layoutWidget2"))
         self.horizontalLayout = QtGui.QHBoxLayout(self.layoutWidget2)
         self.horizontalLayout.setMargin(0)
@@ -104,11 +106,15 @@ class Ui_CreaParking(object):
         self.label_4.setText(_translate("CreaParking", "Nombre Places Total : ", None))
         self.nbPlacesTotal.setText(_translate("CreaParking", "TextLabel", None))
         item = self.tableWidget.horizontalHeaderItem(0)
-        item.setText(_translate("CreaParking", "Hauteur", None))
+        item.setText(_translate("CreaParking", "Hauteur (cm)", None))
         item = self.tableWidget.horizontalHeaderItem(1)
-        item.setText(_translate("CreaParking", "Longueur", None))
+        item.setText(_translate("CreaParking", "Longueur (cm)", None))
         item = self.tableWidget.horizontalHeaderItem(2)
         item.setText(_translate("CreaParking", "Nombre", None))
+        item = self.tableWidget.horizontalHeaderItem(3)
+        item.setText(_translate("CreaParking", "Etage", None))
+        item = self.tableWidget.horizontalHeaderItem(4)
+        item.setText(_translate("CreaParking", "Prix (€)", None))
         self.btn_addRow.setText(_translate("CreaParking", "+", None))
         self.btn_rmRow.setText(_translate("CreaParking", "-", None))
         self.label.setText(_translate("CreaParking", "Nom :", None))

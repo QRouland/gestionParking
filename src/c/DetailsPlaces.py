@@ -22,9 +22,9 @@ class DetailsPlaces(CreaParking):
 
         self._ui.lineEdit_nom.setDisabled(True)
         self._ui.tableWidget.setDisabled(True)
-        self._ui.btn_annuler.setDisabled(True)
-        self._ui.btn_addRow.setDisabled(True)
-        self._ui.btn_rmRow.setDisabled(True)
+        self._ui.btn_annuler.setVisible(False)
+        self._ui.btn_addRow.setVisible(False)
+        self._ui.btn_rmRow.setVisible(False)
 
     def valider(self):
         self._w.hide()

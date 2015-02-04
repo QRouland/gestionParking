@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
+    <width>622</width>
     <height>300</height>
    </rect>
   </property>
@@ -16,8 +16,8 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>270</y>
+     <x>230</x>
+     <y>260</y>
      <width>201</width>
      <height>29</height>
     </rect>
@@ -42,7 +42,7 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>200</x>
      <y>230</y>
      <width>275</width>
      <height>25</height>
@@ -69,19 +69,19 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>130</y>
-     <width>311</width>
-     <height>91</height>
+     <y>100</y>
+     <width>521</width>
+     <height>121</height>
     </rect>
    </property>
    <column>
     <property name="text">
-     <string>Hauteur</string>
+     <string>Hauteur (cm)</string>
     </property>
    </column>
    <column>
     <property name="text">
-     <string>Longueur</string>
+     <string>Longueur (cm)</string>
     </property>
    </column>
    <column>
@@ -89,11 +89,21 @@
      <string>Nombre</string>
     </property>
    </column>
+   <column>
+    <property name="text">
+     <string>Etage</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Prix (€)</string>
+    </property>
+   </column>
   </widget>
   <widget class="QPushButton" name="btn_addRow">
    <property name="geometry">
     <rect>
-     <x>350</x>
+     <x>570</x>
      <y>120</y>
      <width>41</width>
      <height>27</height>
@@ -106,8 +116,8 @@
   <widget class="QPushButton" name="btn_rmRow">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>160</y>
+     <x>570</x>
+     <y>170</y>
      <width>41</width>
      <height>27</height>
     </rect>
@@ -119,8 +129,8 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>52</x>
-     <y>12</y>
+     <x>180</x>
+     <y>20</y>
      <width>291</width>
      <height>56</height>
     </rect>

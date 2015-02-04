@@ -1,10 +1,9 @@
 from PyQt4 import QtGui
-from src.c.SelectService import SelectService
 
 from src.c.Teleporteur import Teleporteur
 from src.m.Parking import Placement
 from src.m.Client import Client
-from src.m.Service import Service
+from src.m.Service import Service, TypeService
 from src.m.Client import TypeAbonnement
 from src.v.Camera import Camera
 from src.v.MyQWidget import MyQWidget
@@ -16,8 +15,12 @@ __author__ = 'sidya'
 
 class Borne:
     """
-    Controleur de la vue de la borne permettant l'accès au parking
+    Controleur de la vue des bornes permettant l'accès au parking
     """
+    bornes = []
+    @staticmethod
+    def MajBornes():
+        pass
 
     def __init__(self, main, parking):
         self.__parking = parking
@@ -41,29 +44,54 @@ class Borne:
         # Validator
 
 
-        self.__ui.label_aff.setText("Dream park")
-        self.__ui.nomParking.setText(parking.nom)
+
+        self.__ui.label_aff.setStyleSheet("qproperty-alignment: AlignCenter; font-size: 28px")
+        self.__ui.nomParking.setStyleSheet("qproperty-alignment: AlignCenter; font-size: 28px")
         self.nonVoiture()
         self.showWindow()
+        self.__ui.nomParking.setText("Borne " + str(len(self.bornes)+1) + " - Parking : " +parking.nom)
 
+
+    def blockAll(self):
+        self.__ui.box_abo.setDisabled(True)
+        self.__ui.box_garer.setDisabled(True)
+        self.__ui.box_id.setDisabled(True)
+        self.__ui.box_recup.setDisabled(True)
+
+        self.__ui.btn_Voiture.setDisabled(True)
+        self.__ui.btn_annuler.setDisabled(True)
+        self.__ui.btn_desabo.setDisabled(True)
 
     def nonVoiture(self):
         """
         Met en etat initial de départ sans voiture
         :return:
         """
+        self.__ui.label_aff.setText("Dream park")
         self.__c = None
         self.__ui.box_abo.setDisabled(True)
         self.__ui.box_garer.setDisabled(True)
         self.__ui.box_id.setDisabled(True)
         self.__ui.box_recup.setDisabled(False)
+        self.__ui.box_service.setDisabled(True)
+        self.__ui.btn_Voiture.setDisabled(False)
+        self.__ui.btn_desabo.setDisabled(True)
+
+        self.__ui.nomLineEdit.setText("")
+        self.__ui.prenomLineEdit.setText("")
+        self.__ui.numeroCarteLineEdit.setText("")
+        self.__ui.checkBox.setChecked(False)
+        self.__ui.lineEdit_id.setText("")
+        self.__ui.numeroTicketLineEdit.setText("")
+        self.__ui.labIdClient.setText("Non identifier")
 
     def newVoiture(self):
         """
         Meten etat d'arrive de voiture detecte par la camera
         :return:
         """
-        self.v_actuel = Camera.donnerVoiture()
+        self.__ui.btn_Voiture.setDisabled(True)
+        self.__v_actuel = Camera.donnerVoiture()
         self.__ui.box_abo.setDisabled(False)
         self.__ui.box_garer.setDisabled(False)
         self.__ui.box_id.setDisabled(False)
@@ -76,18 +104,20 @@ class Borne:
         Gestion de l'identification a partir d'un abo a partir de son id (lineedit)
         :return:
         """
-        self.__c = Client.get(self.__ui.lineEdit_id.text())
-        if self.__c != None:
+        try :
+            self.__c = Client.get(self.__ui.lineEdit_id.text())
             self.__ui.label_aff.setText("Bonjour " + str(self.__c.nom) + " " + str(self.__c.prenom))
-            # self.__ui.labIdClient.setText(str(self.__c))
+            self.__ui.labIdClient.setText("Vous étes identifier")
             self.__ui.box_id.setDisabled(True)
-        else:
+            self.__ui.box_service.setDisabled(False)
+            self.__ui.btn_desabo.setDisabled(False)
+        except IndexError :
             self.__ui.label_aff.setText("Echec identification")
             self.__ui.labIdClient.setText("Non identifier")
 
     def abo(self):
         """
-        Gestion validation formaulaire d'abonnement
+        Gestion validation formulaire d'abonnement
         :return:
         """
         if self.__c != None:
@@ -99,16 +129,17 @@ class Borne:
         else:
             if self.__ui.checkBox.isChecked():
                 self.__c = Client(None,
-                                  self.__ui.nomLineEdit,
-                                  self.__ui.prenomLineEdit,
+                                  str(self.__ui.nomLineEdit.text()),
+                                  str(self.__ui.prenomLineEdit.text()),
                                   "",
                                   TypeAbonnement.SUPER_ABONNE)
             else:
                 self.__c = Client(None,
-                                  self.__ui.nomLineEdit,
-                                  self.__ui.prenomLineEdit,
+                                  str(self.__ui.nomLineEdit.text()),
+                                  str(self.__ui.prenomLineEdit.text()),
                                   "",
                                   TypeAbonnement.ABONNE)
+            print(self.__c)
             self.__ui.label_aff.setText("Votre id membre est : " + self.__c.id)
             self.__ui.lineEdit_id.setText(self.__c.id)
             self.identification()
@@ -118,27 +149,29 @@ class Borne:
         Gestion de la validation de garer son vehicule
         :return:
         """
+        id = None
         if self.__c is None:
-            p = self.__parking.recherchePlace(self.v_actuel)
-            if p is None :
-                self.__ui.label_aff.setText("Aucun Place disponible")
-            else :
-                id = Teleporteur.teleporterVoiture(self.v_actuel, p)
-                self.__ui.label_aff.setText("Votre num ticket est : " + str(id))
-                self.nonVoiture()
+            p = self.__parking.recherchePlace(self.__v_actuel)
+            if p is not None:
+                id = Teleporteur.teleporterVoiture(self.__v_actuel, p)
         else:
             if self.__c.abonnement != TypeAbonnement.SUPER_ABONNE:
-                p = self.__parking.recherchePlace(self.v_actuel)
-                if p is None :
-                    self.__ui.label_aff.setText("Aucun Place disponible")
-                else :
-                    id = Teleporteur.teleporterVoiture(self.v_actuel, self.__parking.recherchePlace(self.v_actuel))
-                    self.__w.hide()
-                    self.__child = SelectService(self.__main)
-                    self.__ui.label_aff.setText("Votre num ticket est : " + str(id))
-                    self.nonVoiture()
+                p = self.__parking.recherchePlace(self.__v_actuel)
+                if p is not None :
+                    id = Teleporteur.teleporterVoiture(self.__v_actuel, p)
+                    if self.__ui.checkBox_Livraison_2.isChecked():
+                        Service(None, self.__c, p, TypeService.LIVRAISON)
+                    if self.__ui.checkBox_Entretien_2.isChecked():
+                        Service(None, self.__c, p, TypeService.ENTRETIEN)
+                    if self.__ui.checkBox_Maintenance_2.isChecked():
+                        Service(None, self.__c, p, TypeService.MAINTENANCE)
             else:
-                Teleporteur.teleporterVoitureSuperAbonne(self.v_actuel)
+                Teleporteur.teleporterVoitureSuperAbonne(self.__v_actuel)
+        if id is not None:
+            self.nonVoiture()
+            self.ticketDepot(id)
+        else:
+            self.__ui.label_aff.setText("Aucune Place Disponible Pour Votre Véhicule. Devenez Super Abonné!")
 
 
     def recuperer(self):
@@ -149,11 +182,22 @@ class Borne:
         try :
             p = Placement.get(self.__ui.numeroTicketLineEdit.text())
             Teleporteur.teleporterVersSortie(p)
-            self.__ui.label_aff.setText("Bonne journée")
+            self.nonVoiture()
+            self.ticketDepot(id)
         except IndexError:
             self.__ui.label_aff.setText("Mauvais numero de ticket")
 
+    def ticketDepot(self, id):
+        QtGui.QMessageBox.information(self.__w,
+                                        "Ticket",
+                                        "Votre numero ticket : " + str(id)
+        )
 
+    def ticketRetrait(self):
+        QtGui.QMessageBox.information(self.__w,
+                                        "Ticket",
+                                        "Merci de votre confiance! Bonne journée !"
+        )
 
     def showWindow(self):
         """
@@ -169,8 +213,8 @@ class Borne:
         Gestion de sortie de la vue borne
         :return:
         """
-        self.__w.hide()
         self.__main.showWindow()
+
 
     def error(self):
         """

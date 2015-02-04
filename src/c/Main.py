@@ -7,7 +7,10 @@ from src.c.DetailsPlaces import DetailsPlaces
 from src.c.log.log import Log
 from src.c.log.log import lvl
 from src.c.CreaParking import CreaParking
+from src.m.Service import Service
 from src.m.Parking import Parking
+from src.m.Service import TypeService
+from src.m.connexionBDD import connexionBDD
 from src.v.MyQMainWindow import MyQMainWindow
 from src.v.Ui_MainWindow import Ui_MainWindow
 
@@ -32,7 +35,11 @@ class Main:
         self.__ui.btn_creer.clicked.connect(self.creerParking)
         self.__ui.btn_supprimer.clicked.connect(self.rmParking)
         self.__ui.btn_details.clicked.connect(self.detailsPlacesParking)
-        self.__ui.btn_borne.clicked.connect(self.afficherBorne)
+        self.__ui.btn_borne.clicked.connect(self.afficherBornes)
+        self.__ui.actionNouveau_2.triggered.connect(self.nouveau)
+        self.__ui.actionSauvegarder.triggered.connect(self.sauver)
+        self.__ui.actionCharger.triggered.connect(self.charger)
+        self.__ui.actionQuitter.triggered.connect(self.quitter)
 
 
 
@@ -66,21 +73,40 @@ class Main:
     def majListeParking(self):
         self.__ui.comboBox.clear()
         self.__ui.comboBox.addItem("Selectionner un parking")
-        for p in Parking.getAll():
+        for p in Parking.getAllActif():
             self.__ui.comboBox.addItem(p.nom)
 
     def selectParking(self):
+        #onglet detail parking
         self.__ui.nom.clear()
         self.__ui.placesParNiveau.clear()
         self.__ui.placesDispo.clear()
         self.__ui.placesSuperAbo.clear()
         if self.__ui.comboBox.count() > 1:
-            p = Parking.getAll()
+            p = Parking.getAllActif()
             self.__ui.nom.setText(p[self.__ui.comboBox.currentIndex() - 1].nom)
             self.__ui.placesParNiveau.setText(str(p[self.__ui.comboBox.currentIndex() - 1].nbPlaces))
             self.__ui.placesDispo.setText(
                 str(p[self.__ui.comboBox.currentIndex() - 1].nbPlacesLibresParking))
             self.__ui.placesSuperAbo.setText(str(p[self.__ui.comboBox.currentIndex() - 1].nbSuperAbo))
+            self.__ui.btn_details.setDisabled(False)
+            self.__ui.btn_supprimer.setDisabled(False)
+            self.__ui.btn_borne.setDisabled(False)
+        else:
+            self.__ui.btn_details.setDisabled(True)
+            self.__ui.btn_supprimer.setDisabled(True)
+            self.__ui.btn_borne.setDisabled(True)
+
+        #onglet Service
+        for s in Service.serviceEnCours:
+            if s.typeService == TypeService.LIVRAISON :
+                self.__ui.comboBox_livraison.addItem(str(s.id))
+            if s.typeService == TypeService.ENTRETIEN :
+                self.__ui.comboBox_entretien.addItem(str(s.id))
+            if s.typeService == TypeService.MAINTENANCE :
+                self.__ui.comboBox_maintenance.addItem(str(s.id))
+
+        #Onglet Stats
 
 
     def creerParking(self):
@@ -98,23 +124,52 @@ class Main:
                                                 QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
 
             if result == QtGui.QMessageBox.Yes:
-                self.__parkings.remove(self.__parkings[self.__ui.comboBox.currentIndex() - 1])
+                Parking.remove(Parking.parkings[self.__ui.comboBox.currentIndex() - 1])
             self.__view.hide()
             self.showWindow()
 
     def detailsPlacesParking(self):
+        if self.__ui.comboBox.currentIndex() != 0 :
+            self.__view.hide()
+            self.__widgetCourant = DetailsPlaces(self, Parking.getAllActif()[self.__ui.comboBox.currentIndex() - 1])
+
+    def afficherBornes(self):
         if self.__ui.comboBox.currentIndex() != 0:
             self.__view.hide()
-            self.__widgetCourant = DetailsPlaces(self, Parking.getAll()[self.__ui.comboBox.currentIndex() - 1])
+            Borne.bornes.append(Borne(self, Parking.getAllActif()[self.__ui.comboBox.currentIndex() - 1]))
+            Borne.bornes.append(Borne(self, Parking.getAllActif()[self.__ui.comboBox.currentIndex() - 1]))
 
-    def afficherBorne(self):
-        if self.__ui.comboBox.currentIndex() != 0:
-            self.__view.hide()
-            self.__widgetCourant = Borne(self, Parking.getAll()[self.__ui.comboBox.currentIndex() - 1])
+    def nouveau(self):
+        result = QtGui.QMessageBox.question(self.__view,
+                                                "Confirmer Nouveau...",
+                                                "Etes vous sur de vouloir supprimer ?\n"
+                                                "(Toutes données non sauvegardées seront perdues)",
+                                                QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
+        if result == QtGui.QMessageBox.Yes:
+            c = connexionBDD()
+            c.initialisationBDD()
+            c.seDeconnecter()
+            Parking.removeAllRam()
+            self.majListeParking()
 
+    def charger(self):
+        path = QtGui.QFileDialog.getOpenFileName(self.__view,"Charger",".")
+        if path:
+            connexionBDD.charger(path)
+        self.majListeParking()
+
+    def sauver(self):
+        path = QtGui.QFileDialog.getSaveFileName(self.__view,"Sauvegarder",".")
+        if path:
+            connexionBDD.sauver(path)
+        self.majListeParking()
+
+    def quitter(self):
+        self.__view.close()
 
     def showWindow(self):
         self.majListeParking()
         self.__view.show()
         self.__widgetCourant = None  # supprime eventuel widget
+        Borne.bornes = []
         self.__view.focusWidget()  # reprend le focus sur la fenetre principal
