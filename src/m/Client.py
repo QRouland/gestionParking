@@ -6,7 +6,7 @@ from src.m.connexionBDD import connexionBDD
 __author__ = 'sidya'
 
 class Client:
-    def __init__(self,id, nom, prenom, adresse, typeAbonnement):
+    def __init__(self,id, nom=None, prenom=None, adresse=None, typeAbonnement=None):
         if id is None:
             self.__nom = nom
             self.__prenom = prenom

@@ -8,13 +8,13 @@ class Teleporteur:
     def teleporterVoiture(voiture, place):
         p = Placement(None,voiture, place)
         place.prendre()
-        return p.id
+        return p
 
     @staticmethod
     def teleporterVoitureSuperAbonne(voiture, parking):
-        place = parking.addPlaceSuperAbo()
+        place = parking.addPlaceSuperAbo(parking)
         p = Placement(None, voiture, place)
-        return p.id
+        return p
 
     @staticmethod
     def teleporterVersSortie(placement):

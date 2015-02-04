@@ -98,15 +98,19 @@ class Main:
             self.__ui.btn_borne.setDisabled(True)
 
         #onglet Service
-        for s in Service.serviceEnCours:
-            if s.typeService == TypeService.LIVRAISON :
-                self.__ui.comboBox_livraison.addItem(str(s.id))
-            if s.typeService == TypeService.ENTRETIEN :
-                self.__ui.comboBox_entretien.addItem(str(s.id))
-            if s.typeService == TypeService.MAINTENANCE :
-                self.__ui.comboBox_maintenance.addItem(str(s.id))
+        self.__ui.comboBox_livraison.clear()
+        self.__ui.comboBox_entretien.clear()
+        self.__ui.comboBox_maintenance.clear()
+        if self.__ui.comboBox.count() > 1:
+            for s in Service.getAllEnCours(p[self.__ui.comboBox.currentIndex() - 1]):
+                if s.typeService == TypeService.LIVRAISON :
+                    self.__ui.comboBox_livraison.addItem(str(s.id))
+                if s.typeService == TypeService.ENTRETIEN :
+                    self.__ui.comboBox_entretien.addItem(str(s.id))
+                if s.typeService == TypeService.MAINTENANCE :
+                    self.__ui.comboBox_maintenance.addItem(str(s.id))
 
-        #Onglet Stats
+            #Onglet Stats
 
 
     def creerParking(self):
@@ -136,8 +140,8 @@ class Main:
     def afficherBornes(self):
         if self.__ui.comboBox.currentIndex() != 0:
             self.__view.hide()
-            Borne.bornes.append(Borne(self, Parking.getAllActif()[self.__ui.comboBox.currentIndex() - 1]))
-            Borne.bornes.append(Borne(self, Parking.getAllActif()[self.__ui.comboBox.currentIndex() - 1]))
+            Borne(self, Parking.getAllActif()[self.__ui.comboBox.currentIndex() - 1])
+            Borne(self, Parking.getAllActif()[self.__ui.comboBox.currentIndex() - 1])
 
     def nouveau(self):
         result = QtGui.QMessageBox.question(self.__view,

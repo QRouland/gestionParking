@@ -7,10 +7,8 @@ class MyQMainWindow(QtGui.QMainWindow):
     def closeEvent(self, event):
         result = QtGui.QMessageBox.question(self,
                                             "Confirmer Fermeture...",
-                                            "Etes vous sur de vouloir quitter ?\n"
-                                            "(Toute modification non enregistrée seras perdu)",
+                                            "Etes vous sur de vouloir quitter ?",
                                             QtGui.QMessageBox.Yes | QtGui.QMessageBox.No)
         event.ignore()
-
         if result == QtGui.QMessageBox.Yes:
             event.accept()

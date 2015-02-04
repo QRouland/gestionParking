@@ -70,8 +70,8 @@ CREATE TABLE service (
     idPlacement VARCHAR(10),
     typeService INTEGER,
     dateDemande TIMESTAMP,
-    dateService TIMESTAMP,
-    dateRealisation TIMESTAMP
+    dateService TIMESTAMP DEFAULT NULL,
+    dateRealisation TIMESTAMP DEFAULT NULL,
     FOREIGN KEY (idClient) REFERENCES client(idClient),
     FOREIGN KEY (idPlacement) REFERENCES placement(idPlacement)
 );

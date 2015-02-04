@@ -3,6 +3,11 @@ import string
 import time
 from src.m.Voiture import Voiture
 from src.m.connexionBDD import connexionBDD
+import random
+import string
+import time
+from src.m.Voiture import Voiture
+from src.m.connexionBDD import connexionBDD
 
 __author__ = 'sidya'
 
@@ -101,10 +106,14 @@ class Place:
             self.__niveau = niveau
             self.__estLibre = estLibre
             self.__estSuperAbo = estSuperAbo
+            if self.__typePlace is None:
+                t = "NULL"
+            else :
+                t = self.__typePlace.id
             c = connexionBDD()
             c.execute("INSERT INTO place (idParking, idTypePlace, numero, estLibre, estSuperAbo) "
                       "VALUES (?,?,?,?,?)",
-                      (self.__parking.id, self.__typePlace.id,
+                      (self.__parking.id, t,
                        self.__numero, int(self.__estLibre), int(self.__estSuperAbo)))
             self.__id = c.lastId()
             c.seDeconnecter()
@@ -289,7 +298,7 @@ class Placement:
                 id = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in
                          range(random.randint(1, 10)))
                 try:
-                    Placement.get(id)
+                    Placement(id)
                 except IndexError:
                     break
             c = connexionBDD()
@@ -304,8 +313,8 @@ class Placement:
             if row is None :
                 raise IndexError("Invalid id")
             c.seDeconnecter()
-            self.__voiture = row["voiture"]
-            self.__place = row["place"]
+            self.__voiture = Voiture(row["idVoiture"])
+            self.__place = Place(row["idPlace"])
             self.__id = id
             self.__debut = debut
             self.__fin = fin

@@ -20,7 +20,12 @@ class Borne:
     bornes = []
     @staticmethod
     def MajBornes():
-        pass
+        print(Borne.bornes)
+        for b in Borne.bornes:
+            b.MajBorne()
+
+    def MajBorne(self):
+        self.__ui.lcdNumber.display(self.__parking.nbPlacesLibresParking)
 
     def __init__(self, main, parking):
         self.__parking = parking
@@ -41,6 +46,7 @@ class Borne:
         self.__ui.btn_recuperer.clicked.connect(self.recuperer)
 
 
+
         # Validator
 
 
@@ -50,6 +56,8 @@ class Borne:
         self.nonVoiture()
         self.showWindow()
         self.__ui.nomParking.setText("Borne " + str(len(self.bornes)+1) + " - Parking : " +parking.nom)
+        Borne.bornes.append(self)
+        Borne.MajBornes()
 
 
     def blockAll(self):
@@ -84,6 +92,7 @@ class Borne:
         self.__ui.lineEdit_id.setText("")
         self.__ui.numeroTicketLineEdit.setText("")
         self.__ui.labIdClient.setText("Non identifier")
+        Borne.MajBornes()
 
     def newVoiture(self):
         """
@@ -105,13 +114,13 @@ class Borne:
         :return:
         """
         try :
-            self.__c = Client.get(self.__ui.lineEdit_id.text())
+            self.__c = Client(self.__ui.lineEdit_id.text())
             self.__ui.label_aff.setText("Bonjour " + str(self.__c.nom) + " " + str(self.__c.prenom))
             self.__ui.labIdClient.setText("Vous étes identifier")
             self.__ui.box_id.setDisabled(True)
             self.__ui.box_service.setDisabled(False)
             self.__ui.btn_desabo.setDisabled(False)
-        except IndexError :
+        except Exception :
             self.__ui.label_aff.setText("Echec identification")
             self.__ui.labIdClient.setText("Non identifier")
 
@@ -139,7 +148,6 @@ class Borne:
                                   str(self.__ui.prenomLineEdit.text()),
                                   "",
                                   TypeAbonnement.ABONNE)
-            print(self.__c)
             self.__ui.label_aff.setText("Votre id membre est : " + self.__c.id)
             self.__ui.lineEdit_id.setText(self.__c.id)
             self.identification()
@@ -153,25 +161,25 @@ class Borne:
         if self.__c is None:
             p = self.__parking.recherchePlace(self.__v_actuel)
             if p is not None:
-                id = Teleporteur.teleporterVoiture(self.__v_actuel, p)
+                placement = Teleporteur.teleporterVoiture(self.__v_actuel, p)
         else:
             if self.__c.abonnement != TypeAbonnement.SUPER_ABONNE:
                 p = self.__parking.recherchePlace(self.__v_actuel)
                 if p is not None :
-                    id = Teleporteur.teleporterVoiture(self.__v_actuel, p)
+                    placement = Teleporteur.teleporterVoiture(self.__v_actuel, p)
                     if self.__ui.checkBox_Livraison_2.isChecked():
-                        Service(None, self.__c, p, TypeService.LIVRAISON)
+                        Service(None, self.__c, placement, TypeService.LIVRAISON)
                     if self.__ui.checkBox_Entretien_2.isChecked():
-                        Service(None, self.__c, p, TypeService.ENTRETIEN)
+                        Service(None, self.__c, placement, TypeService.ENTRETIEN)
                     if self.__ui.checkBox_Maintenance_2.isChecked():
-                        Service(None, self.__c, p, TypeService.MAINTENANCE)
+                        Service(None, self.__c, placement, TypeService.MAINTENANCE)
             else:
-                Teleporteur.teleporterVoitureSuperAbonne(self.__v_actuel)
-        if id is not None:
+                placement = Teleporteur.teleporterVoitureSuperAbonne(self.__v_actuel, self.__parking)
+        if placement is not None:
             self.nonVoiture()
-            self.ticketDepot(id)
+            self.ticketDepot(placement.id)
         else:
-            self.__ui.label_aff.setText("Aucune Place Disponible Pour Votre Véhicule. Devenez Super Abonné!")
+            self.__ui.label_aff.setText("Aucune Place Correspondante. Devenez Super Abonné!")
 
 
     def recuperer(self):

@@ -1,5 +1,3 @@
-__author__ = 'sidya'
-
 import logging
 from logging.handlers import RotatingFileHandler
 
@@ -50,7 +48,6 @@ class Log(object):
     """
     Log Manager
     """
-
     def __init__(self):
         """
         Define 3 differents log :
