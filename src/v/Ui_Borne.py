@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'borne.ui'
 #
 # Created: Sun Feb  1 14:38:43 2015
-#      by: PyQt4 UI code generator 4.11.3
+# by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -17,11 +17,13 @@ except AttributeError:
 
 try:
     _encoding = QtGui.QApplication.UnicodeUTF8
+
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig, _encoding)
 except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
+
 
 class Ui_Borne(object):
     def setupUi(self, Borne):
@@ -195,7 +197,8 @@ class Ui_Borne(object):
     def retranslateUi(self, Borne):
         Borne.setWindowTitle(_translate("Borne", "Borne", None))
         self.btn_Voiture.setText(_translate("Borne", "Detection Arrivee Voiture", None))
-        self.nomParking.setText(_translate("Borne", "<html><head/><body><p align=\"center\">NomParking</p></body></html>", None))
+        self.nomParking.setText(
+            _translate("Borne", "<html><head/><body><p align=\"center\">NomParking</p></body></html>", None))
         self.box_id.setTitle(_translate("Borne", "Identification", None))
         self.label.setText(_translate("Borne", "Carte Membre ID ", None))
         self.btn_validerID.setText(_translate("Borne", "Valider", None))
@@ -211,7 +214,8 @@ class Ui_Borne(object):
         self.numeroTicketLabel.setText(_translate("Borne", "Numero Ticket :", None))
         self.btn_recuperer.setText(_translate("Borne", "Récupérer Véhicule", None))
         self.pushButton.setText(_translate("Borne", "Payer", None))
-        self.label_aff.setText(_translate("Borne", "<html><head/><body><p align=\"center\">TextLabel</p></body></html>", None))
+        self.label_aff.setText(
+            _translate("Borne", "<html><head/><body><p align=\"center\">TextLabel</p></body></html>", None))
         self.box_garer.setTitle(_translate("Borne", "Se garer", None))
         self.btn_garer.setText(_translate("Borne", "Garer Véhicule", None))
         self.box_service.setTitle(_translate("Borne", "Service (Abonnée seulement)", None))

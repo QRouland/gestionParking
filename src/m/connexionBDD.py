@@ -4,9 +4,11 @@ __author__ = 'sidya'
 
 import sqlite3
 
+
 class connexionBDD:
     __chemin = "m/BDDprojetPython.sq3"
     __sql = "m/table.sql"
+
     def __init__(self):
         try:
             with open(self.__chemin):
@@ -21,9 +23,9 @@ class connexionBDD:
         self.__cur = self.__conn.cursor()
 
 
-    def execute(self, req, param = ()):
+    def execute(self, req, param=()):
         r = None
-        #try:
+        # try:
         r = self.__cur.execute(req, param)
         self.__conn.commit()
         """except Exception as e:
@@ -39,7 +41,7 @@ class connexionBDD:
 
     def initialisationBDD(self):
         with open(self.__sql) as f:
-            sql  = f.read()
+            sql = f.read()
             self.__conn.executescript(sql)
             self.__conn.commit()
 

@@ -1,4 +1,4 @@
-from PyQt4 import QtGui
+from PyQt4 import QtGui, QtCore
 
 from src.m.Parking import Parking, TypePlace
 from src.v.MyQWidget import MyQWidget
@@ -12,6 +12,7 @@ class CreaParking:
     """
     Controleur de cretion de parking
     """
+
     def __init__(self, main):
         self._main = main
         self._main.activity("Debut Creation Parking", self._main.lvl.INFO)
@@ -27,16 +28,11 @@ class CreaParking:
         self._ui.btn_annuler.clicked.connect(self.annuler)
 
         # Validator
-        #self._ui.lineEdit_nbNiv.setValidator(QtGui.QRegExpValidator(QtCore.QRegExp('[0-9]*')))
+        self._ui.lineEdit_nom.setValidator(
+            QtGui.QRegExpValidator(QtCore.QRegExp('^([0-9a-zA-Z\'àâéèêôùûçñãõÀÂÉÈÔÙÛÑÃÕÇ\s-]{2,30})$')))
 
         self._ui.tableWidget.insertRow(self._ui.tableWidget.rowCount())
         self.showWindow()
-
-    def majNbPlaceTotal(self):
-        nb = 0
-        for i in range(0, self._ui.tableWidget.rowCount()):
-            nb += int(self._ui.tableWidget.itemAt(i, 3).text())
-        self._ui.nbPlacesTotal.setText(str(nb))
 
     def addRow(self):
         """
@@ -65,7 +61,7 @@ class CreaParking:
 
         if result == QtGui.QMessageBox.Yes:
             self._main.activity("Annulation Creation Parking", self._main.lvl.INFO)
-            #self._w.hide()
+            self._w.hide()
             self._main.showWindow()
 
     def valider(self):
@@ -73,21 +69,25 @@ class CreaParking:
         Gestion validation de formulaire de creation de parking.
         :return:
         """
-        # try:
-        l = []
-        for i in range(0, self._ui.tableWidget.rowCount()):
-            l.append(TypePlace(None, int(self._ui.tableWidget.item(i, 0).text()),
-                               int(self._ui.tableWidget.item(i, 1).text()),
-                               int(self._ui.tableWidget.item(i, 2).text()),
-                               float(self._ui.tableWidget.item(i, 3).text()),
-                               int(self._ui.tableWidget.item(i, 4).text())))
-        p = Parking(None, self._ui.lineEdit_nom.text(), l)
-        self._main.activity("Ajout:" + str(p), self._main.lvl.INFO)
-        self._w.hide()
-        self._main.showWindow()
-        #except Exception as e:
-        #    self._main.activity("Erreur lors de la creations du Parking \n" + str(e), self._main.lvl.FAIL)
-        #    self.error()
+        if self._ui.lineEdit_nom.text() == "":
+            self._main.activity("Erreur lors de la creations du Parking. Nom Invalide.\n", self._main.lvl.FAIL)
+            self.error("Nom Invalide!")
+        else:
+            try:
+                l = []
+                for i in range(0, self._ui.tableWidget.rowCount()):
+                    l.append(TypePlace(None, int(self._ui.tableWidget.item(i, 0).text()),
+                                       int(self._ui.tableWidget.item(i, 1).text()),
+                                       int(self._ui.tableWidget.item(i, 2).text()),
+                                       float(self._ui.tableWidget.item(i, 4).text()),
+                                       int(self._ui.tableWidget.item(i, 3).text())))
+                p = Parking(None, self._ui.lineEdit_nom.text(), l)
+                self._main.activity("Ajout:" + str(p), self._main.lvl.INFO)
+                self._w.hide()
+                self._main.showWindow()
+            except Exception as e:
+                self._main.activity("Erreur lors de la creations du Parking \n" + str(e), self._main.lvl.FAIL)
+                self.error("Verifiez que votre saisie est valide !")
 
     def showWindow(self):
         """
@@ -95,16 +95,15 @@ class CreaParking:
         :return:
         """
         self._w.show()
-        self.__child = None  # supprime l'eventuel widget enfant
         self._w.focusWidget()  # reprend le focus sur la fenetre
 
-    def error(self):
+    def error(self, msg):
         """
         Qdialog message erreur
         :return:
         """
         QtGui.QMessageBox.warning(self._w,
                                   "Erreur ...",
-                                  "Erreur lors de la création du parking ...")
-        self._w.hide()
-        self._main.showWindow()
+                                  "Erreur lors de la création du parking ...\n" +
+                                  msg
+        )

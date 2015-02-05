@@ -39,39 +39,13 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>200</x>
-     <y>230</y>
-     <width>275</width>
-     <height>25</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_3">
-    <item>
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>Nombre Places Total : </string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="nbPlacesTotal">
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
      <x>30</x>
      <y>100</y>
      <width>521</width>
-     <height>121</height>
+     <height>141</height>
     </rect>
    </property>
    <column>

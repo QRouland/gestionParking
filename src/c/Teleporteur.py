@@ -6,7 +6,7 @@ __author__ = 'sidya'
 class Teleporteur:
     @staticmethod
     def teleporterVoiture(voiture, place):
-        p = Placement(None,voiture, place)
+        p = Placement(None, voiture, place)
         place.prendre()
         return p
 

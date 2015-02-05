@@ -59,8 +59,7 @@ CREATE TABLE voiture (
     idClient VARCHAR(10),
     hauteur INTEGER,
     longueur INTEGER,
-    imma  VARCHAR(10),
-    estDansParking INTEGER(1)
+    imma  VARCHAR(10)
 );
 
 

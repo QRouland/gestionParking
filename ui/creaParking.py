@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'creationParking.ui'
 #
-# Created: Sat Jan 17 15:11:03 2015
+# Created: Thu Feb  5 00:32:25 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -39,20 +39,8 @@ class Ui_CreaParking(object):
         self.btn_valider = QtGui.QPushButton(self.layoutWidget)
         self.btn_valider.setObjectName(_fromUtf8("btn_valider"))
         self.horizontalLayout_2.addWidget(self.btn_valider)
-        self.layoutWidget1 = QtGui.QWidget(CreaParking)
-        self.layoutWidget1.setGeometry(QtCore.QRect(200, 230, 275, 25))
-        self.layoutWidget1.setObjectName(_fromUtf8("layoutWidget1"))
-        self.horizontalLayout_3 = QtGui.QHBoxLayout(self.layoutWidget1)
-        self.horizontalLayout_3.setMargin(0)
-        self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
-        self.label_4 = QtGui.QLabel(self.layoutWidget1)
-        self.label_4.setObjectName(_fromUtf8("label_4"))
-        self.horizontalLayout_3.addWidget(self.label_4)
-        self.nbPlacesTotal = QtGui.QLabel(self.layoutWidget1)
-        self.nbPlacesTotal.setObjectName(_fromUtf8("nbPlacesTotal"))
-        self.horizontalLayout_3.addWidget(self.nbPlacesTotal)
         self.tableWidget = QtGui.QTableWidget(CreaParking)
-        self.tableWidget.setGeometry(QtCore.QRect(30, 100, 521, 121))
+        self.tableWidget.setGeometry(QtCore.QRect(30, 100, 521, 141))
         self.tableWidget.setObjectName(_fromUtf8("tableWidget"))
         self.tableWidget.setColumnCount(5)
         self.tableWidget.setRowCount(0)
@@ -72,21 +60,21 @@ class Ui_CreaParking(object):
         self.btn_rmRow = QtGui.QPushButton(CreaParking)
         self.btn_rmRow.setGeometry(QtCore.QRect(570, 170, 41, 27))
         self.btn_rmRow.setObjectName(_fromUtf8("btn_rmRow"))
-        self.layoutWidget2 = QtGui.QWidget(CreaParking)
-        self.layoutWidget2.setGeometry(QtCore.QRect(180, 20, 291, 56))
-        self.layoutWidget2.setObjectName(_fromUtf8("layoutWidget2"))
-        self.horizontalLayout = QtGui.QHBoxLayout(self.layoutWidget2)
+        self.layoutWidget1 = QtGui.QWidget(CreaParking)
+        self.layoutWidget1.setGeometry(QtCore.QRect(180, 20, 291, 56))
+        self.layoutWidget1.setObjectName(_fromUtf8("layoutWidget1"))
+        self.horizontalLayout = QtGui.QHBoxLayout(self.layoutWidget1)
         self.horizontalLayout.setMargin(0)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.verticalLayout = QtGui.QVBoxLayout()
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-        self.label = QtGui.QLabel(self.layoutWidget2)
+        self.label = QtGui.QLabel(self.layoutWidget1)
         self.label.setObjectName(_fromUtf8("label"))
         self.verticalLayout.addWidget(self.label)
         self.horizontalLayout.addLayout(self.verticalLayout)
         self.verticalLayout_2 = QtGui.QVBoxLayout()
         self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
-        self.lineEdit_nom = QtGui.QLineEdit(self.layoutWidget2)
+        self.lineEdit_nom = QtGui.QLineEdit(self.layoutWidget1)
         self.lineEdit_nom.setObjectName(_fromUtf8("lineEdit_nom"))
         self.verticalLayout_2.addWidget(self.lineEdit_nom)
         self.horizontalLayout.addLayout(self.verticalLayout_2)
@@ -103,8 +91,6 @@ class Ui_CreaParking(object):
         CreaParking.setWindowTitle(_translate("CreaParking", "Creation Parking", None))
         self.btn_annuler.setText(_translate("CreaParking", "Annuler", None))
         self.btn_valider.setText(_translate("CreaParking", "Valider", None))
-        self.label_4.setText(_translate("CreaParking", "Nombre Places Total : ", None))
-        self.nbPlacesTotal.setText(_translate("CreaParking", "TextLabel", None))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("CreaParking", "Hauteur (cm)", None))
         item = self.tableWidget.horizontalHeaderItem(1)
@@ -118,5 +104,4 @@ class Ui_CreaParking(object):
         self.btn_addRow.setText(_translate("CreaParking", "+", None))
         self.btn_rmRow.setText(_translate("CreaParking", "-", None))
         self.label.setText(_translate("CreaParking", "Nom :", None))
-
 

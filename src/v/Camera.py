@@ -8,9 +8,9 @@ __author__ = 'sidya'
 
 
 class Camera:
-    @classmethod
-    def donnerVoiture(self):
+    @staticmethod
+    def donnerVoiture():
         v = Voiture(None, None, random.randint(150, 300), random.randint(100, 200), ''.join(
             random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in
-            range(random.randint(1, 10))),False)
+            range(random.randint(5, 10))))
         return v

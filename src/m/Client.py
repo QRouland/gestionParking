@@ -1,12 +1,14 @@
 import random
 import string
+
 from src.m.connexionBDD import connexionBDD
 
 
 __author__ = 'sidya'
 
+
 class Client:
-    def __init__(self,id, nom=None, prenom=None, adresse=None, typeAbonnement=None):
+    def __init__(self, id, nom=None, prenom=None, adresse=None, typeAbonnement=None):
         if id is None:
             self.__nom = nom
             self.__prenom = prenom
@@ -15,9 +17,9 @@ class Client:
             while True:
                 id = ''.join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for _ in
                              range(random.randint(1, 10)))
-                try :
+                try:
                     Client(id)
-                except IndexError :
+                except IndexError:
                     break
             self.__id = id
             c = connexionBDD()
@@ -26,9 +28,9 @@ class Client:
             c.seDeconnecter()
         else:
             c = connexionBDD()
-            r = c.execute("SELECT * FROM client WHERE idClient='"+str(id)+"'")
+            r = c.execute("SELECT * FROM client WHERE idClient='" + str(id) + "'")
             row = r.fetchone()
-            if row is None :
+            if row is None:
                 raise IndexError("Invalid id")
             c.seDeconnecter()
             self.__id = id
@@ -49,7 +51,7 @@ class Client:
 
     def desabo(self):
         c = connexionBDD()
-        c.execute("DELETE FROM client WHERE idClient ='"+str(id)+"'")
+        c.execute("DELETE FROM client WHERE idClient ='" + str(id) + "'")
         c.seDeconnecter()
 
 
@@ -66,7 +68,7 @@ class Client:
         return self.__id
 
     @property
-    def adr(self,nom, prenom, adresse, typeAbonnement):
+    def adr(self):
         return self.__adresse
 
     @property
@@ -76,10 +78,12 @@ class Client:
     def __str__(self):
         return "[Client :" \
                " id = " + str(self.__id) + ", " \
-               " prenom = " + str(self.__prenom) + ", " \
-               " nom = " + str(self.__nom) + ", " \
-               " adresse = " + str(self.__adresse) + ", " \
-               " typeAbonnement = " + str(self.__typeAbonnement) + "]"
+                                           " prenom = " + str(self.__prenom) + ", " \
+                                                                               " nom = " + str(self.__nom) + ", " \
+                                                                                                             " adresse = " + str(
+            self.__adresse) + ", " \
+                              " typeAbonnement = " + str(self.__typeAbonnement) + "]"
+
 
 class TypeAbonnement:
     ABONNE = 0
