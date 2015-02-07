@@ -1,7 +1,4 @@
 from shutil import copyfile
-
-__author__ = 'sidya'
-
 import sqlite3
 
 

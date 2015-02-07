@@ -1,11 +1,8 @@
 from PyQt4 import QtGui, QtCore
-
-from src.m.Parking import Parking, TypePlace
-from src.v.MyQWidget import MyQWidget
-from src.v.Ui_CreaParking import Ui_CreaParking
-
-
-__author__ = 'sidya'
+from PyQt4.QtGui import QTableWidgetItem
+from src.m.Parking import TypePlace, Parking
+from src.v.MyQt import MyQWidget
+from src.v.Ui_Admin import Ui_CreaParking
 
 
 class CreaParking:
@@ -95,7 +92,6 @@ class CreaParking:
         :return:
         """
         self._w.show()
-        self._w.focusWidget()  # reprend le focus sur la fenetre
 
     def error(self, msg):
         """
@@ -107,3 +103,28 @@ class CreaParking:
                                   "Erreur lors de la création du parking ...\n" +
                                   msg
         )
+
+
+class DetailsPlaces(CreaParking):
+    def __init__(self, main, parking):
+        self.__parking = parking
+        super(DetailsPlaces, self).__init__(main)
+
+        self._ui.lineEdit_nom.setText(parking.nom)
+        for p in parking.typePlaces :
+            row = self._ui.tableWidget.rowCount() - 1
+            if row != 0:
+                self._ui.tableWidget.insertRow(row)
+            self._ui.tableWidget.setItem(row, 0, QTableWidgetItem(str(p.hauteur)))
+            self._ui.tableWidget.setItem(row, 1, QTableWidgetItem(str(p.longueur)))
+            self._ui.tableWidget.setItem(row, 2, QTableWidgetItem(str(p.nb)))
+
+        self._ui.lineEdit_nom.setDisabled(True)
+        self._ui.tableWidget.setDisabled(True)
+        self._ui.btn_annuler.setVisible(False)
+        self._ui.btn_addRow.setVisible(False)
+        self._ui.btn_rmRow.setVisible(False)
+
+    def valider(self):
+        self._w.hide()
+        self._main.showWindow()

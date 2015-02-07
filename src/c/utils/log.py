@@ -1,3 +1,7 @@
+"""
+    Module de gestion de Log
+"""
+
 import logging
 from logging.handlers import RotatingFileHandler
 
@@ -15,7 +19,7 @@ class bcolors:
 
 class lvl:
     """
-    Define constant value for level log
+    Define constant value for level utils
     """
     NOTSET = 0
     DEBUG = 10
@@ -51,10 +55,10 @@ class Log(object):
 
     def __init__(self):
         """
-        Define 3 differents log :
-        activity.log -> all activity
-        warning.log -> only warning
-        error.log -> error
+        Define 3 differents utils :
+        activity.utils -> all activity
+        warning.utils -> only warning
+        error.utils -> error
         Write all message on terminal too
         """
         self.logger = logging.getLogger()
@@ -80,9 +84,9 @@ class Log(object):
 
     def printL(self, pMsg, pLvl):
         """
-        Add color and write in log with an define level
-        pMsg : message to write in log
-        pLvl : level of log message
+        Add color and write in utils with an define level
+        pMsg : message to write in utils
+        pLvl : level of utils message
         """
         if pLvl == lvl.DEBUG:
             pMsg = bcolors.DEBUG + str(pMsg) + bcolors.ENDC

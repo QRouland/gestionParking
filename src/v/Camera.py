@@ -1,11 +1,6 @@
 import random
 import string
-
 from src.m.Voiture import Voiture
-
-
-__author__ = 'sidya'
-
 
 class Camera:
     @staticmethod

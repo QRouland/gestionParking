@@ -1,20 +1,20 @@
 import sys
 
-from PyQt4 import QtGui
+from PyQt4 import QtGui, QtCore
+import datetime
+from src.c.Teleporteur import Teleporteur
 
 from src.c.Borne import Borne
-from src.c.DetailsPlaces import DetailsPlaces
-from src.c.log.log import Log
-from src.c.log.log import lvl
-from src.c.CreaParking import CreaParking
-from src.m.Service import Service
-from src.m.Parking import Parking
-from src.m.Service import TypeService
-from src.m.connexionBDD import connexionBDD
-from src.v.MyQMainWindow import MyQMainWindow
-from src.v.Ui_MainWindow import Ui_MainWindow
+from src.c.Parking import CreaParking, DetailsPlaces
+from src.c.utils.connexionBDD import connexionBDD
+from src.c.utils.log import Log
+from src.c.utils.log import lvl
+from src.m.Abonnement import Client
+from src.m.Parking import Parking, Placement
+from src.m.Service import Service, TypeService
+from src.v.MyQt import MyQMainWindow
+from src.v.Ui_Admin import Ui_MainWindow
 
-__author__ = 'sidya'
 
 
 class Main:
@@ -43,6 +43,7 @@ class Main:
         self.__ui.actionSauvegarder.triggered.connect(self.sauver)
         self.__ui.actionCharger.triggered.connect(self.charger)
         self.__ui.actionQuitter.triggered.connect(self.quitter)
+        self.__ui.btn_modif_livraison.clicked.connect(self.majLivraison)
 
 
 
@@ -105,6 +106,8 @@ class Main:
         self.__ui.comboBox_livraison.clear()
         self.__ui.comboBox_entretien.clear()
         self.__ui.comboBox_maintenance.clear()
+        self.__ui.dateTimeEdit.clear()
+        self.__ui.lieuLineEdit.clear()
         self.__serviceLivraisons = []
         self.__serviceEntretien = []
         self.__serviceMaintenance = []
@@ -113,13 +116,21 @@ class Main:
                 if s.typeService == TypeService.LIVRAISON:
                     self.__serviceLivraisons.append(s)
                     self.__ui.comboBox_livraison.addItem(str(s.info))
+                    time = QtCore.QDateTime(datetime.datetime.fromtimestamp(s.dateService))
+                    self.__ui.dateTimeEdit.setDateTime(time)
+                    self.__ui.lieuLineEdit.setText(str(s.lieu))
+
                 if s.typeService == TypeService.ENTRETIEN:
                     self.__serviceEntretien.append(s)
                     self.__ui.comboBox_entretien.addItem(str(s.info))
                 if s.typeService == TypeService.MAINTENANCE:
                     self.__serviceMaintenance.append(s)
                     self.__ui.comboBox_maintenance.addItem(str(s.info))
-                    #Onglet Stats
+
+        #Onglet Stats
+        self.__ui.labelNbAbo.setText(str(Client.nbAbo()))
+        self.__ui.labelNbSuperAbo.setText(str(Client.nbSuperAbo()))
+        self.__ui.labelMoySta.setText(str(Placement.dureeMoyPlacement()))
 
 
     def doMaintenance(self):
@@ -129,7 +140,7 @@ class Main:
                 s.doService()
                 self.activity("Livraision reussit : " + str(s), self.lvl.INFO)
             except Exception as e:
-                self.activity("Livraision echoue : " + str(e), self.lvl.FAIL)
+                self.activity("Livraision echoue    : " + str(e), self.lvl.FAIL)
                 self.error("Livraision echoué.")
             self.selectParking()
 
@@ -149,10 +160,23 @@ class Main:
             try:
                 s = self.__serviceLivraisons[self.__ui.comboBox_livraison.currentIndex()]
                 s.doService()
+                Teleporteur.teleporterVersSortie(s.placement)
                 self.activity("Livraison reussit : " + str(s), self.lvl.INFO)
             except Exception as e:
                 self.activity("Livraison echoue : " + str(e), self.lvl.FAIL)
                 self.error("Livraison echoué.")
+            self.selectParking()
+
+    def majLivraison(self):
+        if len(self.__serviceLivraisons) > 0:
+            try:
+                s = self.__serviceLivraisons[self.__ui.comboBox_livraison.currentIndex()]
+                s.maj(self.__ui.dateTimeEdit.dateTime().toPyDateTime().timestamp(),
+                      self.__ui.lieuLineEdit.text())
+                self.activity("Maj Livraison reussit : " + str(s), self.lvl.INFO)
+            except Exception as e:
+                self.activity("Maj Livraison echoue : " + str(e), self.lvl.FAIL)
+                self.error("Maj Livraison echoué.")
             self.selectParking()
 
     def creerParking(self):
@@ -239,7 +263,7 @@ class Main:
         Qdialog message erreur
         :return:
         """
-        QtGui.QMessageBox.warning(self._w,
+        QtGui.QMessageBox.warning(self.__widgetCourant,
                                   "Erreur ...",
                                   msg
         )

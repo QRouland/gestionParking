@@ -1,12 +1,3 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'borne.ui'
-#
-# Created: Sun Feb  1 14:38:43 2015
-# by: PyQt4 UI code generator 4.11.3
-#
-# WARNING! All changes made in this file will be lost!
-
 from PyQt4 import QtCore, QtGui
 
 try:
@@ -225,4 +216,3 @@ class Ui_Borne(object):
         self.lieuLabel_2.setText(_translate("Borne", "Lieu", None))
         self.btn_annuler.setText(_translate("Borne", "Annuler", None))
         self.btn_quitter.setText(_translate("Borne", "Quitter", None))
-

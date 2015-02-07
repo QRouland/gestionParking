@@ -17,39 +17,26 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>40</y>
       <width>561</width>
       <height>501</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>Activite</string>
      </attribute>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>10</y>
-        <width>61</width>
-        <height>15</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Activité :</string>
-      </property>
-     </widget>
      <widget class="QListWidget" name="listWidget">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>50</y>
-        <width>431</width>
-        <height>261</height>
+        <x>10</x>
+        <y>10</y>
+        <width>531</width>
+        <height>451</height>
        </rect>
       </property>
      </widget>
@@ -109,7 +96,7 @@
         <item row="3" column="0">
          <widget class="QLabel" name="label_17">
           <property name="text">
-           <string>Places Reserve Super Abo : </string>
+           <string>Places Super Abo : </string>
           </property>
          </widget>
         </item>
@@ -238,7 +225,7 @@
         <x>30</x>
         <y>290</y>
         <width>511</width>
-        <height>111</height>
+        <height>171</height>
        </rect>
       </property>
       <property name="title">
@@ -257,8 +244,8 @@
       <widget class="QPushButton" name="btn_effectuer_livraison">
        <property name="geometry">
         <rect>
-         <x>326</x>
-         <y>70</y>
+         <x>320</x>
+         <y>120</y>
          <width>161</width>
          <height>27</height>
         </rect>
@@ -267,50 +254,113 @@
         <string>Effectuer Livraison</string>
        </property>
       </widget>
+      <widget class="QDateTimeEdit" name="dateTimeEdit">
+       <property name="geometry">
+        <rect>
+         <x>290</x>
+         <y>70</y>
+         <width>194</width>
+         <height>23</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QWidget" name="formLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>70</y>
+         <width>261</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout">
+        <property name="fieldGrowthPolicy">
+         <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="lieuLabel">
+          <property name="text">
+           <string>Lieu</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="lieuLineEdit"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QPushButton" name="btn_modif_livraison">
+       <property name="geometry">
+        <rect>
+         <x>136</x>
+         <y>120</y>
+         <width>141</width>
+         <height>27</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Modifer Livraison </string>
+       </property>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_4">
      <attribute name="title">
       <string>Stats</string>
      </attribute>
-     <widget class="QLabel" name="label_2">
+     <widget class="QWidget" name="formLayoutWidget_2">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>80</y>
-        <width>161</width>
-        <height>16</height>
+        <x>60</x>
+        <y>40</y>
+        <width>461</width>
+        <height>181</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Frequentation par jour</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>110</y>
-        <width>161</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Frequentation par mois</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_4">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>140</y>
-        <width>241</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Duree moyenne de stationnement </string>
-      </property>
+      <layout class="QFormLayout" name="formLayout_2">
+       <item row="0" column="0">
+        <widget class="QLabel" name="nombreAbonnLabel">
+         <property name="text">
+          <string>Nombre Abonné :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="labelNbAbo">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>Nombre Super Abonné : </string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="labelNbSuperAbo">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Durée Moyenne Stationnement :</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLabel" name="labelMoySta">
+         <property name="text">
+          <string>TextLabel</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </widget>

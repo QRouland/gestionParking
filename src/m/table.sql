@@ -50,7 +50,7 @@ CREATE TABLE client (
     idClient VARCHAR(10) PRIMARY KEY,
     nom VARCHAR(20),
     prenom VARCHAR(20),
-    adresse VARCHAR(50),
+    cb VARCHAR(50),
     typeAbonnement INTEGER
 );
 
@@ -71,6 +71,7 @@ CREATE TABLE service (
     dateDemande TIMESTAMP,
     dateService TIMESTAMP DEFAULT NULL,
     dateRealisation TIMESTAMP DEFAULT NULL,
+    lieu VARCHAR(255),
     FOREIGN KEY (idClient) REFERENCES client(idClient),
     FOREIGN KEY (idPlacement) REFERENCES placement(idPlacement)
 );

@@ -1,13 +1,12 @@
 from PyQt4 import QtGui, QtCore
-
 from src.c.Teleporteur import Teleporteur
 from src.m.Parking import Placement
-from src.m.Client import Client
+from src.m.Abonnement import Client
+from src.m.Abonnement import TypeAbonnement
 from src.m.Service import Service, TypeService
-from src.m.Client import TypeAbonnement
 from src.v.Camera import Camera
-from src.v.MyQWidget import MyQWidget
-from src.v.Ui_Borne import Ui_Borne
+from src.v.MyQt import MyQWidget
+from src.v.Ui_User import Ui_Borne
 
 
 __author__ = 'sidya'
@@ -43,10 +42,10 @@ class Borne:
         self.__ui.btn_annuler.clicked.connect(self.nonVoiture)
         self.__ui.btn_validerID.clicked.connect(self.identification)
         self.__ui.btn_valider_abo.clicked.connect(self.abo)
+        self.__ui.btn_desabo.clicked.connect(self.desabo)
         self.__ui.btn_garer.clicked.connect(self.garer)
         self.__ui.btn_recuperer.clicked.connect(self.recuperer)
-
-
+        self.__ui.pushButton.clicked.connect(self.payer)
 
         # Validator
         validatorText = QtGui.QRegExpValidator(QtCore.QRegExp('^([a-zA-Z\'àâéèêôùûçñãõÀÂÉÈÔÙÛÑÃÕÇ\s-]{2,30})$'))
@@ -90,6 +89,7 @@ class Borne:
         self.__ui.box_service.setDisabled(True)
         self.__ui.btn_Voiture.setDisabled(False)
         self.__ui.btn_desabo.setDisabled(True)
+        self.__ui.btn_quitter.setDisabled(False)
 
         self.__ui.nomLineEdit.setText("")
         self.__ui.prenomLineEdit.setText("")
@@ -98,6 +98,12 @@ class Borne:
         self.__ui.lineEdit_id.setText("")
         self.__ui.numeroTicketLineEdit.setText("")
         self.__ui.labIdClient.setText("Non identifier")
+        self.__ui.btn_valider_abo.setText("Valider")
+        self.__ui.checkBox_Maintenance_2.setChecked(False)
+        self.__ui.checkBox_Entretien_2.setChecked(False)
+        self.__ui.checkBox_Livraison_2.setChecked(False)
+        self.__ui.lieuLineEdit_2.setText("")
+        self.__ui.dateTimeEdit.setDateTime(QtCore.QDateTime.currentDateTime())
         Borne.MajBornes()
 
     def newVoiture(self):
@@ -113,6 +119,7 @@ class Borne:
         self.__ui.box_id.setDisabled(False)
         self.__ui.box_recup.setDisabled(True)
         self.__ui.label_aff.setText("Bienvenue !")
+        self.__ui.btn_quitter.setDisabled(True)
 
 
     def identification(self):
@@ -128,6 +135,10 @@ class Borne:
             self.__ui.box_service.setDisabled(False)
             self.__ui.btn_desabo.setDisabled(False)
             self.__v_actuel.setClient(self.__c)
+            self.__ui.nomLineEdit.setText(self.__c.nom)
+            self.__ui.prenomLineEdit.setText(self.__c.prenom)
+            self.__ui.numeroCarteLineEdit.setText(self.__c.cb)
+            self.__ui.btn_valider_abo.setText("Modifier")
             self.__main.activity(self.__nomBorne + " : Mise a jour : " + str(self.__v_actuel), self.__main.lvl.INFO)
             self.__main.activity(self.__nomBorne + " : Identification : " + str(self.__c), self.__main.lvl.INFO)
         except IndexError:
@@ -145,10 +156,16 @@ class Borne:
         :return:
         """
         if self.__c != None:
-            self.__c.maj(self.__ui.nomLineEdit,
-                         self.__ui.prenomLineEdit,
-                         "",
-                         TypeAbonnement.SUPER_ABONNE)
+            if self.__ui.checkBox.isChecked():
+                self.__c.maj(str(self.__ui.nomLineEdit.text()),
+                        str(self.__ui.prenomLineEdit.text()),
+                        str(self.__ui.numeroCarteLineEdit.text()),
+                        TypeAbonnement.SUPER_ABONNE)
+            else:
+                self.__c.maj(str(self.__ui.nomLineEdit.text()),
+                        str(self.__ui.prenomLineEdit.text()),
+                        str(self.__ui.numeroCarteLineEdit.text()),
+                        TypeAbonnement.ABONNE)
             self.__ui.label_aff.setText("Mise a jour de votre abonnement effectué")
             self.__main.activity(self.__nomBorne + " : Mise à jour : " + str(self.__c), self.__main.lvl.INFO)
         else:
@@ -156,18 +173,31 @@ class Borne:
                 self.__c = Client(None,
                                   str(self.__ui.nomLineEdit.text()),
                                   str(self.__ui.prenomLineEdit.text()),
-                                  "",
+                                  str(self.__ui.numeroCarteLineEdit.text()),
                                   TypeAbonnement.SUPER_ABONNE)
             else:
                 self.__c = Client(None,
                                   str(self.__ui.nomLineEdit.text()),
                                   str(self.__ui.prenomLineEdit.text()),
-                                  "",
+                                  str(self.__ui.numeroCarteLineEdit.text()),
                                   TypeAbonnement.ABONNE)
-                self.identification()
+
                 self.__main.activity(self.__nomBorne + " : Ajout  : " + str(self.__c), self.__main.lvl.INFO)
-                self.__ui.label_aff.setText("Votre id membre est : " + self.__c.id)
             self.__ui.lineEdit_id.setText(self.__c.id)
+            self.identification()
+            self.__ui.label_aff.setText("Votre id membre est : " + self.__c.id)
+
+    def desabo(self):
+        self.__c.desabo()
+        self.__c = None
+        self.__ui.nomLineEdit.setText("")
+        self.__ui.prenomLineEdit.setText("")
+        self.__ui.numeroCarteLineEdit.setText("")
+        self.__ui.lineEdit_id.setText("")
+        self.__ui.checkBox.setChecked(False)
+        self.__ui.box_id.setDisabled(False)
+        self.__ui.box_service.setDisabled(True)
+
 
 
     def garer(self):
@@ -181,12 +211,23 @@ class Borne:
             if p is not None:
                 placement = Teleporteur.teleporterVoiture(self.__v_actuel, p)
         else:
-            if self.__c.abonnement != TypeAbonnement.SUPER_ABONNE:
-                p = self.__parking.recherchePlace(self.__v_actuel)
-                if p is not None:
-                    placement = Teleporteur.teleporterVoiture(self.__v_actuel, p)
+            p = self.__parking.recherchePlace(self.__v_actuel)
+            if p is not None:
+                placement = Teleporteur.teleporterVoiture(self.__v_actuel, p)
+
+            # Si superAbo on cree une place sur mesure dans le cas ou acun est valide
+            if p is None and self.__c.abonnement == TypeAbonnement.SUPER_ABONNE:
+                placement = Teleporteur.teleporterVoitureSuperAbonne(self.__v_actuel, self.__parking)
+                p = placement.place
+                self.__main.activity(self.__nomBorne + " : Nouveau place SuperAbo  : " + str(p), self.__main.lvl.INFO)
+
+            # Creation des service
+            if p is not None:
+                try :
                     if self.__ui.checkBox_Livraison_2.isChecked():
-                        s = Service(None, self.__c, placement, TypeService.LIVRAISON)
+                        s = Service(None, self.__c, placement, TypeService.LIVRAISON,
+                                    self.__ui.dateTimeEdit.dateTime().toPyDateTime().timestamp(),
+                                    self.__ui.lieuLineEdit_2.text())
                         self.__main.activity(self.__nomBorne + " : Nouveau  : " + str(s), self.__main.lvl.INFO)
                     if self.__ui.checkBox_Entretien_2.isChecked():
                         s = Service(None, self.__c, placement, TypeService.ENTRETIEN)
@@ -194,12 +235,13 @@ class Borne:
                     if self.__ui.checkBox_Maintenance_2.isChecked():
                         s = Service(None, self.__c, placement, TypeService.MAINTENANCE)
                         self.__main.activity(self.__nomBorne + " : Nouveau  : " + str(s), self.__main.lvl.INFO)
-            else:
-                placement = Teleporteur.teleporterVoitureSuperAbonne(self.__v_actuel, self.__parking)
+                except Exception :
+                    self.__main.activity(self.__nomBorne + " : Echec creation service : " + str(s), self.__main.lvl.FAIL)
+                    self.error("Erreur lors de la creation des Services")
         if placement is not None:
             self.nonVoiture()
-            self.ticketDepot(placement.id)
             self.__main.activity(self.__nomBorne + " : Nouveau  : " + str(placement), self.__main.lvl.INFO)
+            self.ticketDepot(placement.id)
         else:
             self.__ui.label_aff.setText("Aucune Place Correspondante. Devenez Super Abonné!")
             self.__main.activity(self.__nomBorne + " : Pas de place dispo pour " + str(self.__v_actuel),
@@ -219,13 +261,31 @@ class Borne:
             self.__main.activity(self.__nomBorne + " :  Mauvais numero de ticket", self.__main.lvl.INFO)
         try:
             Teleporteur.teleporterVersSortie(p)
-        except  Exception:
-            self.__ui.label_aff.setText("Voiture déjà recuperé")
+        except  Exception as e :
+            self.__ui.label_aff.setText("Voiture déjà recuperée")
             self.__main.activity(self.__nomBorne + " :  Recuperation déjà effectué : " + str(p), self.__main.lvl.INFO)
+        if p.place.estSuperAbo :
+            p.place.supprimer()
+            self.__main.activity(self.__nomBorne + " : Suppresion place SuperAbo  : " , self.__main.lvl.INFO)
         if p is not None:
-            self.nonVoiture()
-            self.ticketRetrait(p, Service.getAllServicePlacement(p))
-            self.__main.activity(self.__nomBorne + " : Recuperation  : " + str(p), self.__main.lvl.INFO)
+            if p.voiture.client != "NULL":
+                self.ticketRetrait(p, Service.getAllServicePlacement(p))
+                self.__main.activity(self.__nomBorne + " : Recuperation Abo : " + str(p), self.__main.lvl.INFO)
+                self.nonVoiture()
+            else:
+                self.__placementAPayer = p
+                self.blockAll()
+                self.__ui.box_recup.setDisabled(False)
+                self.__ui.numeroTicketLineEdit.setDisabled(True)
+                self.__ui.btn_quitter.setDisabled(True)
+                self.__ui.pushButton.setDisabled(False)
+                self.__ui.numeroTicketLineEdit.setDisabled(True)
+
+
+    def payer(self):
+        self.ticketRetrait(self.__placementAPayer, Service.getAllServicePlacement(self.__placementAPayer))
+        self.__main.activity(self.__nomBorne + " : Recuperation Anonyme : " + str(self.__placementAPayer), self.__main.lvl.INFO)
+        self.nonVoiture()
 
     def ticketDepot(self, id):
         QtGui.QMessageBox.information(self.__w,
@@ -249,13 +309,13 @@ class Borne:
                     name = "Entretien"
                 else:
                     name = "Autre Service"
-
-                if service.estRealiser():
+                if service.estRealise:
                     s += "\nService : " + name + " + 2€"
                 else:
+                    service.nonRealise()
                     s += "\nNous n'avons pas pu réaliser le service" + name + "."
                     s += "\nVeuillez nous excuser de la gène ocassionée."
-            s += "Le Montant sera débiter automatiquement sur votre compte."
+            s += "\nLe Montant sera débiter automatiquement sur votre compte."
             s += "\nMerci de votre confiance! Bonne journée !"
         QtGui.QMessageBox.information(self.__w,
                                       "Ticket",
@@ -269,8 +329,6 @@ class Borne:
         :return:
         """
         self.__w.show()
-        self.__child = None  # supprime l'eventuel widget enfant
-        self.__w.focusWidget()  # reprend le focus sur la fenetre
 
     def quitter(self):
         """
@@ -280,7 +338,6 @@ class Borne:
         self.__main.activity(self.__nomBorne + " :  Quitter", self.__main.lvl.INFO)
         self.__main.showWindow()
 
-
     def error(self, msg):
         """
         Qdialog message erreur
@@ -288,5 +345,6 @@ class Borne:
         """
         QtGui.QMessageBox.warning(self._w,
                                   "Erreur ...",
+                                  "Erreur lors de la création du parking ...\n" +
                                   msg
         )

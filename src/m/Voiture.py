@@ -1,10 +1,17 @@
-from src.m.Client import Client
-from src.m.connexionBDD import connexionBDD
+"""
+    Module qui implémente les classes representants d'une voiture de DreamPark.
+"""
+from src.c.utils.connexionBDD import connexionBDD
+from src.m.Abonnement import Client
 
-__author__ = 'sidya'
-
-
+## Representation d'une Voiture de DreamPark
 class Voiture:
+    ## Constucteur Voiture
+    # @param id Si None : Cree une Voiture dans la BD Sinon : tentative de récupération de la Voiture avec cet id dans la bd
+    # @param client Si creation Client qui posséde la Voiture
+    # @param longueur Si creation longueur de la Voiture
+    # @param hauteur Si creation hauteur de la Voiture
+    # @param imma Si creation imma de la Voiture
     def __init__(self, id, client=None, longueur=None, hauteur=None, imma=None):
         if id is None:
             if client is None:
@@ -37,38 +44,44 @@ class Voiture:
             self.__hauteur = row["hauteur"]
             self.__imma = row["imma"]
 
+    ## Met a jour la possesion d'un voiture par un Client
+    # @param client Client qui posséde la voiture
     def setClient(self, client):
         self.__client = client
         c = connexionBDD()
         c.execute("UPDATE voiture SET idClient = '" + str(client.id) + "' WHERE idVoiture='" + str(self.id) + "'")
         c.seDeconnecter()
 
-
+    ## propriete : id Voiture
     @property
     def id(self):
         return self.__id
 
+    ## propriete : hauteur Voiture
     @property
     def hauteur(self):
         return self.__hauteur
 
+    ## propriete : longueur Voiture
     @property
     def longueur(self):
         return self.__longueur
 
+    ## propriete : immatriculation Voiture
     @property
     def immatriculation(self):
         return self.__imma
 
+    ## propriete : Client possedant Voiture
     @property
     def client(self):
         return self.__client
 
+    ## Representation d'une Voiture en chaine
     def __str__(self):
         return "[Voiture :" \
-               " id = " + str(self.__id) + ", " \
-                                           " client = " + str(self.__client) + ", " \
-                                                                               " longueur = " + str(
-            self.__longueur) + ", " \
-                               " hauteur = " + str(self.__hauteur) + ", " \
-                                                                     " imma = " + str(self.__imma) + "]"
+               " id = " + str(self.__id) + ", "+\
+               " client = " + str(self.__client) + ", " +\
+               " longueur = " + str(self.__longueur) + ", " +\
+               " hauteur = " + str(self.__hauteur) + ", " +\
+               " imma = " + str(self.__imma) + "]"

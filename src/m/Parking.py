@@ -1,22 +1,22 @@
+"""
+    Module qui implémente les classes representants un parking de DreamPark.
+"""
 import random
 import string
 import time
-import random
-import string
-import time
+from datetime import datetime
 
+from src.c.utils.connexionBDD import connexionBDD
 from src.m.Voiture import Voiture
-from src.m.connexionBDD import connexionBDD
-from src.m.Voiture import Voiture
-from src.m.connexionBDD import connexionBDD
 
 
-__author__ = 'sidya'
 
-
+## Representation d'un parking de DreamPark
 class Parking:
     parkings = []
 
+    ## Retourne un objet parking correspondant à id
+    # @param id id du Parking a retourner
     @staticmethod
     def get(id):
         if len(Parking.parkings) == 0:
@@ -25,6 +25,7 @@ class Parking:
             if p.id == id:
                 return p
 
+    ## Retourne tout les Parking actif present dans la bd
     @staticmethod
     def getAllActif():
         if len(Parking.parkings) == 0:
@@ -36,6 +37,8 @@ class Parking:
                 Parking(row["idParking"], row["nom"], None)
         return Parking.parkings
 
+    ## Supprime un parking
+    # @param parking L'objet parking a supprimer
     @staticmethod
     def remove(parking):
         Parking.parkings.remove(parking)
@@ -43,11 +46,15 @@ class Parking:
         c.execute("UPDATE parking SET actif = 0 WHERE idParking='" + str(parking.id) + "'")
         c.seDeconnecter()
 
+    ## Supprime les parkings present dans la mémoire vive (pas dans la bd)
     @staticmethod
     def removeAllRam():
         Parking.parkings = []
 
-
+    ## Constructeur du Parking
+    # @param id Si None : Cree un Parking dans la BD Sinon : tentative de récupération du Parking avec cet id dans la bd
+    # @param nom : Si creation nom du parking
+    # @param listeTypePlace : Si creation Liste des TypePlace du parking
     def __init__(self, id, nom=None, listeTypePlace=None):
         self.__nom = nom
         if id is None:
@@ -69,43 +76,56 @@ class Parking:
             self.__id = id
         self.parkings.append(self)
 
+    ## Propriete : id du Parking
     @property
     def id(self):
         return self.__id
 
+    ## propriete : nom du Parking
     @property
     def nom(self):
         return self.__nom
 
+    ## propriete : nombre de Place du Parking
     @property
     def nbPlaces(self):
         return Place.nbPlaceParking(self.__id)
 
+    ## propriete : nombre de Place libres du Parking
     @property
     def nbPlacesLibresParking(self):
         return Place.nbPlaceLibreParking(self.__id)
 
+    ## propriete : nombre de Place super abo
     @property
     def nbSuperAbo(self):
         return Place.nbSuperAbo(self.__id)
 
+    ## Recherche une place pour une voiture
+    # @param voiture voiture pour laquel on recherche la place
+    # @return Place Si touvé : Place sinon : None
     def recherchePlace(self, voiture):
-        """
-        Permet de rechercher une place valide pour une voiture
-        :param voiture: Voiture
-        :return: Place
-        """
         return Place.placeValide(self.__id, voiture)
 
-    def addPlaceSuperAbo(self, parking):
-        return Place(None, parking, None, None, False, True)
+    ## Ajout d'une place surmesure pour super abo
+    # @param parking le parking ou il faut ajouter la place
+    def addPlaceSuperAbo(self):
+        return Place(None, self, None, None, False, True)
 
+    ## Representation du Parking en chaine
     def __str__(self):
         return "[Parking : nom = " + self.__nom + "]"
 
-
+## Representation d'une place de DreamPark
 class Place:
-    def __init__(self, id=None, parking=None, typePlace=None, numero=None, estLibre=True, estSuperAbo=False):
+    ## Contructeur de Place
+    # @param id Si None : creation de la Place dans la bd Sinon : tentative de récupération de la Place avec cet id dans la bd
+    # @param parking Si creation : le Parking ou est creer la Place
+    # @param typePlace Si creation : le TypePlace de Place
+    # @param numero Si creation : le numero de Place
+    # @param estLibre Si creation : Si la Place est libre ou non
+    # @param estSuperAbo Si creation : Si la Place est superAbo ou non
+    def __init__(self, id, parking=None, typePlace=None, numero=None, estLibre=True, estSuperAbo=False):
         if id is None:
             self.__parking = parking
             self.__typePlace = typePlace
@@ -137,17 +157,10 @@ class Place:
             self.__estSuperAbo = row["estSuperAbo"]
             self.__id = id
 
-    @property
-    def id(self):
-        return self.__id
 
 
+    ## Rend la Place la indisponible
     def prendre(self):
-        """
-        Rend la place indisponible
-        :param Placement:
-        :return:
-        """
         if (self.__estLibre == False):
             raise Exception("Place déjà prise")
         self.__estLibre = False
@@ -155,31 +168,49 @@ class Place:
         c.execute("UPDATE place SET estLibre = 0 WHERE idPlace ='" + str(self.__id) + "'")
         c.seDeconnecter()
 
+    ## Rend la Place disponible
     def liberer(self):
-        """
-        Libere une place non dispo
-        :return:
-        """
         if (self.__estLibre == True):
             raise Exception("Impossible de liberer une place vide")
         self.__estLibre = True
         c = connexionBDD()
-        c.execute(
-            "UPDATE place SET estLibre = 1, fin ='" + str(time.time()) + "' WHERE idPlace ='" + str(self.__id) + "'")
+        c.execute("UPDATE place SET estLibre = 1 WHERE idPlace ='" + str(self.__id) + "'")
         c.seDeconnecter()
 
+    ## Suppression place de la bd
+    def supprimer(self):
+        c = connexionBDD()
+        c.execute("DELETE FROM place idPlace ='" + str(self.__id) + "'")
+        c.seDeconnecter()
+
+    ## propriete : id de la Place
+    @property
+    def id(self):
+        return self.__id
+
+    ## propriete : identification etage : numero de la Place
     @property
     def identification(self):
         return str(chr(self.__typePlace.niveau + ord('A')) + ":" + str(self.__numero))
 
+    ## propriete : True si la place est Place
     @property
     def estlibre(self):
         return self.__estLibre
 
+    ## propriete : typePlace de la Place
     @property
     def typePlace(self):
         return self.__typePlace
 
+    ## propriete : typePlace de la Place
+    @property
+    def estSuperAbo(self):
+        return self.__estSuperAbo
+
+    ## Retourne les nombre de place du Parking d'id idParking
+    # @param idParking l'id du Parking
+    # @return le nombre de Place
     @staticmethod
     def nbPlaceParking(idParking):
         c = connexionBDD()
@@ -188,6 +219,9 @@ class Place:
         c.seDeconnecter()
         return row[0]
 
+    ## Retourne les nombre de place libre du Parking d'id idParking
+    # @param idParking l'id du Parking
+    # @return le nombre de Place libre
     @staticmethod
     def nbPlaceLibreParking(idParking):
         c = connexionBDD()
@@ -196,6 +230,9 @@ class Place:
         c.seDeconnecter()
         return row[0]
 
+    ## Retourne les nombre de place superAbo du Parking d'id idParking
+    # @param idParking l'id du Parking
+    # @return le nombre de Place superAbo
     @staticmethod
     def nbSuperAbo(idParking):
         c = connexionBDD()
@@ -204,6 +241,10 @@ class Place:
         c.seDeconnecter()
         return row[0]
 
+    ## Retourne si une Place valide pour une Voiture dans un parking
+    # @param idParking id du Parking ou est recherché la place
+    # @param voiture Voiture pour laquelle est recherché la place
+    # @return Si non trouve : None. Sinon : Place une place valide
     @staticmethod
     def placeValide(idPArking, voiture):
         c = connexionBDD()
@@ -220,17 +261,25 @@ class Place:
                          row["numero"], bool(row["estLibre"]), bool(row["estSuperAbo"]))
 
 
+    ## Representation d'une Place en chaine
     def __str__(self):
-        return "[Place : " \
-               "Parking = " + str(self.__parking) + "," \
-                                                    "typePlace = " + str(self.__typePlace) + "," \
-                                                                                             "numero = " + str(
-            self.__numero) + "," \
-                             "estLibre = " + str(self.__estLibre) + "," \
-                                                                    "estSuperAbo = " + str(self.__estSuperAbo) + "]" \
- \
- \
+        return "[Place : " +\
+               "Parking = " + str(self.__parking) + ","+\
+               "typePlace = " + str(self.__typePlace) + ","+\
+               "numero = " + str(self.__numero) + ","+\
+               "estLibre = " + str(self.__estLibre) + ","+\
+               "estSuperAbo = " + str(self.__estSuperAbo) + "]"
+
+
+## Representation d'un TypePlace de DreamPark
 class TypePlace:
+    ## Constructeur de TypePlace
+    # @param id Si None : creation du TypePlace dans la bd Sinon : tentative de récupération du TypePlace avec cet id dans la bd
+    # @param longueur Longueur de la Place en cm
+    # @param hauteur Hauteur de la Place en cm
+    # @param nombre Nombre de Place de ce type
+    # @param prix Le prix pur ce type de Place
+    # @param niveau Le niveau ou se trouve les Place
     def __init__(self, id, longueur=None, hauteur=None, nombre=None, prix=None, niveau=None):
         if id is None:
             self.__longueur = longueur
@@ -257,50 +306,53 @@ class TypePlace:
             self.__niveau = row["niveau"]
             self.__id = id
 
+    ## propriete : id du Typeplace
     @property
     def id(self):
         return self.__id
 
+    ## propriete : longueur du Typeplace
     @property
     def longueur(self):
         return self.__longueur
 
+    ## propriete : hauteur du Typeplace
     @property
     def hauteur(self):
         return self.__hauteur
 
+    ## propriete : nombre du Typeplace
     @property
     def nombre(self):
         return self.__nombre
 
+    ## propriete : prix du Typeplace
     @property
     def prix(self):
         return self.__prix
 
+    ## propriete : niveau du Typeplace
     @property
     def niveau(self):
         return self.__niveau
 
+    ## Representation du TypePlace en chaine
     def __str__(self):
         return "[TypePlace : " \
-               "id = " + str(self.__id) + "," \
-                                          "longueur = " + str(self.__longueur) + "," \
-                                                                                 "hauteur = " + str(
-            self.__hauteur) + "," \
-                              "nombre = " + str(self.__nombre) + "," \
-                                                                 "prix = " + str(self.__prix) + "," \
-                                                                                                "niveau = " + str(
-            self.__niveau) + "]"
+               "id = " + str(self.__id) + ","+\
+               "longueur = " + str(self.__longueur) + ","+\
+               "hauteur = " + str(self.__hauteur) + ","+\
+               "nombre = " + str(self.__nombre) + "," +\
+               "prix = " + str(self.__prix) + ","+\
+               "niveau = " + str(self.__niveau) + "]"
 
-
+## Representation d'un Placement de DreamPark
 class Placement:
-    def __init__(self, id, voiture=None, place=None, debut=None, fin=None):
-        """
-        Creer un placement
-        :param voiture: Voiture
-        :param place: Place
-        :return:
-        """
+    ## Constructeur Placement
+    # @param id Si None : creation du Placement dans la bd Sinon : tentative de récupération du Placement avec cet id dans la bd
+    # @param voiture Si creation : Voiture lié au Placement
+    # @param place Si creation : Place  lié au Placement
+    def __init__(self, id, voiture=None, place=None):
         if id is None:
             self.__voiture = voiture
             self.__place = place
@@ -328,33 +380,47 @@ class Placement:
             self.__voiture = Voiture(row["idVoiture"])
             self.__place = Place(row["idPlace"])
             self.__id = id
-            self.__debut = debut
-            self.__fin = fin
+            self.__debut = row["debut"]
+            self.__fin = row["fin"]
 
+    ## Propriete : id du Placement
     @property
     def id(self):
         return self.__id
 
+    ## Propriete : place liée du Placement
     @property
     def place(self):
         return self.__place
 
+    ## Propriete : voiture liée du Placement
     @property
     def voiture(self):
         return self.__voiture
 
+    ## Retourne la durée moyenne des placement
+    # @return duree moyenne placement
+    @staticmethod
+    def dureeMoyPlacement():
+        c = connexionBDD()
+        r= c.execute("SELECT AVG(FIN - DEBUT) AS duree FROM placement")
+        nb = r.fetchone()[0]
+        c.seDeconnecter()
+        return nb
+
+    ## Fin du placement (depart voiture)
     def end(self):
         self.__fin = time.time()
         c = connexionBDD()
-        c.execute("UPDATE placement SET fin='" + str(self.__fin) + "' WHERE idPlacement='" + str(id) + "'")
+        c.execute("UPDATE placement SET fin='" + str(self.__fin) + "' WHERE idPlacement='" + str(self.__id) + "'")
         c.seDeconnecter()
         self.__place.liberer()
 
+    ## Representation du Placement en chaine
     def __str__(self):
         return "[Placement : " \
-               "id = " + str(self.__id) + "," \
-                                          "Voiture = " + str(self.__voiture) + "," \
-                                                                               "Place = " + str(self.__place) + "," \
-                                                                                                                "Debut = " + str(
-            self.__debut) + "," \
-                            "Fin = " + str(self.__fin) + "]"
+               "id = " + str(self.__id) + "," +\
+               "Voiture = " + str(self.__voiture) + ","+\
+               "Place = " + str(self.__place) + "," +\
+               "Debut = " + str( self.__debut) + "," +\
+               "Fin = " + str(self.__fin) + "]"
