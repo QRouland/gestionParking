@@ -1,0 +1,171 @@
+.TH "src.m.Parking.Place" 3 "Sun Feb 8 2015" "Version 1.0" "Dream Park" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src.m.Parking.Place \- Representation d'une place de DreamPark\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.RI "\fIConstructeur de \fBPlace\fP\&. \fP"
+.ti -1c
+.RI "def \fBprendre\fP (self)"
+.br
+.RI "\fIRend la \fBPlace\fP indisponible\&. \fP"
+.ti -1c
+.RI "def \fBliberer\fP (self)"
+.br
+.RI "\fIRend la \fBPlace\fP disponible\&. \fP"
+.ti -1c
+.RI "def \fBsupprimer\fP (self)"
+.br
+.RI "\fISuppression place de la bd\&. \fP"
+.ti -1c
+.RI "def \fBid\fP (self)"
+.br
+.RI "\fIpropriete : id de la \fBPlace\fP \fP"
+.ti -1c
+.RI "def \fBidentification\fP (self)"
+.br
+.RI "\fIpropriete : identification etage : numero de la \fBPlace\fP \fP"
+.ti -1c
+.RI "def \fBestlibre\fP (self)"
+.br
+.RI "\fIpropriete : True si la place est \fBPlace\fP \fP"
+.ti -1c
+.RI "def \fBtypePlace\fP (self)"
+.br
+.RI "\fIpropriete : typePlace de la \fBPlace\fP \fP"
+.ti -1c
+.RI "def \fBestSuperAbo\fP (self)"
+.br
+.RI "\fIpropriete : typePlace de la \fBPlace\fP \fP"
+.ti -1c
+.RI "def \fB__str__\fP (self)"
+.br
+.RI "\fIRepresentation d'une \fBPlace\fP en chaine\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fBnbPlaceParking\fP (idParking)"
+.br
+.RI "\fIRetourne les nombre de place du \fBParking\fP d'id idParking\&. \fP"
+.ti -1c
+.RI "def \fBnbPlaceLibreParking\fP (idParking)"
+.br
+.RI "\fIRetourne les nombre de place libre du \fBParking\fP d'id idParking\&. \fP"
+.ti -1c
+.RI "def \fBnbSuperAbo\fP (idParking)"
+.br
+.RI "\fIRetourne les nombre de place superAbo du \fBParking\fP d'id idParking\&. \fP"
+.ti -1c
+.RI "def \fBplaceValide\fP (idPArking, voiture)"
+.br
+.RI "\fIRetourne si une \fBPlace\fP valide pour une \fBVoiture\fP dans un parking\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Representation d'une place de DreamPark\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def src\&.m\&.Parking\&.Place\&.__init__ ( self,  id,  parking = \fCNone\fP,  typePlace = \fCNone\fP,  numero = \fCNone\fP,  estLibre = \fCTrue\fP,  estSuperAbo = \fCFalse\fP)"
+
+.PP
+Constructeur de \fBPlace\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP Si None : creation de la \fBPlace\fP dans la bd Sinon : tentative de récupération de la \fBPlace\fP avec cet id dans la bd 
+.br
+\fIparking\fP Si creation : le \fBParking\fP ou est creer la \fBPlace\fP 
+.br
+\fItypePlace\fP Si creation : le \fBTypePlace\fP de \fBPlace\fP 
+.br
+\fInumero\fP Si creation : le numero de \fBPlace\fP 
+.br
+\fIestLibre\fP Si creation : Si la \fBPlace\fP est libre ou non 
+.br
+\fIestSuperAbo\fP Si creation : Si la \fBPlace\fP est superAbo ou non 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "def src\&.m\&.Parking\&.Place\&.nbPlaceLibreParking ( idParking)\fC [static]\fP"
+
+.PP
+Retourne les nombre de place libre du \fBParking\fP d'id idParking\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidParking\fP l'id du \fBParking\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+le nombre de \fBPlace\fP libre 
+.RE
+.PP
+
+.SS "def src\&.m\&.Parking\&.Place\&.nbPlaceParking ( idParking)\fC [static]\fP"
+
+.PP
+Retourne les nombre de place du \fBParking\fP d'id idParking\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidParking\fP l'id du \fBParking\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+le nombre de \fBPlace\fP 
+.RE
+.PP
+
+.SS "def src\&.m\&.Parking\&.Place\&.nbSuperAbo ( idParking)\fC [static]\fP"
+
+.PP
+Retourne les nombre de place superAbo du \fBParking\fP d'id idParking\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidParking\fP l'id du \fBParking\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+le nombre de \fBPlace\fP superAbo 
+.RE
+.PP
+
+.SS "def src\&.m\&.Parking\&.Place\&.placeValide ( idPArking,  voiture)\fC [static]\fP"
+
+.PP
+Retourne si une \fBPlace\fP valide pour une \fBVoiture\fP dans un parking\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidParking\fP id du \fBParking\fP ou est recherché la place 
+.br
+\fIvoiture\fP \fBVoiture\fP pour laquelle est recherché la place 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Si non trouve : None\&. Sinon : \fBPlace\fP une place valide 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dream Park from the source code\&.

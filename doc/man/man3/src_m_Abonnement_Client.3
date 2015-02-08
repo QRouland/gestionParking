@@ -1,0 +1,130 @@
+.TH "src.m.Abonnement.Client" 3 "Sun Feb 8 2015" "Version 1.0" "Dream Park" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src.m.Abonnement.Client \- Représentation d'un \fBClient\fP de DreamPark\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.RI "\fIConstructeur du \fBClient\fP\&. \fP"
+.ti -1c
+.RI "def \fBmaj\fP (self, \fBnom\fP, \fBprenom\fP, \fBcb\fP, typeAbonnement)"
+.br
+.RI "\fIMise a jour du \fBClient\fP\&. \fP"
+.ti -1c
+.RI "def \fBdesabo\fP (self)"
+.br
+.RI "\fIDesabonne le \fBClient\fP en le supprimant\&. \fP"
+.ti -1c
+.RI "def \fBprenom\fP (self)"
+.br
+.RI "\fIPropriete : prenom du \fBClient\fP\&. \fP"
+.ti -1c
+.RI "def \fBnom\fP (self)"
+.br
+.RI "\fIPropriete : nom du \fBClient\fP\&. \fP"
+.ti -1c
+.RI "def \fBid\fP (self)"
+.br
+.RI "\fIPropriete : id du \fBClient\fP\&. \fP"
+.ti -1c
+.RI "def \fBcb\fP (self)"
+.br
+.RI "\fIPropriete : cb du \fBClient\fP\&. \fP"
+.ti -1c
+.RI "def \fBabonnement\fP (self)"
+.br
+.RI "\fIPropriete : abonnement du \fBClient\fP\&. \fP"
+.ti -1c
+.RI "def \fB__str__\fP (self)"
+.br
+.RI "\fIRepresentation du \fBClient\fP en chaine\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fBnbSuperAbo\fP ()"
+.br
+.RI "\fIRetourne le nombre de super abonné \fP"
+.ti -1c
+.RI "def \fBnbAbo\fP ()"
+.br
+.RI "\fIRetourne le nombre d'abonné \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Représentation d'un \fBClient\fP de DreamPark\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def src\&.m\&.Abonnement\&.Client\&.__init__ ( self,  id,  nom = \fCNone\fP,  prenom = \fCNone\fP,  cb = \fCNone\fP,  typeAbonnement = \fCNone\fP)"
+
+.PP
+Constructeur du \fBClient\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP Si None : Création du \fBClient\fP dans la bd a l'aide des autres parametres\&. Sinon : tentative de récupération du client avec cet id dans la bd 
+.br
+\fInom\fP nom du \fBClient\fP si creation 
+.br
+\fIprenom\fP prenom du \fBClient\fP si creation 
+.br
+\fIcb\fP cb du \fBClient\fP si creation 
+.br
+\fItypeAbonnement\fP typeabonnement du client si creation 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "def src\&.m\&.Abonnement\&.Client\&.maj ( self,  nom,  prenom,  cb,  typeAbonnement)"
+
+.PP
+Mise a jour du \fBClient\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInom\fP nouveau nom 
+.br
+\fIprenom\fP nouveau prenom 
+.br
+\fIcb\fP nouveau cb 
+.br
+\fItypeAbonnement\fP nouveau \fBTypeAbonnement\fP 
+.RE
+.PP
+
+.SS "def src\&.m\&.Abonnement\&.Client\&.nbAbo ()\fC [static]\fP"
+
+.PP
+Retourne le nombre d'abonné 
+.PP
+\fBReturns:\fP
+.RS 4
+nombre d'abonné 
+.RE
+.PP
+
+.SS "def src\&.m\&.Abonnement\&.Client\&.nbSuperAbo ()\fC [static]\fP"
+
+.PP
+Retourne le nombre de super abonné 
+.PP
+\fBReturns:\fP
+.RS 4
+nombre de super abonné 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dream Park from the source code\&.

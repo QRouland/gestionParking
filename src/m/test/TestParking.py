@@ -40,7 +40,7 @@ class TestParking:
 
 ## Test Place
 class TestPlace:
-    ## Test intanciation
+    ## Test instanciation
     def TestPlace(self):
         t1 = TypePlace(None, 220, 200, 4, 2.5, 1)
         parking = Parking(None, "test", [t1])
@@ -76,7 +76,7 @@ class TestPlace:
 
 ## Test Types Places
 class TestTypePlace:
-    ## Test Istanciation
+    ## Test Instanciation
     def TestTypePlace(self):
         # Creation
         t = TypePlace(None, 220, 200, 4, 2.5, 1)

@@ -1,0 +1,9 @@
+digraph "src/c/log" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_3b19ecf29356981f494745fbef7e56bf {
+    graph [ bgcolor="#ddddee", pencolor="black", label="c" fontname="Helvetica", fontsize="10", URL="dir_3b19ecf29356981f494745fbef7e56bf.html"]
+  dir_e93b8eb0a809e540a6bdc8c8e2d660ff [shape=box, label="log", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_e93b8eb0a809e540a6bdc8c8e2d660ff.html"];
+  }
+}

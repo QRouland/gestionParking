@@ -1,0 +1,151 @@
+.TH "m.Parking.Parking" 3 "Thu Feb 5 2015" "Version 0.1" "Dream Park" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+m.Parking.Parking \- Representation d'un parking de DreamPark\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.RI "\fIConstructeur du \fBParking\fP\&. \fP"
+.ti -1c
+.RI "def \fBid\fP (self)"
+.br
+.RI "\fIPropriete : id du parking\&. \fP"
+.ti -1c
+.RI "def \fBnom\fP (self)"
+.br
+.RI "\fIpropriete : nom du parking \fP"
+.ti -1c
+.RI "def \fBnbPlaces\fP (self)"
+.br
+.RI "\fIpropriete : nombre de \fBPlace\fP du parking \fP"
+.ti -1c
+.RI "def \fBnbPlacesLibresParking\fP (self)"
+.br
+.RI "\fIpropriete : nombre de \fBPlace\fP libres du paking \fP"
+.ti -1c
+.RI "def \fBnbSuperAbo\fP (self)"
+.br
+.RI "\fIpropriete : nombre de \fBPlace\fP super abo \fP"
+.ti -1c
+.RI "def \fBrecherchePlace\fP (self, voiture)"
+.br
+.RI "\fIRecherche une place pour une voiture\&. \fP"
+.ti -1c
+.RI "def \fBaddPlaceSuperAbo\fP (self, parking)"
+.br
+.RI "\fIAjout d'une place surmesure pour super abo\&. \fP"
+.ti -1c
+.RI "def \fB__str__\fP (self)"
+.br
+.RI "\fIRepresentation du parking en chaine\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fBget\fP (\fBid\fP)"
+.br
+.RI "\fIRetourne un objet parking correspondant à id\&. \fP"
+.ti -1c
+.RI "def \fBgetAllActif\fP ()"
+.br
+.RI "\fIRetourne tout les parking actif present dans la bd\&. \fP"
+.ti -1c
+.RI "def \fBremove\fP (parking)"
+.br
+.RI "\fISupprime un parking\&. \fP"
+.ti -1c
+.RI "def \fBremoveAllRam\fP ()"
+.br
+.RI "\fISupprime les parkings present dans la mémoire vive (pas dans la bd) \fP"
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "list \fBparkings\fP = []"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Representation d'un parking de DreamPark\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def m\&.Parking\&.Parking\&.__init__ ( self,  id,  nom = \fCNone\fP,  listeTypePlace = \fCNone\fP)"
+
+.PP
+Constructeur du \fBParking\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP Si None : Creer un parking dans la BD Sinon : tentative de récupération du parking avec cet id dans la bd 
+.br
+\fInom\fP : Si creation nom du parking 
+.br
+\fIlisteTypePlace\fP : Si creation Liste des \fBTypePlace\fP du parking 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "def m\&.Parking\&.Parking\&.addPlaceSuperAbo ( self,  parking)"
+
+.PP
+Ajout d'une place surmesure pour super abo\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparking\fP le parking ou il faut ajouter la place 
+.RE
+.PP
+
+.SS "def m\&.Parking\&.Parking\&.get ( id)\fC [static]\fP"
+
+.PP
+Retourne un objet parking correspondant à id\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP id u parking a retourner 
+.RE
+.PP
+
+.SS "def m\&.Parking\&.Parking\&.recherchePlace ( self,  voiture)"
+
+.PP
+Recherche une place pour une voiture\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvoiture\fP voiture pour laquel on recherche la place 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBPlace\fP Si touvé : \fBPlace\fP sinon : None 
+.RE
+.PP
+
+.SS "def m\&.Parking\&.Parking\&.remove ( parking)\fC [static]\fP"
+
+.PP
+Supprime un parking\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparking\fP L'objet parking a supprimer 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dream Park from the source code\&.

@@ -10,7 +10,7 @@ from src.v.Ui_Admin import Ui_CreaParking
 
 #Controleur de creation de parking
 class CreaParking:
-    ## Contructeur
+    ## Constructeur
     # @param main Controleur parent
     def __init__(self, main):
         self._main = main
@@ -54,7 +54,7 @@ class CreaParking:
             self._w.hide()
             self._main.showWindow()
 
-    ## Gestion validation de formulaire de creation de parking
+    ## Gestion validation de formulaire de creation de Parking
     def valider(self):
         if self._ui.lineEdit_nom.text() == "":
             self._main.activity("Erreur lors de la creations du Parking. Nom Invalide.\n", self._main.lvl.FAIL)

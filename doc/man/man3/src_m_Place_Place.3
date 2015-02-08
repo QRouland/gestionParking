@@ -1,0 +1,109 @@
+.TH "src.m.Place.Place" 3 "Mon Jan 12 2015" "Version 0.1" "Dream Park" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src.m.Place.Place \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP (self, numero, niveau, longueur, hauteur)"
+.br
+.ti -1c
+.RI "def \fBestLibre\fP (self)"
+.br
+.ti -1c
+.RI "def \fBestReserver\fP (self)"
+.br
+.ti -1c
+.RI "def \fBdimValide\fP (self, h, l)"
+.br
+.ti -1c
+.RI "def \fBsuperAbo\fP (self)"
+.br
+.ti -1c
+.RI "def \fBprendre\fP (self)"
+.br
+.ti -1c
+.RI "def \fBliberer\fP (self)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+.nf
+Representation d'une place
+
+.fi
+.PP
+ 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def src\&.m\&.Place\&.Place\&.__init__ ( self,  numero,  niveau,  longueur,  hauteur)"
+
+.PP
+.nf
+Creer une place.
+Les dimensions doivent etre données en cm (longueur, hauteur)
+:param numero: int
+:param niveau: int
+:param longueur: int
+:param hauteur: int
+:return:
+
+.fi
+.PP
+ 
+.SH "Member Function Documentation"
+.PP 
+.SS "def src\&.m\&.Place\&.Place\&.dimValide ( self,  h,  l)"
+
+.PP
+.nf
+Retourn si un element de hauteur (cm) h et de longueur(cm) l passe dans la place
+:param h: int
+:param l: int
+:return: bool
+
+.fi
+.PP
+ 
+.SS "def src\&.m\&.Place\&.Place\&.liberer ( self)"
+
+.PP
+.nf
+Libere une place non dispo
+:return:
+
+.fi
+.PP
+ 
+.SS "def src\&.m\&.Place\&.Place\&.prendre ( self)"
+
+.PP
+.nf
+Rend la place indisponible
+:param Placement:
+:return:
+
+.fi
+.PP
+ 
+.SS "def src\&.m\&.Place\&.Place\&.superAbo ( self)"
+
+.PP
+.nf
+Renvoit si la place est une place superAbo
+:return: bool
+
+.fi
+.PP
+ 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dream Park from the source code\&.

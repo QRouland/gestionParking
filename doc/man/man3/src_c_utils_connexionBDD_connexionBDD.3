@@ -1,0 +1,106 @@
+.TH "src.c.utils.connexionBDD.connexionBDD" 3 "Sun Feb 8 2015" "Version 1.0" "Dream Park" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src.c.utils.connexionBDD.connexionBDD \- Classe de connexion a la bd\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP (self)"
+.br
+.RI "\fIConstrueur de la connexion\&. \fP"
+.ti -1c
+.RI "def \fBexecute\fP"
+.br
+.RI "\fIExecute une requete avec des param\&. \fP"
+.ti -1c
+.RI "def \fBlastId\fP (self)"
+.br
+.RI "\fIId genere par la derniere requete\&. \fP"
+.ti -1c
+.RI "def \fBseDeconnecter\fP (self)"
+.br
+.RI "\fIDeconnexion de la BD\&. \fP"
+.ti -1c
+.RI "def \fBinitialisationBDD\fP (self)"
+.br
+.RI "\fIInitialise la BD\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fBsauver\fP (path)"
+.br
+.RI "\fICreer une copie de la bd\&. \fP"
+.ti -1c
+.RI "def \fBcharger\fP (path)"
+.br
+.RI "\fICharge une copie de la bd\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Classe de connexion a la bd\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def src\&.c\&.utils\&.connexionBDD\&.connexionBDD\&.__init__ ( self)"
+
+.PP
+Construeur de la connexion\&. Initialise la bd en cas d'inexistance 
+.SH "Member Function Documentation"
+.PP 
+.SS "def src\&.c\&.utils\&.connexionBDD\&.connexionBDD\&.charger ( path)\fC [static]\fP"
+
+.PP
+Charge une copie de la bd\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP le chemin du fichier a charger pour la bd 
+.RE
+.PP
+
+.SS "def src\&.c\&.utils\&.connexionBDD\&.connexionBDD\&.execute ( self,  req,  param = \fC()\fP)"
+
+.PP
+Execute une requete avec des param\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreq\fP la requete a execute 
+.br
+\fIparam\fP un tuple contenant les donnees a inserer dans la requete 
+.RE
+.PP
+
+.SS "def src\&.c\&.utils\&.connexionBDD\&.connexionBDD\&.lastId ( self)"
+
+.PP
+Id genere par la derniere requete\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Id genere par la derniere requete 
+.RE
+.PP
+
+.SS "def src\&.c\&.utils\&.connexionBDD\&.connexionBDD\&.sauver ( path)\fC [static]\fP"
+
+.PP
+Creer une copie de la bd\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP le chemin du fichier de sauvegarde de la bd 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dream Park from the source code\&.

@@ -1,0 +1,9 @@
+digraph "Graphical Class Hierarchy"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="src.c.CreaParking.CreaParking",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classsrc_1_1c_1_1_crea_parking_1_1_crea_parking.html"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="src.c.DetailsPlaces.Details\lPlaces",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classsrc_1_1c_1_1_details_places_1_1_details_places.html"];
+}

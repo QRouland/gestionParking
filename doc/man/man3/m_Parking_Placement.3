@@ -1,0 +1,61 @@
+.TH "m.Parking.Placement" 3 "Thu Feb 5 2015" "Version 0.1" "Dream Park" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+m.Parking.Placement \- Representation d'un \fBPlacement\fP de DreamPark\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.RI "\fIConstructeur \fBPlacement\fP\&. \fP"
+.ti -1c
+.RI "def \fBid\fP (self)"
+.br
+.RI "\fIPropriete : id du \fBPlacement\fP\&. \fP"
+.ti -1c
+.RI "def \fBplace\fP (self)"
+.br
+.RI "\fIPropriete : place liée du \fBPlacement\fP\&. \fP"
+.ti -1c
+.RI "def \fBvoiture\fP (self)"
+.br
+.RI "\fIPropriete : voiture liée du \fBPlacement\fP\&. \fP"
+.ti -1c
+.RI "def \fBend\fP (self)"
+.br
+.RI "\fIFin du placement (depart voiture) \fP"
+.ti -1c
+.RI "def \fB__str__\fP (self)"
+.br
+.RI "\fIRepresentation du \fBPlacement\fP en chaine\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Representation d'un \fBPlacement\fP de DreamPark\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def m\&.Parking\&.Placement\&.__init__ ( self,  id,  voiture = \fCNone\fP,  place = \fCNone\fP)"
+
+.PP
+Constructeur \fBPlacement\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP Si None : creation du \fBPlacement\fP dans la bd Sinon : tentative de récupération du \fBPlacement\fP avec cet id dans la bd 
+.br
+\fIvoiture\fP Si creation : Voiture lié au placement 
+.br
+\fIplace\fP Si creation : \fBPlace\fP lié au placement 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dream Park from the source code\&.

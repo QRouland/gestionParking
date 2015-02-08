@@ -22,6 +22,7 @@ class TestService:
         assert_equal(s.typeService, TypeService.ENTRETIEN)
         assert_equal(s.placement,placemnent)
 
+    ## Test modification service
     def TestModifService(self):
         v = Voiture(None, None, 120, 100, "IMMA")
         t  = TypePlace(None, 220, 200, 4, 2.5, 1)
@@ -35,6 +36,7 @@ class TestService:
         assert_equal(s.lieu,"autre")
         assert_equal(s.dateService,time)
 
+    ## Test realisation service
     def TestDoService(self):
         v = Voiture(None, None, 120, 100, "IMMA")
         t  = TypePlace(None, 220, 200, 4, 2.5, 1)

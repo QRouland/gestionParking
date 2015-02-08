@@ -1,0 +1,86 @@
+.TH "src.m.Voiture.Voiture" 3 "Sun Feb 8 2015" "Version 1.0" "Dream Park" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src.m.Voiture.Voiture \- Representation d'une \fBVoiture\fP de DreamPark\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.RI "\fIConstucteur \fBVoiture\fP\&. \fP"
+.ti -1c
+.RI "def \fBsetClient\fP (self, \fBclient\fP)"
+.br
+.RI "\fIMet a jour la possesion d'une \fBVoiture\fP par un Client\&. \fP"
+.ti -1c
+.RI "def \fBid\fP (self)"
+.br
+.RI "\fIpropriete : id \fBVoiture\fP \fP"
+.ti -1c
+.RI "def \fBhauteur\fP (self)"
+.br
+.RI "\fIpropriete : hauteur \fBVoiture\fP \fP"
+.ti -1c
+.RI "def \fBlongueur\fP (self)"
+.br
+.RI "\fIpropriete : longueur \fBVoiture\fP \fP"
+.ti -1c
+.RI "def \fBimmatriculation\fP (self)"
+.br
+.RI "\fIpropriete : immatriculation \fBVoiture\fP \fP"
+.ti -1c
+.RI "def \fBclient\fP (self)"
+.br
+.RI "\fIpropriete : Client possedant \fBVoiture\fP \fP"
+.ti -1c
+.RI "def \fB__str__\fP (self)"
+.br
+.RI "\fIRepresentation d'une \fBVoiture\fP en chaine\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Representation d'une \fBVoiture\fP de DreamPark\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def src\&.m\&.Voiture\&.Voiture\&.__init__ ( self,  id,  client = \fCNone\fP,  longueur = \fCNone\fP,  hauteur = \fCNone\fP,  imma = \fCNone\fP)"
+
+.PP
+Constucteur \fBVoiture\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP Si None : Cree une \fBVoiture\fP dans la BD Sinon : tentative de récupération de la \fBVoiture\fP avec cet id dans la bd 
+.br
+\fIclient\fP Si creation Client qui posséde la \fBVoiture\fP 
+.br
+\fIlongueur\fP Si creation longueur de la \fBVoiture\fP 
+.br
+\fIhauteur\fP Si creation hauteur de la \fBVoiture\fP 
+.br
+\fIimma\fP Si creation imma de la \fBVoiture\fP 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "def src\&.m\&.Voiture\&.Voiture\&.setClient ( self,  client)"
+
+.PP
+Met a jour la possesion d'une \fBVoiture\fP par un Client\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIclient\fP Client qui posséde la voiture 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dream Park from the source code\&.

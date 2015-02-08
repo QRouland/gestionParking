@@ -1,0 +1,75 @@
+.TH "m.Parking.TypePlace" 3 "Thu Feb 5 2015" "Version 0.1" "Dream Park" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+m.Parking.TypePlace \- Representation d'un typePlace de DreamPark\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.RI "\fIConstructeur de \fBTypePlace\fP\&. \fP"
+.ti -1c
+.RI "def \fBid\fP (self)"
+.br
+.RI "\fIpropriete : id du Typeplace \fP"
+.ti -1c
+.RI "def \fBlongueur\fP (self)"
+.br
+.RI "\fIpropriete : longueur du Typeplace \fP"
+.ti -1c
+.RI "def \fBhauteur\fP (self)"
+.br
+.RI "\fIpropriete : hauteur du Typeplace \fP"
+.ti -1c
+.RI "def \fBnombre\fP (self)"
+.br
+.RI "\fIpropriete : nombre du Typeplace \fP"
+.ti -1c
+.RI "def \fBprix\fP (self)"
+.br
+.RI "\fIpropriete : prix du Typeplace \fP"
+.ti -1c
+.RI "def \fBniveau\fP (self)"
+.br
+.RI "\fIpropriete : niveau du Typeplace \fP"
+.ti -1c
+.RI "def \fB__str__\fP (self)"
+.br
+.RI "\fIRepresentation du \fBTypePlace\fP en chaine\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Representation d'un typePlace de DreamPark\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def m\&.Parking\&.TypePlace\&.__init__ ( self,  id,  longueur = \fCNone\fP,  hauteur = \fCNone\fP,  nombre = \fCNone\fP,  prix = \fCNone\fP,  niveau = \fCNone\fP)"
+
+.PP
+Constructeur de \fBTypePlace\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP Si None : creation du \fBTypePlace\fP dans la bd Sinon : tentative de récupération du \fBTypePlace\fP avec cet id dans la bd 
+.br
+\fIlongueur\fP Longueur de la place en cm 
+.br
+\fIhauteur\fP Hauteur de la place en cm 
+.br
+\fInombre\fP Nombre de place de ce type 
+.br
+\fIprix\fP Le prix pur ce type de place 
+.br
+\fIniveau\fP Le niveau ou se trouve les places 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dream Park from the source code\&.

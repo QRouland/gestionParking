@@ -8,7 +8,7 @@ from src.c.utils.connexionBDD import connexionBDD
 ## Représentation d'un Client de DreamPark
 class Client:
     ##
-    #    Contsructeur du Client
+    #    Constructeur du Client
     #    @param id Si None : Création du  Client dans la bd a l'aide des autres parametres.
     #                Sinon  : tentative de récupération du client avec cet id dans la bd
     #    @param nom nom du Client si creation

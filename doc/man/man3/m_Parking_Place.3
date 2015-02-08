@@ -1,0 +1,163 @@
+.TH "m.Parking.Place" 3 "Thu Feb 5 2015" "Version 0.1" "Dream Park" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+m.Parking.Place \- Representation d'une place de DreamPark\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.RI "\fIContructeur de \fBPlace\fP\&. \fP"
+.ti -1c
+.RI "def \fBprendre\fP (self)"
+.br
+.RI "\fIRend la place la indisponible\&. \fP"
+.ti -1c
+.RI "def \fBliberer\fP (self)"
+.br
+.RI "\fIRend la place disponible\&. \fP"
+.ti -1c
+.RI "def \fBid\fP (self)"
+.br
+.RI "\fIpropriete : id de la place \fP"
+.ti -1c
+.RI "def \fBidentification\fP (self)"
+.br
+.RI "\fIpropriete : identification etage : numero de la place \fP"
+.ti -1c
+.RI "def \fBestlibre\fP (self)"
+.br
+.RI "\fIpropriete : True si la place est libre \fP"
+.ti -1c
+.RI "def \fBtypePlace\fP (self)"
+.br
+.RI "\fIpropriete : typePlace de la place \fP"
+.ti -1c
+.RI "def \fB__str__\fP (self)"
+.br
+.RI "\fIRepresentation d'une place en chaine\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fBnbPlaceParking\fP (idParking)"
+.br
+.RI "\fIRetourne les nombre de place du parking d'id idParking\&. \fP"
+.ti -1c
+.RI "def \fBnbPlaceLibreParking\fP (idParking)"
+.br
+.RI "\fIRetourne les nombre de place libre du parking d'id idParking\&. \fP"
+.ti -1c
+.RI "def \fBnbSuperAbo\fP (idParking)"
+.br
+.RI "\fIRetourne les nombre de place superAbo du parking d'id idParking\&. \fP"
+.ti -1c
+.RI "def \fBplaceValide\fP (idPArking, voiture)"
+.br
+.RI "\fIRetourne si une place valide pour une voiture dans un parking\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Representation d'une place de DreamPark\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def m\&.Parking\&.Place\&.__init__ ( self,  id,  parking = \fCNone\fP,  typePlace = \fCNone\fP,  numero = \fCNone\fP,  estLibre = \fCTrue\fP,  estSuperAbo = \fCFalse\fP)"
+
+.PP
+Contructeur de \fBPlace\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP Si None : creation de la place dans la bd Sinon : tentative de récupération de la place avec cet id dans la bd 
+.br
+\fIparking\fP Si creation : le \fBParking\fP ou est creer la place 
+.br
+\fItypePlace\fP Si creation : le \fBTypePlace\fP de place 
+.br
+\fInumero\fP Si creation : le numero de place 
+.br
+\fIestLibre\fP Si creation : Si la place est libre ou non 
+.br
+\fIestSuperAbo\fP Si creation : Si la place est superAbo ou non 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "def m\&.Parking\&.Place\&.nbPlaceLibreParking ( idParking)\fC [static]\fP"
+
+.PP
+Retourne les nombre de place libre du parking d'id idParking\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidParking\fP l'id du parking 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+le nombre de place libre 
+.RE
+.PP
+
+.SS "def m\&.Parking\&.Place\&.nbPlaceParking ( idParking)\fC [static]\fP"
+
+.PP
+Retourne les nombre de place du parking d'id idParking\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidParking\fP l'id du parking 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+le nombre de place 
+.RE
+.PP
+
+.SS "def m\&.Parking\&.Place\&.nbSuperAbo ( idParking)\fC [static]\fP"
+
+.PP
+Retourne les nombre de place superAbo du parking d'id idParking\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidParking\fP l'id du parking 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+le nombre de place superAbo 
+.RE
+.PP
+
+.SS "def m\&.Parking\&.Place\&.placeValide ( idPArking,  voiture)\fC [static]\fP"
+
+.PP
+Retourne si une place valide pour une voiture dans un parking\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIidParking\fP id du parking ou est recherché la place 
+.br
+\fIvoiture\fP voiture pour laquelle est recherché la place 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Si non trouve : None\&. Sinon : \fBPlace\fP une place valide 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dream Park from the source code\&.

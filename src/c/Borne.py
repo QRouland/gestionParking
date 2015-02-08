@@ -17,7 +17,7 @@ from src.v.Ui_User import Ui_Borne
 class Borne:
     bornes = []
 
-    ## Met a jour l'affichages du nombres de places dispo sur toutes les bornes
+    ## Met a jour l'affichage du nombres de places dispo sur toutes les bornes
     @staticmethod
     def MajBornes():
         for b in Borne.bornes:
@@ -27,7 +27,7 @@ class Borne:
     def MajBorne(self):
         self.__ui.lcdNumber.display(self.__parking.nbPlacesLibresParking)
 
-    ## Contructeur du controleur de borne
+    ## Constructeur du controleur de borne
     # @param main Controleur parent Main
     # @param parking Parking auquel la borne est associé
     def __init__(self, main, parking):
@@ -67,7 +67,7 @@ class Borne:
         Borne.bornes.append(self)
         Borne.MajBornes()
 
-    ## block l'ensmeble des éléments de  la fenetre
+    ## blocque l'ensemble des éléments de la fenetre
     def blockAll(self):
         self.__ui.box_abo.setDisabled(True)
         self.__ui.box_garer.setDisabled(True)
@@ -119,7 +119,7 @@ class Borne:
         self.__ui.label_aff.setText("Bienvenue !")
         self.__ui.btn_quitter.setDisabled(True)
 
-    ## Gestion de l'identification a partir d'un abo a partir de son id (lineedit)
+    ## Gestion de l'identification a partir de l'id fournit (lineedit)
     def identification(self):
         try:
             self.__c = Client(self.__ui.lineEdit_id.text())
@@ -265,7 +265,7 @@ class Borne:
                 self.__ui.pushButton.setDisabled(False)
                 self.__ui.numeroTicketLineEdit.setDisabled(True)
 
-    ## Gestion du payeent
+    ## Gestion du paiement
     def payer(self):
         self.nonVoiture()
         self.__ui.btn_quitter.setDisabled(False)
@@ -273,14 +273,14 @@ class Borne:
         self.ticketRetrait(self.__placementAPayer, Service.getAllServicePlacement(self.__placementAPayer))
         self.__main.activity(self.__nomBorne + " : Recuperation Anonyme : " + str(self.__placementAPayer), self.__main.lvl.INFO)
 
-    ## generation ticket depot
+    ## Generation ticket depot
     def ticketDepot(self, id):
         QtGui.QMessageBox.information(self.__w,
                                       "Ticket",
                                       "Votre numero ticket : " + str(id)
         )
 
-    ## generation ticket retrait
+    ## Generation ticket retrait
     def ticketRetrait(self, placement, services):
         if placement.voiture.client == "NULL":
             prix = placement.place.typePlace.prix
@@ -310,7 +310,7 @@ class Borne:
                                       str(s)
         )
 
-    ## Gestion affichage de la vue borne
+    ## Gestion d'affichage de la vue borne
     def showWindow(self):
         self.__w.show()
 

@@ -8,7 +8,7 @@ from nose.tools import assert_equal,assert_not_equal
 
 ## Test Client
 class TestClient:
-    ## Test Instenciations
+    ## Test Instanciations
     def TestClient(self):
         c = Client(None,"Jean","Paul","1225233",TypeAbonnement.ABONNE)
         id = c.id

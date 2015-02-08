@@ -1,0 +1,69 @@
+.TH "c.log.log.Log" 3 "Thu Feb 5 2015" "Version 0.1" "Dream Park" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+c.log.log.Log \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits object\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP (self)"
+.br
+.ti -1c
+.RI "def \fBprintL\fP (self, pMsg, pLvl)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBlogger\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+.nf
+Log Manager
+
+.fi
+.PP
+ 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def c\&.log\&.log\&.Log\&.__init__ ( self)"
+
+.PP
+.nf
+Define 3 differents log :
+activity.log -> all activity
+warning.log -> only warning
+error.log -> error
+Write all message on terminal too
+
+.fi
+.PP
+ 
+.SH "Member Function Documentation"
+.PP 
+.SS "def c\&.log\&.log\&.Log\&.printL ( self,  pMsg,  pLvl)"
+
+.PP
+.nf
+Add color and write in log with an define level
+pMsg : message to write in log
+pLvl : level of log message
+
+.fi
+.PP
+ 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dream Park from the source code\&.

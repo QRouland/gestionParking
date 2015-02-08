@@ -1,0 +1,180 @@
+.TH "c.Borne.Borne" 3 "Thu Feb 5 2015" "Version 0.1" "Dream Park" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+c.Borne.Borne \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fBMajBorne\fP (self)"
+.br
+.ti -1c
+.RI "def \fB__init__\fP (self, main, parking)"
+.br
+.ti -1c
+.RI "def \fBblockAll\fP (self)"
+.br
+.ti -1c
+.RI "def \fBnonVoiture\fP (self)"
+.br
+.ti -1c
+.RI "def \fBnewVoiture\fP (self)"
+.br
+.ti -1c
+.RI "def \fBidentification\fP (self)"
+.br
+.ti -1c
+.RI "def \fBabo\fP (self)"
+.br
+.ti -1c
+.RI "def \fBdesabo\fP (self)"
+.br
+.ti -1c
+.RI "def \fBgarer\fP (self)"
+.br
+.ti -1c
+.RI "def \fBrecuperer\fP (self)"
+.br
+.ti -1c
+.RI "def \fBpayer\fP (self)"
+.br
+.ti -1c
+.RI "def \fBticketDepot\fP (self, id)"
+.br
+.ti -1c
+.RI "def \fBticketRetrait\fP (self, placement, services)"
+.br
+.ti -1c
+.RI "def \fBshowWindow\fP (self)"
+.br
+.ti -1c
+.RI "def \fBquitter\fP (self)"
+.br
+.ti -1c
+.RI "def \fBerror\fP (self, msg)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fBMajBornes\fP ()"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "list \fBbornes\fP = []"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+.nf
+Controleur de la vue des bornes permettant l'accès au parking
+
+.fi
+.PP
+ 
+.SH "Member Function Documentation"
+.PP 
+.SS "def c\&.Borne\&.Borne\&.abo ( self)"
+
+.PP
+.nf
+Gestion validation formulaire d'abonnement
+:return:
+
+.fi
+.PP
+ 
+.SS "def c\&.Borne\&.Borne\&.error ( self,  msg)"
+
+.PP
+.nf
+Qdialog message erreur
+:return:
+
+.fi
+.PP
+ 
+.SS "def c\&.Borne\&.Borne\&.garer ( self)"
+
+.PP
+.nf
+Gestion de la validation de garer son vehicule
+:return:
+
+.fi
+.PP
+ 
+.SS "def c\&.Borne\&.Borne\&.identification ( self)"
+
+.PP
+.nf
+Gestion de l'identification a partir d'un abo a partir de son id (lineedit)
+:return:
+
+.fi
+.PP
+ 
+.SS "def c\&.Borne\&.Borne\&.newVoiture ( self)"
+
+.PP
+.nf
+Meten etat d'arrive de voiture detecte par la camera
+:return:
+
+.fi
+.PP
+ 
+.SS "def c\&.Borne\&.Borne\&.nonVoiture ( self)"
+
+.PP
+.nf
+Met en etat initial de départ sans voiture
+:return:
+
+.fi
+.PP
+ 
+.SS "def c\&.Borne\&.Borne\&.quitter ( self)"
+
+.PP
+.nf
+Gestion de sortie de la vue borne
+:return:
+
+.fi
+.PP
+ 
+.SS "def c\&.Borne\&.Borne\&.recuperer ( self)"
+
+.PP
+.nf
+Essaie de recuperer une voiture avec le numero de ticket (lineedit)
+:return:
+
+.fi
+.PP
+ 
+.SS "def c\&.Borne\&.Borne\&.showWindow ( self)"
+
+.PP
+.nf
+Gestion affichage de la vue borne
+:return:
+
+.fi
+.PP
+ 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dream Park from the source code\&.

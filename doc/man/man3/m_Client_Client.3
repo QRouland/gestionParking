@@ -1,0 +1,96 @@
+.TH "m.Client.Client" 3 "Thu Feb 5 2015" "Version 0.1" "Dream Park" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+m.Client.Client \- Représentation d'un client de DreamPark\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.RI "\fIContsructeur du client\&. \fP"
+.ti -1c
+.RI "def \fBmaj\fP (self, \fBnom\fP, \fBprenom\fP, \fBcb\fP, typeAbonnement)"
+.br
+.RI "\fIMise a jour du client\&. \fP"
+.ti -1c
+.RI "def \fBdesabo\fP (self)"
+.br
+.RI "\fIDesabonne le client en le supprimant\&. \fP"
+.ti -1c
+.RI "def \fBprenom\fP (self)"
+.br
+.RI "\fIPropriete : prenom du client\&. \fP"
+.ti -1c
+.RI "def \fBnom\fP (self)"
+.br
+.RI "\fIPropriete : nom du client\&. \fP"
+.ti -1c
+.RI "def \fBid\fP (self)"
+.br
+.RI "\fIPropriete : id du client\&. \fP"
+.ti -1c
+.RI "def \fBcb\fP (self)"
+.br
+.RI "\fIPropriete : cb du client\&. \fP"
+.ti -1c
+.RI "def \fBabonnement\fP (self)"
+.br
+.RI "\fIPropriete : abonnement du client\&. \fP"
+.ti -1c
+.RI "def \fB__str__\fP (self)"
+.br
+.RI "\fIRepresentation du client en chaine\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Représentation d'un client de DreamPark\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def m\&.Client\&.Client\&.__init__ ( self,  id,  nom = \fCNone\fP,  prenom = \fCNone\fP,  cb = \fCNone\fP,  typeAbonnement = \fCNone\fP)"
+
+.PP
+Contsructeur du client\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP Si None -> Création du client dans la bd a l'aide des autres parametres\&. Sinon tentative de récupération du client avec cet id dans la bd 
+.br
+\fInom\fP nom du client si creation 
+.br
+\fIprenom\fP prenom du client si creation 
+.br
+\fIcb\fP cb du client si creation 
+.br
+\fItypeAbonnement\fP typeabonnement du client si creation 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "def m\&.Client\&.Client\&.maj ( self,  nom,  prenom,  cb,  typeAbonnement)"
+
+.PP
+Mise a jour du client\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInom\fP nouveau nom 
+.br
+\fIprenom\fP nouveau prenom 
+.br
+\fIcb\fP nouveau nom 
+.br
+\fItypeAbonnement\fP nouveau nom 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dream Park from the source code\&.

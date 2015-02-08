@@ -1,0 +1,82 @@
+.TH "src.m.Parking.Placement" 3 "Sun Feb 8 2015" "Version 1.0" "Dream Park" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src.m.Parking.Placement \- Representation d'un \fBPlacement\fP de DreamPark\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.RI "\fIConstructeur \fBPlacement\fP\&. \fP"
+.ti -1c
+.RI "def \fBid\fP (self)"
+.br
+.RI "\fIPropriete : id du \fBPlacement\fP\&. \fP"
+.ti -1c
+.RI "def \fBplace\fP (self)"
+.br
+.RI "\fIPropriete : place liée du \fBPlacement\fP\&. \fP"
+.ti -1c
+.RI "def \fBvoiture\fP (self)"
+.br
+.RI "\fIPropriete : voiture liée du \fBPlacement\fP\&. \fP"
+.ti -1c
+.RI "def \fBend\fP (self)"
+.br
+.RI "\fIFin du \fBPlacement\fP (depart voiture) \fP"
+.ti -1c
+.RI "def \fB__str__\fP (self)"
+.br
+.RI "\fIRepresentation du \fBPlacement\fP en chaine\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fBdureeMoyPlacement\fP ()"
+.br
+.RI "\fIRetourne la durée moyenne des \fBPlacement\fP\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Representation d'un \fBPlacement\fP de DreamPark\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def src\&.m\&.Parking\&.Placement\&.__init__ ( self,  id,  voiture = \fCNone\fP,  place = \fCNone\fP)"
+
+.PP
+Constructeur \fBPlacement\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP Si None : creation du \fBPlacement\fP dans la bd Sinon : tentative de récupération du \fBPlacement\fP avec cet id dans la bd 
+.br
+\fIvoiture\fP Si creation : \fBVoiture\fP lié au \fBPlacement\fP 
+.br
+\fIplace\fP Si creation : \fBPlace\fP lié au \fBPlacement\fP 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "def src\&.m\&.Parking\&.Placement\&.dureeMoyPlacement ()\fC [static]\fP"
+
+.PP
+Retourne la durée moyenne des \fBPlacement\fP\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+duree moyenne \fBPlacement\fP 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dream Park from the source code\&.

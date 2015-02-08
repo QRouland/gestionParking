@@ -7,8 +7,8 @@ from src.m.Parking import Placement
 
 ## Representation d'un Service de DreamPack
 class Service:
-    ## Retourne tout les services en cours dans le Parking parking
-    # @param parking Parking dont on veut connaitre les services
+    ## Retourne tout les Service en cours dans le Parking parking
+    # @param parking Parking dont on veut connaitre les Service
     # @return Liste Service en cours
     @staticmethod
     def getAllEnCours(parking):
@@ -23,7 +23,7 @@ class Service:
             l.append(Service(row["idService"]))
         return l
 
-    ## Retourne tout les services associé a un Placement
+    ## Retourne tout les Service associé a un Placement
     # @param parking Parking dont on veut connaitre les services
     # @return Liste Service associé a un Placement
     @staticmethod
@@ -38,7 +38,7 @@ class Service:
         print("l = " + str(l))
         return l
 
-    ## Contructeur d'un Service
+    ## Constructeur d'un Service
     # @param id Si None : Cree un Service dans la BD Sinon : tentative de récupération du Service avec cet id dans la bd
     # @param client Si creation : Client associe au Service
     # @param placement Si creation : Placement associe au Service
@@ -107,12 +107,12 @@ class Service:
     def info(self):
         return "Place : " + self.__placement.place.identification + " Imma : " + self.__placement.voiture.immatriculation
 
-    ## Propriete : Retour si un service a été réalisé du Service
+    ## Propriete : Retour si un Service a été réalisé du Service
     @property
     def estRealise(self):
         return self.__dateRealisation is not None and not self.__dateRealisation == "NULL"
 
-    ## Passe le service comme realise
+    ## Passe le Service comme realise
     def doService(self):
         self.__dateRealisation = time.time()
         c = connexionBDD()
@@ -120,7 +120,7 @@ class Service:
             self.__id) + "'")
         c.seDeconnecter()
 
-    ## Passe a un service a un etat de non realisé si le Client recupere sa Voiture avant que le Service est été réalisé
+    ## Passe un Service a un etat de non realisé si le Client recupere sa Voiture avant que le Service est été réalisé
     def nonRealise(self):
         self.__dateRealisation = 1
         c = connexionBDD()

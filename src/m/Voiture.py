@@ -44,7 +44,7 @@ class Voiture:
             self.__hauteur = row["hauteur"]
             self.__imma = row["imma"]
 
-    ## Met a jour la possesion d'un voiture par un Client
+    ## Met a jour la possesion d'une Voiture par un Client
     # @param client Client qui posséde la voiture
     def setClient(self, client):
         self.__client = client

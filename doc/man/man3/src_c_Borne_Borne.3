@@ -1,0 +1,127 @@
+.TH "src.c.Borne.Borne" 3 "Sun Feb 8 2015" "Version 1.0" "Dream Park" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src.c.Borne.Borne \- Controleur de la vue des bornes permettant l'accès au parking\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fBMajBorne\fP (self)"
+.br
+.RI "\fIMet a jour l'affichage du nombre de places dispo sur la borne courante\&. \fP"
+.ti -1c
+.RI "def \fB__init__\fP (self, main, parking)"
+.br
+.RI "\fIConstructeur du controleur de borne\&. \fP"
+.ti -1c
+.RI "def \fBblockAll\fP (self)"
+.br
+.RI "\fIblocque l'ensemble des éléments de la fenetre \fP"
+.ti -1c
+.RI "def \fBnonVoiture\fP (self)"
+.br
+.RI "\fIMet en etat initial de départ sans voiture\&. \fP"
+.ti -1c
+.RI "def \fBnewVoiture\fP (self)"
+.br
+.RI "\fIMet en etat d'arrive de voiture detecte par la camera\&. \fP"
+.ti -1c
+.RI "def \fBidentification\fP (self)"
+.br
+.RI "\fIGestion de l'identification a partir de l'id fournit (lineedit) \fP"
+.ti -1c
+.RI "def \fBabo\fP (self)"
+.br
+.RI "\fIGestion validation formulaire d'abonnement\&. \fP"
+.ti -1c
+.RI "def \fBdesabo\fP (self)"
+.br
+.RI "\fIGestion du desabonnment du client identifié \fP"
+.ti -1c
+.RI "def \fBgarer\fP (self)"
+.br
+.RI "\fIGestion de la validation pour garer son vehicule\&. \fP"
+.ti -1c
+.RI "def \fBrecuperer\fP (self)"
+.br
+.RI "\fIGestion de recuperation une voiture avec le numero de ticket (lineedit) \fP"
+.ti -1c
+.RI "def \fBpayer\fP (self)"
+.br
+.RI "\fIGestion du paiement\&. \fP"
+.ti -1c
+.RI "def \fBticketDepot\fP (self, id)"
+.br
+.RI "\fIGeneration ticket depot\&. \fP"
+.ti -1c
+.RI "def \fBticketRetrait\fP (self, placement, services)"
+.br
+.RI "\fIGeneration ticket retrait\&. \fP"
+.ti -1c
+.RI "def \fBshowWindow\fP (self)"
+.br
+.RI "\fIGestion d'affichage de la vue borne\&. \fP"
+.ti -1c
+.RI "def \fBquitter\fP (self)"
+.br
+.RI "\fIGestion de sortie de la vue borne\&. \fP"
+.ti -1c
+.RI "def \fBerror\fP (self, msg)"
+.br
+.RI "\fIGeneration Qdialog d'erreur\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fBMajBornes\fP ()"
+.br
+.RI "\fIMet a jour l'affichage du nombres de places dispo sur toutes les bornes\&. \fP"
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "list \fBbornes\fP = []"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Controleur de la vue des bornes permettant l'accès au parking\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def src\&.c\&.Borne\&.Borne\&.__init__ ( self,  main,  parking)"
+
+.PP
+Constructeur du controleur de borne\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImain\fP Controleur parent \fBMain\fP 
+.br
+\fIparking\fP \fBParking\fP auquel la borne est associé 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "def src\&.c\&.Borne\&.Borne\&.error ( self,  msg)"
+
+.PP
+Generation Qdialog d'erreur\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImsg\fP message d'erreur a afficher 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dream Park from the source code\&.

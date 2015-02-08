@@ -22,7 +22,7 @@ from src.v.Ui_Admin import Ui_MainWindow
 
 ## Controleur principal de l'application administration
 class Main:
-    ## Contructeur
+    ## Constructeur
     def __init__(self):
         # Init des logs
         self.lvl = lvl()  # Public : Acces au constante
@@ -82,14 +82,14 @@ class Main:
     def addItemActivite(self, line):
         self.__ui.listWidget.addItem(line)
 
-    ## Mise a jour de la liste des parking
+    ## Mise a jour de la liste des parkings
     def majListeParking(self):
         self.__ui.comboBox.clear()
         self.__ui.comboBox.addItem("Selectionner un parking")
         for p in Parking.getAllActif():
             self.__ui.comboBox.addItem(p.nom)
 
-    ## Action a réaliser lorque un parking est selectionné
+    ## Action a réaliser lorsque un parking est selectionné
     def selectParking(self):
         # onglet detail parking
         self.__ui.nom.clear()
@@ -154,7 +154,7 @@ class Main:
                 self.error("Livraision echoué.")
             self.selectParking()
 
-    ## Gestion de la realisation d'un entrerien
+    ## Gestion de la realisation d'un entretien
     def doEntretien(self):
         if len(self.__serviceEntretien) > 0:
             try:
@@ -179,7 +179,7 @@ class Main:
                 self.error("Livraison echoué.")
             self.selectParking()
 
-    ## Gestion de la mise a our d'une livraison
+    ## Gestion de la mise a jour d'une livraison
     def majLivraison(self):
         if len(self.__serviceLivraisons) > 0:
             try:
@@ -197,7 +197,7 @@ class Main:
         self.__view.hide()
         self.__widgetCourant = CreaParking(self)
 
-    ## Suppresion d'un parking
+    ## Suppression d'un parking
     def rmParking(self):
         if self.__ui.comboBox.currentIndex() != 0:
             result = QtGui.QMessageBox.question(self.__view,
@@ -216,7 +216,7 @@ class Main:
             self.__view.hide()
             self.showWindow()
 
-    ## Affichage d'une fentre DetailsPlaces des places d'un parking
+    ## Affichage d'une fenetre DetailsPlaces des Place d'un parking
     def detailsPlacesParking(self):
         if self.__ui.comboBox.currentIndex() != 0:
             self.__view.hide()
@@ -243,7 +243,7 @@ class Main:
             Parking.removeAllRam()
             self.majListeParking()
 
-    ## gestion du chargement d'une BD enregistre dans un fichier
+    ## gestion du chargement d'une BD depuis un fichier
     def charger(self):
         path = QtGui.QFileDialog.getOpenFileName(self.__view, "Charger", ".")
         if path:
@@ -255,7 +255,7 @@ class Main:
                 self.error("Le chargement a echoué.")
         self.majListeParking()
 
-    ## Gestion suvegarde de la BD dans un fichier
+    ## Gestion sauvegarde de la BD dans un fichier
     def sauver(self):
         path = QtGui.QFileDialog.getSaveFileName(self.__view, "Sauvegarder", ".")
         if path:

@@ -1,0 +1,135 @@
+.TH "src.c.Main.Main" 3 "Sun Feb 8 2015" "Version 1.0" "Dream Park" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src.c.Main.Main \- Controleur principal de l'application administration\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP (self)"
+.br
+.RI "\fIConstructeur\&. \fP"
+.ti -1c
+.RI "def \fBactivity\fP (self, msg, \fBlvl\fP)"
+.br
+.RI "\fIMethode d'ecriture dans les logs\&. \fP"
+.ti -1c
+.RI "def \fBloadLastActivity\fP (self)"
+.br
+.RI "\fIChargement des derniers log\&. \fP"
+.ti -1c
+.RI "def \fBaddItemActivite\fP (self, line)"
+.br
+.ti -1c
+.RI "def \fBmajListeParking\fP (self)"
+.br
+.RI "\fIMise a jour de la liste des parkings\&. \fP"
+.ti -1c
+.RI "def \fBselectParking\fP (self)"
+.br
+.RI "\fIAction a réaliser lorsque un parking est selectionné \fP"
+.ti -1c
+.RI "def \fBdoMaintenance\fP (self)"
+.br
+.RI "\fIGestion de la realisation d'une maintenance\&. \fP"
+.ti -1c
+.RI "def \fBdoEntretien\fP (self)"
+.br
+.RI "\fIGestion de la realisation d'un entretien\&. \fP"
+.ti -1c
+.RI "def \fBdoLivraison\fP (self)"
+.br
+.RI "\fIGestion de la realisation d'une livraison\&. \fP"
+.ti -1c
+.RI "def \fBmajLivraison\fP (self)"
+.br
+.RI "\fIGestion de la mise a jour d'une livraison\&. \fP"
+.ti -1c
+.RI "def \fBcreerParking\fP (self)"
+.br
+.RI "\fIGestion de l'ouverture d'une fenetre de CreaParking\&. \fP"
+.ti -1c
+.RI "def \fBrmParking\fP (self)"
+.br
+.RI "\fISuppression d'un parking\&. \fP"
+.ti -1c
+.RI "def \fBdetailsPlacesParking\fP (self)"
+.br
+.RI "\fIAffichage d'une fenetre DetailsPlaces des Place d'un parking\&. \fP"
+.ti -1c
+.RI "def \fBafficherBornes\fP (self)"
+.br
+.RI "\fIGestion affichage des \fBBorne\fP\&. \fP"
+.ti -1c
+.RI "def \fBnouveau\fP (self)"
+.br
+.RI "\fIGestion reinitilaisation de la BD\&. \fP"
+.ti -1c
+.RI "def \fBcharger\fP (self)"
+.br
+.RI "\fIgestion du chargement d'une BD depuis un fichier \fP"
+.ti -1c
+.RI "def \fBsauver\fP (self)"
+.br
+.RI "\fIGestion sauvegarde de la BD dans un fichier\&. \fP"
+.ti -1c
+.RI "def \fBquitter\fP (self)"
+.br
+.RI "\fIGestion quitter\&. \fP"
+.ti -1c
+.RI "def \fBshowWindow\fP (self)"
+.br
+.RI "\fIGestion affichage \fBMain\fP\&. \fP"
+.ti -1c
+.RI "def \fBerror\fP (self, msg)"
+.br
+.RI "\fIGestion affichage QDialog d'erreur\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBlvl\fP"
+.br
+.ti -1c
+.RI "\fBactivite\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Controleur principal de l'application administration\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "def src\&.c\&.Main\&.Main\&.activity ( self,  msg,  lvl)"
+
+.PP
+Methode d'ecriture dans les logs\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImsg\fP message a ecrire 
+.br
+\fIlvl\fP lvl du message (niveau d'importance) 
+.RE
+.PP
+
+.SS "def src\&.c\&.Main\&.Main\&.error ( self,  msg)"
+
+.PP
+Gestion affichage QDialog d'erreur\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImsg\fP le message d'erreur 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dream Park from the source code\&.

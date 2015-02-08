@@ -15,7 +15,7 @@ from src.m.Voiture import Voiture
 class Parking:
     parkings = []
 
-    ## Retourne un objet parking correspondant à id
+    ## Retourne un objet parking correspondant à l'id
     # @param id id du Parking a retourner
     @staticmethod
     def get(id):
@@ -113,14 +113,13 @@ class Parking:
             l.append(TypePlace(row["idTypePlace"]))
         return l
 
-    ## Recherche une place pour une voiture
-    # @param voiture voiture pour laquel on recherche la place
+    ## Recherche une Place pour une Voiture
+    # @param voiture Voiture pour laquel on recherche la Place
     # @return Place Si touvé : Place sinon : None
     def recherchePlace(self, voiture):
         return Place.placeValide(self.__id, voiture)
 
-    ## Ajout d'une place surmesure pour super abo
-    # @param parking le parking ou il faut ajouter la place
+    ## Ajout d'une place sur mesure pour super abo
     def addPlaceSuperAbo(self):
         return Place(None, self, None, None, False, True)
 
@@ -130,7 +129,7 @@ class Parking:
 
 ## Representation d'une place de DreamPark
 class Place:
-    ## Contructeur de Place
+    ## Constructeur de Place
     # @param id Si None : creation de la Place dans la bd Sinon : tentative de récupération de la Place avec cet id dans la bd
     # @param parking Si creation : le Parking ou est creer la Place
     # @param typePlace Si creation : le TypePlace de Place
@@ -171,7 +170,7 @@ class Place:
 
 
 
-    ## Rend la Place la indisponible
+    ## Rend la Place indisponible
     def prendre(self):
         if (self.__estLibre == False):
             raise Exception("Place déjà prise")
@@ -410,8 +409,8 @@ class Placement:
     def voiture(self):
         return self.__voiture
 
-    ## Retourne la durée moyenne des placement
-    # @return duree moyenne placement
+    ## Retourne la durée moyenne des Placement
+    # @return duree moyenne Placement
     @staticmethod
     def dureeMoyPlacement():
         c = connexionBDD()
@@ -420,7 +419,7 @@ class Placement:
         c.seDeconnecter()
         return nb
 
-    ## Fin du placement (depart voiture)
+    ## Fin du Placement (depart voiture)
     def end(self):
         self.__fin = time.time()
         c = connexionBDD()

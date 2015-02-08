@@ -1,0 +1,137 @@
+.TH "src.m.Service.Service" 3 "Sun Feb 8 2015" "Version 1.0" "Dream Park" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src.m.Service.Service \- Representation d'un \fBService\fP de DreamPack\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fB__init__\fP"
+.br
+.RI "\fIConstructeur d'un \fBService\fP\&. \fP"
+.ti -1c
+.RI "def \fBid\fP (self)"
+.br
+.RI "\fIPropriete : id \fBService\fP\&. \fP"
+.ti -1c
+.RI "def \fBtypeService\fP (self)"
+.br
+.RI "\fIPropriete : \fBTypeService\fP du \fBService\fP\&. \fP"
+.ti -1c
+.RI "def \fBplacement\fP (self)"
+.br
+.RI "\fIPropriete : Placement associe au \fBService\fP\&. \fP"
+.ti -1c
+.RI "def \fBdateService\fP (self)"
+.br
+.RI "\fIPropriete : date ou le \fBService\fP doit etre realisé \fP"
+.ti -1c
+.RI "def \fBlieu\fP (self)"
+.br
+.RI "\fIPropriete : lieu ou le \fBService\fP doit etre realisé \fP"
+.ti -1c
+.RI "def \fBinfo\fP (self)"
+.br
+.RI "\fIPropriete : information interessante pout l'admin pour un \fBService\fP\&. \fP"
+.ti -1c
+.RI "def \fBestRealise\fP (self)"
+.br
+.RI "\fIPropriete : Retour si un \fBService\fP a été réalisé du \fBService\fP\&. \fP"
+.ti -1c
+.RI "def \fBdoService\fP (self)"
+.br
+.RI "\fIPasse le \fBService\fP comme realise\&. \fP"
+.ti -1c
+.RI "def \fBnonRealise\fP (self)"
+.br
+.RI "\fIPasse un \fBService\fP a un etat de non realisé si le Client recupere sa \fBVoiture\fP avant que le \fBService\fP est été réalisé \fP"
+.ti -1c
+.RI "def \fBmaj\fP (self, datetime, \fBlieu\fP)"
+.br
+.RI "\fImise a jour de infos de livraison \fP"
+.ti -1c
+.RI "def \fB__str__\fP (self)"
+.br
+.RI "\fIRepresentation en chaine d'un \fBService\fP\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "def \fBgetAllEnCours\fP (parking)"
+.br
+.RI "\fIRetourne tout les \fBService\fP en cours dans le \fBParking\fP parking\&. \fP"
+.ti -1c
+.RI "def \fBgetAllServicePlacement\fP (\fBplacement\fP)"
+.br
+.RI "\fIRetourne tout les \fBService\fP associé a un Placement\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Representation d'un \fBService\fP de DreamPack\&. 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "def src\&.m\&.Service\&.Service\&.__init__ ( self,  id,  client = \fCNone\fP,  placement = \fCNone\fP,  typeService = \fCNone\fP,  dateService = \fC'NULL'\fP,  lieu = \fC''\fP)"
+
+.PP
+Constructeur d'un \fBService\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP Si None : Cree un \fBService\fP dans la BD Sinon : tentative de récupération du \fBService\fP avec cet id dans la bd 
+.br
+\fIclient\fP Si creation : Client associe au \fBService\fP 
+.br
+\fIplacement\fP Si creation : Placement associe au \fBService\fP 
+.br
+\fItypeService\fP Si creation : \fBTypeService\fP du \fBService\fP 
+.br
+\fIdateService\fP Si creation : date ou sera realise le service si necessaire 
+.br
+\fIlieu\fP Si creation : lieu ou realise le service si necessaire 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "def src\&.m\&.Service\&.Service\&.getAllEnCours ( parking)\fC [static]\fP"
+
+.PP
+Retourne tout les \fBService\fP en cours dans le \fBParking\fP parking\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparking\fP \fBParking\fP dont on veut connaitre les \fBService\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Liste \fBService\fP en cours 
+.RE
+.PP
+
+.SS "def src\&.m\&.Service\&.Service\&.getAllServicePlacement ( placement)\fC [static]\fP"
+
+.PP
+Retourne tout les \fBService\fP associé a un Placement\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparking\fP \fBParking\fP dont on veut connaitre les services 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Liste \fBService\fP associé a un Placement 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Dream Park from the source code\&.
