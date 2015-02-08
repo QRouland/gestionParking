@@ -21,7 +21,6 @@ class Service:
         l = []
         for row in rows:
             l.append(Service(row["idService"]))
-        print("l = " + str(l))
         return l
 
     ## Retourne tout les services associé a un Placement

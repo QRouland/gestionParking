@@ -6,8 +6,8 @@ import sqlite3
 
 ## Classe de connexion a la bd
 class connexionBDD:
-    __chemin = "m/BDDprojetPython.sq3"
-    __sql = "m/table.sql"
+    __chemin = "src/m/BDDprojetPython.sq3"
+    __sql = "src/m/table.sql"
 
     ## Construeur de la connexion. Initialise la bd en cas d'inexistance
     def __init__(self):

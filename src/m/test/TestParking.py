@@ -12,8 +12,8 @@ class TestParking:
     def TestParking(self):
         p = Parking(None, "test", [TypePlace(None, 220, 200, 4, 2.5, 1), TypePlace(None, 200, 130, 5, 2.5, 1)])
         id = p.id
-        assert_equal(p.nbPlacesLibresParking, 9, "Nombre de place libre non valide")
-        assert_equal(p.nbPlaces, 9, "Nombre de place non valide")
+        assert_equal(p.nbPlacesLibresParking, 13, "Nombre de place libre non valide")
+        assert_equal(p.nbPlaces, 13, "Nombre de place non valide")
         assert_equal(p.nbSuperAbo, 0, "Nombre de place super abo")
 
     def TestRecherchePlace(self):
@@ -23,17 +23,20 @@ class TestParking:
         place = p.recherchePlace(v)
         assert_equal(place, None, "Aucune place devrait etre trouve")
 
+        p = Parking(None, "test", [TypePlace(None, 220, 200, 4, 2.5, 1)])
         v = Voiture(None,None,100,300)
         place = p.recherchePlace(v)
         assert_equal(place, None, "Aucune place devrait etre trouve")
 
+        p = Parking(None, "test", [TypePlace(None, 220, 200, 4, 2.5, 1)])
         v = Voiture(None,None,300,100)
         place = p.recherchePlace(v)
         assert_equal(place, None, "Aucune place devrait estre trouve")
 
-        v = Voiture(None,None,100,100)
+        p = Parking(None, "test", [TypePlace(None, 220, 200, 4, 2.5, 1)])
+        v = Voiture(None,None,10,10,"lol")
         place = p.recherchePlace(v)
-        assert_not_equal(place, None, "Une place devrait etre trouve")
+        assert_not_equal(place is None, False, "Une place devrait etre trouve")
 
 ## Test Place
 class TestPlace:

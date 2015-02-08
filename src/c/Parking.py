@@ -99,13 +99,15 @@ class DetailsPlaces(CreaParking):
         super(DetailsPlaces, self).__init__(main)
 
         self._ui.lineEdit_nom.setText(parking.nom)
-        for p in parking.typePlaces :
+        for p in parking.listeTypePlace :
             row = self._ui.tableWidget.rowCount() - 1
             if row != 0:
                 self._ui.tableWidget.insertRow(row)
             self._ui.tableWidget.setItem(row, 0, QTableWidgetItem(str(p.hauteur)))
             self._ui.tableWidget.setItem(row, 1, QTableWidgetItem(str(p.longueur)))
-            self._ui.tableWidget.setItem(row, 2, QTableWidgetItem(str(p.nb)))
+            self._ui.tableWidget.setItem(row, 2, QTableWidgetItem(str(p.nombre)))
+            self._ui.tableWidget.setItem(row, 3, QTableWidgetItem(str(p.niveau)))
+            self._ui.tableWidget.setItem(row, 4, QTableWidgetItem(str(p.prix)))
 
         self._ui.lineEdit_nom.setDisabled(True)
         self._ui.tableWidget.setDisabled(True)

@@ -101,6 +101,18 @@ class Parking:
     def nbSuperAbo(self):
         return Place.nbSuperAbo(self.__id)
 
+    ## propriete : listeTypePlace
+    @property
+    def listeTypePlace(self):
+        c = connexionBDD()
+        r = c.execute("SELECT idTypePlace FROM typePlace WHERE idTypePlace in (SELECT idTypePlace FROM place WHERE idParking = '" + str(self.__id) + "')")
+        rows = r.fetchall()
+        c.seDeconnecter()
+        l = []
+        for row in rows:
+            l.append(TypePlace(row["idTypePlace"]))
+        return l
+
     ## Recherche une place pour une voiture
     # @param voiture voiture pour laquel on recherche la place
     # @return Place Si touvé : Place sinon : None

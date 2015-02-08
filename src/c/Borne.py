@@ -267,9 +267,11 @@ class Borne:
 
     ## Gestion du payeent
     def payer(self):
+        self.nonVoiture()
+        self.__ui.btn_quitter.setDisabled(False)
+        self.__ui.btn_Voiture.setDisabled(False)
         self.ticketRetrait(self.__placementAPayer, Service.getAllServicePlacement(self.__placementAPayer))
         self.__main.activity(self.__nomBorne + " : Recuperation Anonyme : " + str(self.__placementAPayer), self.__main.lvl.INFO)
-        self.nonVoiture()
 
     ## generation ticket depot
     def ticketDepot(self, id):
