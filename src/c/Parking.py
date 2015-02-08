@@ -1,15 +1,17 @@
+"""
+    Module Controleur de gestion de parking
+"""
+
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtGui import QTableWidgetItem
 from src.m.Parking import TypePlace, Parking
 from src.v.MyQt import MyQWidget
 from src.v.Ui_Admin import Ui_CreaParking
 
-
+#Controleur de creation de parking
 class CreaParking:
-    """
-    Controleur de cretion de parking
-    """
-
+    ## Contructeur
+    # @param main Controleur parent
     def __init__(self, main):
         self._main = main
         self._main.activity("Debut Creation Parking", self._main.lvl.INFO)
@@ -31,25 +33,16 @@ class CreaParking:
         self._ui.tableWidget.insertRow(self._ui.tableWidget.rowCount())
         self.showWindow()
 
+    ## Ajoute une ligne de creation de place
     def addRow(self):
-        """
-        Ajoute une ligne de creation de place
-        :return:
-        """
         self._ui.tableWidget.insertRow(self._ui.tableWidget.rowCount())
 
+    ## Enleve une ligne de creation de place
     def rmRow(self):
-        """
-        Enleve une ligne de creation de place
-        :return:
-        """
         self._ui.tableWidget.removeRow(self._ui.tableWidget.rowCount() - 1)
 
+    ## Gestion annulation creation parking
     def annuler(self):
-        """
-        Gestion annulation creation parking
-        :return:
-        """
         result = QtGui.QMessageBox.question(self._w,
                                             "Confirmer Fermeture...",
                                             "Etes vous sur de vouloir abandonner ?\n"
@@ -61,11 +54,8 @@ class CreaParking:
             self._w.hide()
             self._main.showWindow()
 
+    ## Gestion validation de formulaire de creation de parking
     def valider(self):
-        """
-        Gestion validation de formulaire de creation de parking.
-        :return:
-        """
         if self._ui.lineEdit_nom.text() == "":
             self._main.activity("Erreur lors de la creations du Parking. Nom Invalide.\n", self._main.lvl.FAIL)
             self.error("Nom Invalide!")
@@ -86,26 +76,24 @@ class CreaParking:
                 self._main.activity("Erreur lors de la creations du Parking \n" + str(e), self._main.lvl.FAIL)
                 self.error("Verifiez que votre saisie est valide !")
 
+    ## Gestion affichage CreaParking
     def showWindow(self):
-        """
-        Gestion affichage vue Creation de Parking
-        :return:
-        """
         self._w.show()
 
+    ## Gestion affichage QDialog d'erreur
+    # @param msg le message d'erreur
     def error(self, msg):
-        """
-        Qdialog message erreur
-        :return:
-        """
         QtGui.QMessageBox.warning(self._w,
                                   "Erreur ...",
                                   "Erreur lors de la création du parking ...\n" +
                                   msg
         )
 
-
+## Controleur d'affichage des details des places d'un parking existant
 class DetailsPlaces(CreaParking):
+    ## Contructeur
+    # @param main Controleur parent
+    # @param parking praking dont on veux afficher le détail
     def __init__(self, main, parking):
         self.__parking = parking
         super(DetailsPlaces, self).__init__(main)
@@ -125,6 +113,7 @@ class DetailsPlaces(CreaParking):
         self._ui.btn_addRow.setVisible(False)
         self._ui.btn_rmRow.setVisible(False)
 
+    ## Gestion de retour sur le fenetre principal
     def valider(self):
         self._w.hide()
         self._main.showWindow()

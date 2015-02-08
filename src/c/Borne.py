@@ -1,3 +1,7 @@
+"""
+    Module Controleur de la vue des bornes permettant l'accès au parking
+"""
+
 from PyQt4 import QtGui, QtCore
 from src.c.Teleporteur import Teleporteur
 from src.m.Parking import Placement
@@ -9,23 +13,23 @@ from src.v.MyQt import MyQWidget
 from src.v.Ui_User import Ui_Borne
 
 
-__author__ = 'sidya'
-
-
+##Controleur de la vue des bornes permettant l'accès au parking
 class Borne:
-    """
-    Controleur de la vue des bornes permettant l'accès au parking
-    """
     bornes = []
 
+    ## Met a jour l'affichages du nombres de places dispo sur toutes les bornes
     @staticmethod
     def MajBornes():
         for b in Borne.bornes:
             b.MajBorne()
 
+    ## Met a jour l'affichage du nombre de places dispo sur la borne courante
     def MajBorne(self):
         self.__ui.lcdNumber.display(self.__parking.nbPlacesLibresParking)
 
+    ## Contructeur du controleur de borne
+    # @param main Controleur parent Main
+    # @param parking Parking auquel la borne est associé
     def __init__(self, main, parking):
         self.__nomBorne = "Borne " + str(len(self.bornes) + 1)
         self.__parking = parking
@@ -63,7 +67,7 @@ class Borne:
         Borne.bornes.append(self)
         Borne.MajBornes()
 
-
+    ## block l'ensmeble des éléments de  la fenetre
     def blockAll(self):
         self.__ui.box_abo.setDisabled(True)
         self.__ui.box_garer.setDisabled(True)
@@ -74,11 +78,8 @@ class Borne:
         self.__ui.btn_annuler.setDisabled(True)
         self.__ui.btn_desabo.setDisabled(True)
 
+    ## Met en etat initial de départ sans voiture
     def nonVoiture(self):
-        """
-        Met en etat initial de départ sans voiture
-        :return:
-        """
         self.__main.activity(self.__nomBorne + " : En Attente d'une voiture", self.__main.lvl.INFO)
         self.__ui.label_aff.setText("Dream park")
         self.__c = None
@@ -106,11 +107,8 @@ class Borne:
         self.__ui.dateTimeEdit.setDateTime(QtCore.QDateTime.currentDateTime())
         Borne.MajBornes()
 
+    ## Met en etat d'arrive de voiture detecte par la camera
     def newVoiture(self):
-        """
-        Meten etat d'arrive de voiture detecte par la camera
-        :return:
-        """
         self.__ui.btn_Voiture.setDisabled(True)
         self.__v_actuel = Camera.donnerVoiture()
         self.__main.activity(self.__nomBorne + " : Arrivee : " + str(self.__v_actuel), self.__main.lvl.INFO)
@@ -121,12 +119,8 @@ class Borne:
         self.__ui.label_aff.setText("Bienvenue !")
         self.__ui.btn_quitter.setDisabled(True)
 
-
+    ## Gestion de l'identification a partir d'un abo a partir de son id (lineedit)
     def identification(self):
-        """
-        Gestion de l'identification a partir d'un abo a partir de son id (lineedit)
-        :return:
-        """
         try:
             self.__c = Client(self.__ui.lineEdit_id.text())
             self.__ui.label_aff.setText("Bonjour " + str(self.__c.nom) + " " + str(self.__c.prenom))
@@ -150,11 +144,8 @@ class Borne:
             self.__main.activity(self.__nomBorne + " : Erreur lors de l'indentification " + str(e),
                                  self.__main.lvl.FAIL)
 
+    ## Gestion validation formulaire d'abonnement
     def abo(self):
-        """
-        Gestion validation formulaire d'abonnement
-        :return:
-        """
         if self.__c != None:
             if self.__ui.checkBox.isChecked():
                 self.__c.maj(str(self.__ui.nomLineEdit.text()),
@@ -187,6 +178,7 @@ class Borne:
             self.identification()
             self.__ui.label_aff.setText("Votre id membre est : " + self.__c.id)
 
+    ## Gestion du desabonnment du client identifié
     def desabo(self):
         self.__c.desabo()
         self.__c = None
@@ -199,12 +191,8 @@ class Borne:
         self.__ui.box_service.setDisabled(True)
 
 
-
+    ## Gestion de la validation pour garer son vehicule
     def garer(self):
-        """
-        Gestion de la validation de garer son vehicule
-        :return:
-        """
         placement = None
         if self.__c is None:
             p = self.__parking.recherchePlace(self.__v_actuel)
@@ -247,12 +235,8 @@ class Borne:
             self.__main.activity(self.__nomBorne + " : Pas de place dispo pour " + str(self.__v_actuel),
                                  self.__main.lvl.INFO)
 
-
+    ## Gestion de recuperation une voiture avec le numero de ticket (lineedit)
     def recuperer(self):
-        """
-        Essaie de recuperer une voiture avec le numero de ticket (lineedit)
-        :return:
-        """
         p = None
         try:
             p = Placement(self.__ui.numeroTicketLineEdit.text())
@@ -281,18 +265,20 @@ class Borne:
                 self.__ui.pushButton.setDisabled(False)
                 self.__ui.numeroTicketLineEdit.setDisabled(True)
 
-
+    ## Gestion du payeent
     def payer(self):
         self.ticketRetrait(self.__placementAPayer, Service.getAllServicePlacement(self.__placementAPayer))
         self.__main.activity(self.__nomBorne + " : Recuperation Anonyme : " + str(self.__placementAPayer), self.__main.lvl.INFO)
         self.nonVoiture()
 
+    ## generation ticket depot
     def ticketDepot(self, id):
         QtGui.QMessageBox.information(self.__w,
                                       "Ticket",
                                       "Votre numero ticket : " + str(id)
         )
 
+    ## generation ticket retrait
     def ticketRetrait(self, placement, services):
         if placement.voiture.client == "NULL":
             prix = placement.place.typePlace.prix
@@ -322,27 +308,18 @@ class Borne:
                                       str(s)
         )
 
-
+    ## Gestion affichage de la vue borne
     def showWindow(self):
-        """
-        Gestion affichage de la vue borne
-        :return:
-        """
         self.__w.show()
 
+    ## Gestion de sortie de la vue borne
     def quitter(self):
-        """
-        Gestion de sortie de la vue borne
-        :return:
-        """
         self.__main.activity(self.__nomBorne + " :  Quitter", self.__main.lvl.INFO)
         self.__main.showWindow()
 
+    ## Generation Qdialog d'erreur
+    # @param msg message d'erreur a afficher
     def error(self, msg):
-        """
-        Qdialog message erreur
-        :return:
-        """
         QtGui.QMessageBox.warning(self._w,
                                   "Erreur ...",
                                   "Erreur lors de la création du parking ...\n" +

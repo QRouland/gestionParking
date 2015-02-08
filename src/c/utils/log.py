@@ -1,5 +1,6 @@
 """
-    Module de gestion de Log
+    Module : Log
+    (Realisé dans le cadre du Projet Tuteuré 2013/2014 MI Blagnac)
 """
 
 import logging
@@ -56,9 +57,9 @@ class Log(object):
     def __init__(self):
         """
         Define 3 differents utils :
-        activity.utils -> all activity
-        warning.utils -> only warning
-        error.utils -> error
+        activity.log -> all activity
+        warning.log -> only warning
+        error.log -> error
         Write all message on terminal too
         """
         self.logger = logging.getLogger()
@@ -84,9 +85,9 @@ class Log(object):
 
     def printL(self, pMsg, pLvl):
         """
-        Add color and write in utils with an define level
-        pMsg : message to write in utils
-        pLvl : level of utils message
+        Add color and write in log with an define level
+        pMsg : message to write in log
+        pLvl : level of log message
         """
         if pLvl == lvl.DEBUG:
             pMsg = bcolors.DEBUG + str(pMsg) + bcolors.ENDC

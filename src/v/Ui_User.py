@@ -1,3 +1,7 @@
+"""
+    Module des classes d'affichage UI generés par QtDesigner pour les UI Utilisateurs
+"""
+
 from PyQt4 import QtCore, QtGui
 
 try:
@@ -15,7 +19,7 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-
+## Ui de la Borne
 class Ui_Borne(object):
     def setupUi(self, Borne):
         Borne.setObjectName(_fromUtf8("Borne"))

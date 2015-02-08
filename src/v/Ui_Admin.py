@@ -1,3 +1,6 @@
+"""
+    Module des classes d'affichage UI generés par QtDesigner pour les UI Admin
+"""
 from PyQt4 import QtCore, QtGui
 
 try:
@@ -15,7 +18,7 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-
+## UI page principal d'administration
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
@@ -248,7 +251,7 @@ class Ui_MainWindow(object):
         self.action.setText(_translate("MainWindow", "?", None))
         self.actionNouveau_2.setText(_translate("MainWindow", "Nouveau", None))
 
-
+## UI de creatoin de parking
 class Ui_CreaParking(object):
     def setupUi(self, CreaParking):
         CreaParking.setObjectName(_fromUtf8("CreaParking"))

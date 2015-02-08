@@ -1,3 +1,7 @@
+"""
+    Contrileur Principal de l'application
+"""
+
 import sys
 
 from PyQt4 import QtGui, QtCore
@@ -16,8 +20,9 @@ from src.v.MyQt import MyQMainWindow
 from src.v.Ui_Admin import Ui_MainWindow
 
 
-
+## Controleur principal de l'application administration
 class Main:
+    ## Contructeur
     def __init__(self):
         # Init des logs
         self.lvl = lvl()  # Public : Acces au constante
@@ -53,11 +58,14 @@ class Main:
         self.showWindow()
         sys.exit(app.exec_())
 
-
+    ## Methode d'ecriture dans les logs
+    # @param msg message a ecrire
+    # @param lvl lvl du message (niveau d'importance)
     def activity(self, msg, lvl):
         self.__log.printL(msg, lvl)
         self.addItemActivite(self.activite.readlines()[-1])
 
+    ## Chargement des derniers log
     def loadLastActivity(self):
         try:
             self.activite = open("log/activity.log", "r")
@@ -74,12 +82,14 @@ class Main:
     def addItemActivite(self, line):
         self.__ui.listWidget.addItem(line)
 
+    ## Mise a jour de la liste des parking
     def majListeParking(self):
         self.__ui.comboBox.clear()
         self.__ui.comboBox.addItem("Selectionner un parking")
         for p in Parking.getAllActif():
             self.__ui.comboBox.addItem(p.nom)
 
+    ## Action a réaliser lorque un parking est selectionné
     def selectParking(self):
         # onglet detail parking
         self.__ui.nom.clear()
@@ -132,7 +142,7 @@ class Main:
         self.__ui.labelNbSuperAbo.setText(str(Client.nbSuperAbo()))
         self.__ui.labelMoySta.setText(str(Placement.dureeMoyPlacement()))
 
-
+    ## Gestion de la realisation d'une maintenance
     def doMaintenance(self):
         if len(self.__serviceMaintenance) > 0:
             try:
@@ -144,6 +154,7 @@ class Main:
                 self.error("Livraision echoué.")
             self.selectParking()
 
+    ## Gestion de la realisation d'un entrerien
     def doEntretien(self):
         if len(self.__serviceEntretien) > 0:
             try:
@@ -155,6 +166,7 @@ class Main:
                 self.error("Entretien echoué.")
             self.selectParking()
 
+    ## Gestion de la realisation d'une livraison
     def doLivraison(self):
         if len(self.__serviceLivraisons) > 0:
             try:
@@ -167,6 +179,7 @@ class Main:
                 self.error("Livraison echoué.")
             self.selectParking()
 
+    ## Gestion de la mise a our d'une livraison
     def majLivraison(self):
         if len(self.__serviceLivraisons) > 0:
             try:
@@ -179,10 +192,12 @@ class Main:
                 self.error("Maj Livraison echoué.")
             self.selectParking()
 
+    ## Gestion de l'ouverture d'une fenetre de CreaParking
     def creerParking(self):
         self.__view.hide()
         self.__widgetCourant = CreaParking(self)
 
+    ## Suppresion d'un parking
     def rmParking(self):
         if self.__ui.comboBox.currentIndex() != 0:
             result = QtGui.QMessageBox.question(self.__view,
@@ -201,17 +216,20 @@ class Main:
             self.__view.hide()
             self.showWindow()
 
+    ## Affichage d'une fentre DetailsPlaces des places d'un parking
     def detailsPlacesParking(self):
         if self.__ui.comboBox.currentIndex() != 0:
             self.__view.hide()
             self.__widgetCourant = DetailsPlaces(self, Parking.getAllActif()[self.__ui.comboBox.currentIndex() - 1])
 
+    ## Gestion affichage des Borne
     def afficherBornes(self):
         if self.__ui.comboBox.currentIndex() != 0:
             self.__view.hide()
             Borne(self, Parking.getAllActif()[self.__ui.comboBox.currentIndex() - 1])
             Borne(self, Parking.getAllActif()[self.__ui.comboBox.currentIndex() - 1])
 
+    ## Gestion reinitilaisation de la BD
     def nouveau(self):
         result = QtGui.QMessageBox.question(self.__view,
                                             "Confirmer Nouveau...",
@@ -225,6 +243,7 @@ class Main:
             Parking.removeAllRam()
             self.majListeParking()
 
+    ## gestion du chargement d'une BD enregistre dans un fichier
     def charger(self):
         path = QtGui.QFileDialog.getOpenFileName(self.__view, "Charger", ".")
         if path:
@@ -236,6 +255,7 @@ class Main:
                 self.error("Le chargement a echoué.")
         self.majListeParking()
 
+    ## Gestion suvegarde de la BD dans un fichier
     def sauver(self):
         path = QtGui.QFileDialog.getSaveFileName(self.__view, "Sauvegarder", ".")
         if path:
@@ -247,9 +267,11 @@ class Main:
                 self.error("La sauvegarde a echoué.")
         self.majListeParking()
 
+    ## Gestion quitter
     def quitter(self):
         self.__view.close()
 
+    ## Gestion affichage Main
     def showWindow(self):
         self.activity("Chargement de la fenetre principal", self.lvl.INFO)
         self.majListeParking()
@@ -258,11 +280,9 @@ class Main:
         Borne.bornes = []
         self.__view.focusWidget()  # reprend le focus sur la fenetre principal
 
+    ## Gestion affichage QDialog d'erreur
+    # @param msg le message d'erreur
     def error(self, msg):
-        """
-        Qdialog message erreur
-        :return:
-        """
         QtGui.QMessageBox.warning(self.__widgetCourant,
                                   "Erreur ...",
                                   msg
