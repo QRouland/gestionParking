@@ -30,9 +30,9 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>10</y>
+     <y>0</y>
      <width>791</width>
-     <height>20</height>
+     <height>41</height>
     </rect>
    </property>
    <property name="text">
@@ -318,7 +318,7 @@
       <rect>
        <x>20</x>
        <y>20</y>
-       <width>109</width>
+       <width>112</width>
        <height>121</height>
       </rect>
      </property>
@@ -430,10 +430,6 @@
   <tabstop>btn_recuperer</tabstop>
   <tabstop>pushButton</tabstop>
   <tabstop>btn_quitter</tabstop>
-  <tabstop>checkBox_Livraison</tabstop>
-  <tabstop>checkBox_Maintenance</tabstop>
-  <tabstop>checkBox_Entretien</tabstop>
-  <tabstop>lieuLineEdit</tabstop>
  </tabstops>
  <resources/>
  <connections/>

@@ -1,29 +1,50 @@
-__author__ = 'sidya'
-
-from nose.tools import assert_equal
+"""
+    Test du du Module m/Parking
+"""
+from src.m.Voiture import Voiture
+from nose.tools import assert_equal,assert_not_equal
 
 from src.m.Parking import Parking, TypePlace, Place
 
-
+## Test Parking
 class TestParking:
+    ## Test Instenciation
     def TestParking(self):
         p = Parking(None, "test", [TypePlace(None, 220, 200, 4, 2.5, 1), TypePlace(None, 200, 130, 5, 2.5, 1)])
         id = p.id
         assert_equal(p.nbPlacesLibresParking, 9, "Nombre de place libre non valide")
-        assert_equal(p.nbPlaces, 9, "Nombre de place  non valide")
+        assert_equal(p.nbPlaces, 9, "Nombre de place non valide")
         assert_equal(p.nbSuperAbo, 0, "Nombre de place super abo")
 
     def TestRecherchePlace(self):
-        pass
+        p = Parking(None, "test", [TypePlace(None, 220, 200, 4, 2.5, 1)])
 
+        v = Voiture(None,None,300,300)
+        place = p.recherchePlace(v)
+        assert_equal(place, None, "Aucune place devrait etre trouve")
 
+        v = Voiture(None,None,100,300)
+        place = p.recherchePlace(v)
+        assert_equal(place, None, "Aucune place devrait etre trouve")
+
+        v = Voiture(None,None,300,100)
+        place = p.recherchePlace(v)
+        assert_equal(place, None, "Aucune place devrait estre trouve")
+
+        v = Voiture(None,None,100,100)
+        place = p.recherchePlace(v)
+        assert_not_equal(place, None, "Une place devrait etre trouve")
+
+## Test Place
 class TestPlace:
+    ## Test intanciation
     def TestPlace(self):
         t1 = TypePlace(None, 220, 200, 4, 2.5, 1)
         parking = Parking(None, "test", [t1])
 
         p = Place(None, parking, t1, 2, 1)
 
+    ## Test de pendre et liberer les places
     def TestPrendreLiberer(self):
         t1 = TypePlace(None, 220, 200, 4, 2.5, 1)
         parking = Parking(None, "test", [t1])
@@ -50,8 +71,9 @@ class TestPlace:
         except Exception:
             pass
 
-
+## Test Types Places
 class TestTypePlace:
+    ## Test Istanciation
     def TestTypePlace(self):
         # Creation
         t = TypePlace(None, 220, 200, 4, 2.5, 1)

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'borne.ui'
 #
-# Created: Sun Feb  1 14:38:43 2015
+# Created: Sun Feb  8 11:36:37 2015
 #      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -31,7 +31,7 @@ class Ui_Borne(object):
         self.btn_Voiture.setGeometry(QtCore.QRect(30, 40, 211, 27))
         self.btn_Voiture.setObjectName(_fromUtf8("btn_Voiture"))
         self.nomParking = QtGui.QLabel(Borne)
-        self.nomParking.setGeometry(QtCore.QRect(10, 10, 791, 20))
+        self.nomParking.setGeometry(QtCore.QRect(10, 0, 791, 41))
         self.nomParking.setObjectName(_fromUtf8("nomParking"))
         self.box_id = QtGui.QGroupBox(Borne)
         self.box_id.setGeometry(QtCore.QRect(20, 150, 331, 171))
@@ -134,7 +134,7 @@ class Ui_Borne(object):
         self.dateTimeEdit.setGeometry(QtCore.QRect(320, 30, 121, 23))
         self.dateTimeEdit.setObjectName(_fromUtf8("dateTimeEdit"))
         self.layoutWidget_2 = QtGui.QWidget(self.box_service)
-        self.layoutWidget_2.setGeometry(QtCore.QRect(20, 20, 109, 121))
+        self.layoutWidget_2.setGeometry(QtCore.QRect(20, 20, 112, 121))
         self.layoutWidget_2.setObjectName(_fromUtf8("layoutWidget_2"))
         self.verticalLayout_4 = QtGui.QVBoxLayout(self.layoutWidget_2)
         self.verticalLayout_4.setMargin(0)
@@ -191,10 +191,6 @@ class Ui_Borne(object):
         Borne.setTabOrder(self.numeroTicketLineEdit, self.btn_recuperer)
         Borne.setTabOrder(self.btn_recuperer, self.pushButton)
         Borne.setTabOrder(self.pushButton, self.btn_quitter)
-        Borne.setTabOrder(self.btn_quitter, Borne.checkBox_Livraison)
-        Borne.setTabOrder(Borne.checkBox_Livraison, Borne.checkBox_Maintenance)
-        Borne.setTabOrder(Borne.checkBox_Maintenance, Borne.checkBox_Entretien)
-        Borne.setTabOrder(Borne.checkBox_Entretien, Borne.lieuLineEdit)
 
     def retranslateUi(self, Borne):
         Borne.setWindowTitle(_translate("Borne", "Borne", None))

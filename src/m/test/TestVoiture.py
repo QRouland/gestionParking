@@ -1,15 +1,17 @@
+"""
+    Test Module m/Voiture
+"""
+
 from src.m.Voiture import Voiture
-
-__author__ = 'sidya'
-
 from nose.tools import assert_equal
 
-
+## Test Voiture
 class TestVoiture:
+    ## Test instanciation
     def TestVoiture(self):
         v = Voiture(None, None, 120, 100, "IMMA")
         assert_equal(v.longueur, 120, "Ne retourne pas la longueur attendue")
-        assert_equal(v.hauteur, 100, "Ne retourne pas la hateur attendue")
+        assert_equal(v.hauteur, 100, "Ne retourne pas la hauteur attendue")
         assert_equal(v.immatriculation, "IMMA", "Ne retourne pas l'immatriculation attendue")
         id = v.id
 

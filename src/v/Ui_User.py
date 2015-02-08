@@ -28,7 +28,7 @@ class Ui_Borne(object):
         self.btn_Voiture.setGeometry(QtCore.QRect(30, 40, 211, 27))
         self.btn_Voiture.setObjectName(_fromUtf8("btn_Voiture"))
         self.nomParking = QtGui.QLabel(Borne)
-        self.nomParking.setGeometry(QtCore.QRect(10, 10, 791, 20))
+        self.nomParking.setGeometry(QtCore.QRect(10, 0, 791, 41))
         self.nomParking.setObjectName(_fromUtf8("nomParking"))
         self.box_id = QtGui.QGroupBox(Borne)
         self.box_id.setGeometry(QtCore.QRect(20, 150, 331, 171))
@@ -131,7 +131,7 @@ class Ui_Borne(object):
         self.dateTimeEdit.setGeometry(QtCore.QRect(320, 30, 121, 23))
         self.dateTimeEdit.setObjectName(_fromUtf8("dateTimeEdit"))
         self.layoutWidget_2 = QtGui.QWidget(self.box_service)
-        self.layoutWidget_2.setGeometry(QtCore.QRect(20, 20, 109, 121))
+        self.layoutWidget_2.setGeometry(QtCore.QRect(20, 20, 112, 121))
         self.layoutWidget_2.setObjectName(_fromUtf8("layoutWidget_2"))
         self.verticalLayout_4 = QtGui.QVBoxLayout(self.layoutWidget_2)
         self.verticalLayout_4.setMargin(0)
@@ -192,8 +192,7 @@ class Ui_Borne(object):
     def retranslateUi(self, Borne):
         Borne.setWindowTitle(_translate("Borne", "Borne", None))
         self.btn_Voiture.setText(_translate("Borne", "Detection Arrivee Voiture", None))
-        self.nomParking.setText(
-            _translate("Borne", "<html><head/><body><p align=\"center\">NomParking</p></body></html>", None))
+        self.nomParking.setText(_translate("Borne", "<html><head/><body><p align=\"center\">NomParking</p></body></html>", None))
         self.box_id.setTitle(_translate("Borne", "Identification", None))
         self.label.setText(_translate("Borne", "Carte Membre ID ", None))
         self.btn_validerID.setText(_translate("Borne", "Valider", None))
@@ -209,8 +208,7 @@ class Ui_Borne(object):
         self.numeroTicketLabel.setText(_translate("Borne", "Numero Ticket :", None))
         self.btn_recuperer.setText(_translate("Borne", "Récupérer Véhicule", None))
         self.pushButton.setText(_translate("Borne", "Payer", None))
-        self.label_aff.setText(
-            _translate("Borne", "<html><head/><body><p align=\"center\">TextLabel</p></body></html>", None))
+        self.label_aff.setText(_translate("Borne", "<html><head/><body><p align=\"center\">TextLabel</p></body></html>", None))
         self.box_garer.setTitle(_translate("Borne", "Se garer", None))
         self.btn_garer.setText(_translate("Borne", "Garer Véhicule", None))
         self.box_service.setTitle(_translate("Borne", "Service (Abonnée seulement)", None))
